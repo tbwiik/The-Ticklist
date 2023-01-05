@@ -1,0 +1,582 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8473502F29674A6900685150 /* The_TicklistApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473502E29674A6900685150 /* The_TicklistApp.swift */; };
+		8473503129674A6900685150 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473503029674A6900685150 /* ContentView.swift */; };
+		8473503329674A6900685150 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8473503229674A6900685150 /* Assets.xcassets */; };
+		8473503629674A6900685150 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8473503529674A6900685150 /* Preview Assets.xcassets */; };
+		8473504029674A6900685150 /* The_TicklistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473503F29674A6900685150 /* The_TicklistTests.swift */; };
+		8473504A29674A6900685150 /* The_TicklistUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473504929674A6900685150 /* The_TicklistUITests.swift */; };
+		8473504C29674A6900685150 /* The_TicklistUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473504B29674A6900685150 /* The_TicklistUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8473503C29674A6900685150 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8473502329674A6800685150 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8473502A29674A6800685150;
+			remoteInfo = "The Ticklist";
+		};
+		8473504629674A6900685150 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8473502329674A6800685150 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8473502A29674A6800685150;
+			remoteInfo = "The Ticklist";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8473502B29674A6800685150 /* The Ticklist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Ticklist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8473502E29674A6900685150 /* The_TicklistApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_TicklistApp.swift; sourceTree = "<group>"; };
+		8473503029674A6900685150 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8473503229674A6900685150 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8473503529674A6900685150 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8473503B29674A6900685150 /* The TicklistTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The TicklistTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8473503F29674A6900685150 /* The_TicklistTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_TicklistTests.swift; sourceTree = "<group>"; };
+		8473504529674A6900685150 /* The TicklistUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The TicklistUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8473504929674A6900685150 /* The_TicklistUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_TicklistUITests.swift; sourceTree = "<group>"; };
+		8473504B29674A6900685150 /* The_TicklistUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_TicklistUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8473502829674A6800685150 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8473503829674A6900685150 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8473504229674A6900685150 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8473502229674A6800685150 = {
+			isa = PBXGroup;
+			children = (
+				8473502D29674A6900685150 /* The Ticklist */,
+				8473503E29674A6900685150 /* The TicklistTests */,
+				8473504829674A6900685150 /* The TicklistUITests */,
+				8473502C29674A6800685150 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8473502C29674A6800685150 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8473502B29674A6800685150 /* The Ticklist.app */,
+				8473503B29674A6900685150 /* The TicklistTests.xctest */,
+				8473504529674A6900685150 /* The TicklistUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8473502D29674A6900685150 /* The Ticklist */ = {
+			isa = PBXGroup;
+			children = (
+				8473502E29674A6900685150 /* The_TicklistApp.swift */,
+				8473503029674A6900685150 /* ContentView.swift */,
+				8473503229674A6900685150 /* Assets.xcassets */,
+				8473503429674A6900685150 /* Preview Content */,
+			);
+			path = "The Ticklist";
+			sourceTree = "<group>";
+		};
+		8473503429674A6900685150 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				8473503529674A6900685150 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8473503E29674A6900685150 /* The TicklistTests */ = {
+			isa = PBXGroup;
+			children = (
+				8473503F29674A6900685150 /* The_TicklistTests.swift */,
+			);
+			path = "The TicklistTests";
+			sourceTree = "<group>";
+		};
+		8473504829674A6900685150 /* The TicklistUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8473504929674A6900685150 /* The_TicklistUITests.swift */,
+				8473504B29674A6900685150 /* The_TicklistUITestsLaunchTests.swift */,
+			);
+			path = "The TicklistUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8473502A29674A6800685150 /* The Ticklist */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8473504F29674A6900685150 /* Build configuration list for PBXNativeTarget "The Ticklist" */;
+			buildPhases = (
+				8473502729674A6800685150 /* Sources */,
+				8473502829674A6800685150 /* Frameworks */,
+				8473502929674A6800685150 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "The Ticklist";
+			productName = "The Ticklist";
+			productReference = 8473502B29674A6800685150 /* The Ticklist.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8473503A29674A6900685150 /* The TicklistTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8473505229674A6900685150 /* Build configuration list for PBXNativeTarget "The TicklistTests" */;
+			buildPhases = (
+				8473503729674A6900685150 /* Sources */,
+				8473503829674A6900685150 /* Frameworks */,
+				8473503929674A6900685150 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8473503D29674A6900685150 /* PBXTargetDependency */,
+			);
+			name = "The TicklistTests";
+			productName = "The TicklistTests";
+			productReference = 8473503B29674A6900685150 /* The TicklistTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8473504429674A6900685150 /* The TicklistUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8473505529674A6900685150 /* Build configuration list for PBXNativeTarget "The TicklistUITests" */;
+			buildPhases = (
+				8473504129674A6900685150 /* Sources */,
+				8473504229674A6900685150 /* Frameworks */,
+				8473504329674A6900685150 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8473504729674A6900685150 /* PBXTargetDependency */,
+			);
+			name = "The TicklistUITests";
+			productName = "The TicklistUITests";
+			productReference = 8473504529674A6900685150 /* The TicklistUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8473502329674A6800685150 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					8473502A29674A6800685150 = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
+					8473503A29674A6900685150 = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = 8473502A29674A6800685150;
+					};
+					8473504429674A6900685150 = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = 8473502A29674A6800685150;
+					};
+				};
+			};
+			buildConfigurationList = 8473502629674A6800685150 /* Build configuration list for PBXProject "The Ticklist" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8473502229674A6800685150;
+			productRefGroup = 8473502C29674A6800685150 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8473502A29674A6800685150 /* The Ticklist */,
+				8473503A29674A6900685150 /* The TicklistTests */,
+				8473504429674A6900685150 /* The TicklistUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8473502929674A6800685150 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8473503629674A6900685150 /* Preview Assets.xcassets in Resources */,
+				8473503329674A6900685150 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8473503929674A6900685150 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8473504329674A6900685150 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8473502729674A6800685150 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8473503129674A6900685150 /* ContentView.swift in Sources */,
+				8473502F29674A6900685150 /* The_TicklistApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8473503729674A6900685150 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8473504029674A6900685150 /* The_TicklistTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8473504129674A6900685150 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8473504A29674A6900685150 /* The_TicklistUITests.swift in Sources */,
+				8473504C29674A6900685150 /* The_TicklistUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8473503D29674A6900685150 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8473502A29674A6800685150 /* The Ticklist */;
+			targetProxy = 8473503C29674A6900685150 /* PBXContainerItemProxy */;
+		};
+		8473504729674A6900685150 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8473502A29674A6800685150 /* The Ticklist */;
+			targetProxy = 8473504629674A6900685150 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		8473504D29674A6900685150 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8473504E29674A6900685150 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8473505029674A6900685150 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"The Ticklist/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "tbwiik.com.The-Ticklist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8473505129674A6900685150 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"The Ticklist/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "tbwiik.com.The-Ticklist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8473505329674A6900685150 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "tbwiik.com.The-TicklistTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/The Ticklist.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/The Ticklist";
+			};
+			name = Debug;
+		};
+		8473505429674A6900685150 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "tbwiik.com.The-TicklistTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/The Ticklist.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/The Ticklist";
+			};
+			name = Release;
+		};
+		8473505629674A6900685150 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "tbwiik.com.The-TicklistUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "The Ticklist";
+			};
+			name = Debug;
+		};
+		8473505729674A6900685150 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "tbwiik.com.The-TicklistUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "The Ticklist";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8473502629674A6800685150 /* Build configuration list for PBXProject "The Ticklist" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8473504D29674A6900685150 /* Debug */,
+				8473504E29674A6900685150 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8473504F29674A6900685150 /* Build configuration list for PBXNativeTarget "The Ticklist" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8473505029674A6900685150 /* Debug */,
+				8473505129674A6900685150 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8473505229674A6900685150 /* Build configuration list for PBXNativeTarget "The TicklistTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8473505329674A6900685150 /* Debug */,
+				8473505429674A6900685150 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8473505529674A6900685150 /* Build configuration list for PBXNativeTarget "The TicklistUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8473505629674A6900685150 /* Debug */,
+				8473505729674A6900685150 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8473502329674A6800685150 /* Project object */;
+}
