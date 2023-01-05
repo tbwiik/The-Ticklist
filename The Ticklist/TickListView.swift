@@ -10,6 +10,7 @@ import SwiftUI
 struct TickListView: View {
     
     @Binding var ticklist: [Tick]
+    @State private var isAdding = false
     
     var body: some View {
         List {
@@ -20,6 +21,30 @@ struct TickListView: View {
             }
         }
         .navigationTitle("Ticklist")
+        .toolbar{
+            Button(action: {
+                isAdding = true
+            }){
+                Image(systemName: "plus.circle")
+            }
+        }
+        .sheet(isPresented: $isAdding){
+            NavigationView {
+                TickEditView()
+                    .toolbar{
+                        ToolbarItem(placement: .cancellationAction){
+                            Button("Cancel"){
+                                isAdding = false
+                            }
+                        }
+                        ToolbarItem(placement: .confirmationAction){
+                            Button("Add"){
+                                isAdding = false
+                            }
+                        }
+                    }
+            }
+        }
     }
 }
 
