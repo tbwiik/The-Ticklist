@@ -15,6 +15,7 @@
 		8473504C29674A6900685150 /* The_TicklistUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473504B29674A6900685150 /* The_TicklistUITestsLaunchTests.swift */; };
 		8473505D29674B3F00685150 /* Tick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473505C29674B3F00685150 /* Tick.swift */; };
 		8473505F29674C5E00685150 /* TickListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473505E29674C5E00685150 /* TickListView.swift */; };
+		847350612967522100685150 /* TickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847350602967522100685150 /* TickView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		8473504B29674A6900685150 /* The_TicklistUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_TicklistUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8473505C29674B3F00685150 /* Tick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tick.swift; sourceTree = "<group>"; };
 		8473505E29674C5E00685150 /* TickListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickListView.swift; sourceTree = "<group>"; };
+		847350602967522100685150 /* TickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				8473505B29674B3600685150 /* Model */,
 				8473502E29674A6900685150 /* The_TicklistApp.swift */,
 				8473505E29674C5E00685150 /* TickListView.swift */,
+				847350602967522100685150 /* TickView.swift */,
 				8473503229674A6900685150 /* Assets.xcassets */,
 				8473503429674A6900685150 /* Preview Content */,
 			);
@@ -271,6 +274,7 @@
 				8473505D29674B3F00685150 /* Tick.swift in Sources */,
 				8473502F29674A6900685150 /* The_TicklistApp.swift in Sources */,
 				8473505F29674C5E00685150 /* TickListView.swift in Sources */,
+				847350612967522100685150 /* TickView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
