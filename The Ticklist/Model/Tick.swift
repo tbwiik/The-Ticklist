@@ -26,6 +26,20 @@ struct Tick: Identifiable, Codable {
 }
 
 extension Tick {
+    
+    struct Data {
+        var name: String = ""
+        var date: Date = Date()
+        var grade: String = ""
+        var rating: Double = 0.0
+    }
+    
+    var data: Data {
+        Data(name: name, date: date, grade: grade, rating: Double(rating))
+    }
+}
+
+extension Tick {
     static let sampleData: [Tick] =
     [
         Tick(name: "Silence", date: Date(), grade: "9c", rating: 5),

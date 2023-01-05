@@ -11,6 +11,7 @@ struct TickListView: View {
     
     @Binding var ticklist: [Tick]
     @State private var isAdding = false
+    @State private var newTickData = Tick.Data()
     
     var body: some View {
         List {
@@ -30,7 +31,7 @@ struct TickListView: View {
         }
         .sheet(isPresented: $isAdding){
             NavigationView {
-                TickEditView()
+                TickEditView(data: $newTickData)
                     .toolbar{
                         ToolbarItem(placement: .cancellationAction){
                             Button("Cancel"){
