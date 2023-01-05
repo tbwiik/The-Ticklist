@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct The_TicklistApp: App {
+    
+    @State private var ticklist = Tick.sampleData
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                TickListView(ticklist: $ticklist)
+            }
         }
     }
 }
