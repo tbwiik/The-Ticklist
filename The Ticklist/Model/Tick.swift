@@ -27,6 +27,9 @@ struct Tick: Identifiable, Codable {
 
 extension Tick {
     
+    /**
+     Temporary data struct for storing tick information
+     */
     struct Data {
         var name: String = ""
         var date: Date = Date()
@@ -34,8 +37,18 @@ extension Tick {
         var rating: Double = 0.0
     }
     
+    ///Create data object
     var data: Data {
         Data(name: name, date: date, grade: grade, rating: Double(rating))
+    }
+    
+    ///Initialize new Tick with data information
+    init(data: Tick.Data) {
+        id = UUID()
+        name = data.name
+        date = data.date
+        grade = data.grade
+        rating = Int(data.rating)
     }
 }
 
