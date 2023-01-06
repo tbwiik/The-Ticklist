@@ -15,21 +15,26 @@ struct TickListView: View {
     let saveAction: () -> Void
     
     var body: some View {
-        List {
-            ForEach($ticklist) { $tick in
-                NavigationLink(destination: {TickView(tick: $tick)}){
-                    Text(tick.name)
+        ZStack {
+            List {
+                ForEach($ticklist) { $tick in
+                    NavigationLink(destination: {TickView(tick: $tick)}){
+                        Text(tick.name)
+                    }
+                }
+            }
+            VStack {
+                Spacer()
+                Button(action: {
+                    isAdding = true
+                }){
+                    Image(systemName: "plus.circle")
+                        .font(.largeTitle)
+                        .foregroundColor(.primary)
                 }
             }
         }
         .navigationTitle("Ticklist")
-        .toolbar{
-            Button(action: {
-                isAdding = true
-            }){
-                Image(systemName: "plus.circle")
-            }
-        }
         .sheet(isPresented: $isAdding){
             NavigationView {
                 TickEditView(data: $newTickData)
