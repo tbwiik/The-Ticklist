@@ -12,6 +12,7 @@ struct TickListView: View {
     @Binding var ticklist: [Tick]
     @State private var isAdding = false
     @State private var newTickData = Tick.Data()
+    let saveAction: () -> Void
     
     var body: some View {
         List {
@@ -36,11 +37,16 @@ struct TickListView: View {
                         ToolbarItem(placement: .cancellationAction){
                             Button("Cancel"){
                                 isAdding = false
+                                newTickData = Tick.Data()
                             }
                         }
                         ToolbarItem(placement: .confirmationAction){
                             Button("Add"){
+                                ticklist.append(Tick(data: newTickData))
                                 isAdding = false
+                                newTickData = Tick.Data()
+                                saveAction() //TODO save on scenechange
+                                
                             }
                         }
                     }
@@ -52,7 +58,7 @@ struct TickListView: View {
 struct TickListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            TickListView(ticklist: .constant(Tick.sampleData))
+            TickListView(ticklist: .constant(Tick.sampleData), saveAction: {})
         }
     }
 }
