@@ -28,9 +28,9 @@ struct TickListView: View {
                 Button(action: {
                     isAdding = true
                 }){
-                    Image(systemName: "plus.circle")
-                        .font(.largeTitle)
-                        .foregroundColor(.primary)
+                    Image(systemName: "plus.circle.fill")
+                        .font(.system(size: 40))
+                        .foregroundColor(.green)
                 }
             }
         }
