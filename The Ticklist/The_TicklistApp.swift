@@ -11,6 +11,7 @@ import SwiftUI
 struct The_TicklistApp: App {
     
     @StateObject private var ticklistStore = TickListStore()
+    @State private var errorWrapper: ErrorWrapper?
     
     var body: some Scene {
         WindowGroup {
@@ -20,7 +21,7 @@ struct The_TicklistApp: App {
                         do {
                             try await TickListStore.save(ticklist: ticklistStore.ticklist)
                         } catch {
-                            fatalError("Failed saving")
+                            errorWrapper = ErrorWrapper(error: error, solution: "Try again")
                         }
                     }
                 }
@@ -29,8 +30,13 @@ struct The_TicklistApp: App {
                 do {
                     ticklistStore.ticklist = try await TickListStore.load()
                 } catch {
-                    fatalError("Failed loading")
+                    errorWrapper = ErrorWrapper(error: error, solution: "Loads sample data and continues")
                 }
+            }
+            .sheet(item: $errorWrapper, onDismiss: {
+                ticklistStore.ticklist = Tick.sampleData
+            }) { wrapped in
+                ErrorView(errorWrapper: wrapped)
             }
         }
     }

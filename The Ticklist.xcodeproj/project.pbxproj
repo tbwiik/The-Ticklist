@@ -19,6 +19,8 @@
 		847350632967555800685150 /* TickEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847350622967555800685150 /* TickEditView.swift */; };
 		847350652968169200685150 /* TickListStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847350642968169200685150 /* TickListStore.swift */; };
 		847350672968577C00685150 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847350662968577C00685150 /* CardView.swift */; };
+		8473506B2968897C00685150 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473506A2968897C00685150 /* ErrorView.swift */; };
+		8473506D29688C6D00685150 /* ErrorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473506C29688C6D00685150 /* ErrorWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		847350622967555800685150 /* TickEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickEditView.swift; sourceTree = "<group>"; };
 		847350642968169200685150 /* TickListStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickListStore.swift; sourceTree = "<group>"; };
 		847350662968577C00685150 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		8473506A2968897C00685150 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		8473506C29688C6D00685150 /* ErrorWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 			children = (
 				8473505B29674B3600685150 /* Model */,
 				8473502E29674A6900685150 /* The_TicklistApp.swift */,
+				8473506A2968897C00685150 /* ErrorView.swift */,
 				8473505E29674C5E00685150 /* TickListView.swift */,
 				847350662968577C00685150 /* CardView.swift */,
 				847350622967555800685150 /* TickEditView.swift */,
@@ -146,6 +151,7 @@
 			children = (
 				8473505C29674B3F00685150 /* Tick.swift */,
 				847350642968169200685150 /* TickListStore.swift */,
+				8473506C29688C6D00685150 /* ErrorWrapper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -283,10 +289,12 @@
 				847350672968577C00685150 /* CardView.swift in Sources */,
 				847350632967555800685150 /* TickEditView.swift in Sources */,
 				8473505D29674B3F00685150 /* Tick.swift in Sources */,
+				8473506D29688C6D00685150 /* ErrorWrapper.swift in Sources */,
 				847350652968169200685150 /* TickListStore.swift in Sources */,
 				8473502F29674A6900685150 /* The_TicklistApp.swift in Sources */,
 				8473505F29674C5E00685150 /* TickListView.swift in Sources */,
 				847350612967522100685150 /* TickView.swift in Sources */,
+				8473506B2968897C00685150 /* ErrorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
