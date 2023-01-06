@@ -18,6 +18,7 @@
 		847350612967522100685150 /* TickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847350602967522100685150 /* TickView.swift */; };
 		847350632967555800685150 /* TickEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847350622967555800685150 /* TickEditView.swift */; };
 		847350652968169200685150 /* TickListStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847350642968169200685150 /* TickListStore.swift */; };
+		847350672968577C00685150 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847350662968577C00685150 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		847350602967522100685150 /* TickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickView.swift; sourceTree = "<group>"; };
 		847350622967555800685150 /* TickEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickEditView.swift; sourceTree = "<group>"; };
 		847350642968169200685150 /* TickListStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickListStore.swift; sourceTree = "<group>"; };
+		847350662968577C00685150 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				8473505B29674B3600685150 /* Model */,
 				8473502E29674A6900685150 /* The_TicklistApp.swift */,
 				8473505E29674C5E00685150 /* TickListView.swift */,
+				847350662968577C00685150 /* CardView.swift */,
 				847350622967555800685150 /* TickEditView.swift */,
 				847350602967522100685150 /* TickView.swift */,
 				8473503229674A6900685150 /* Assets.xcassets */,
@@ -277,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				847350672968577C00685150 /* CardView.swift in Sources */,
 				847350632967555800685150 /* TickEditView.swift in Sources */,
 				8473505D29674B3F00685150 /* Tick.swift in Sources */,
 				847350652968169200685150 /* TickListStore.swift in Sources */,
