@@ -15,7 +15,11 @@ struct TickEditView: View {
         Form {
             Section(header: Text("Info")) {
                 TextField("Name", text: $data.name)
-                DatePicker("Climbed", selection: $data.date)
+                DatePicker(
+                    "Climbed",
+                    selection: $data.date,
+                    displayedComponents: .date
+                )
                 TextField("Grade", text: $data.grade)
                 Slider(value: $data.rating, in: 1...5, step: 1){
                     Text("Rating")
