@@ -18,7 +18,7 @@ struct CardView: View {
             VStack (alignment: .leading){
                 Text(tick.name)
                     .font(.headline)
-                Text("Region")
+                Text(tick.region)
             }
             .padding()
             Spacer()
