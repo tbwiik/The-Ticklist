@@ -19,7 +19,7 @@ struct TickListView: View {
             List {
                 ForEach($ticklist) { $tick in
                     NavigationLink(destination: {TickView(tick: $tick)}){
-                        Text(tick.name)
+                        CardView(tick: tick)
                     }
                 }
             }
