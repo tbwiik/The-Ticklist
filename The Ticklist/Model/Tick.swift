@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Tick: Identifiable, Codable {
+struct Tick: Identifiable, Codable, Equatable {
     
     let id: UUID
     let name: String
