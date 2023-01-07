@@ -40,12 +40,12 @@ extension Tick {
         var date: Date = Date()
         var dicipline: Dicipline = Dicipline.boulder
         var grade: String = ""
-        var rating: Double = 0.0
+        var rating: Int = 0
     }
     
     ///Create data object
     var data: Data {
-        Data(name: name, region: region, date: date, dicipline: dicipline, grade: grade, rating: Double(rating))
+        Data(name: name, region: region, date: date, dicipline: dicipline, grade: grade, rating: rating)
     }
     
     ///Initialize new Tick with data information

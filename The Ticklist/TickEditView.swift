@@ -21,9 +21,7 @@ struct TickEditView: View {
                     displayedComponents: .date
                 )
                 TextField("Grade", text: $data.grade)
-                Slider(value: $data.rating, in: 1...5, step: 1){
-                    Text("Rating")
-                }
+                StarRating(rating: $data.rating)
             }
         }
     }
