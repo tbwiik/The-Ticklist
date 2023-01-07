@@ -12,11 +12,24 @@ struct TickView: View {
     @Binding var tick: Tick
     
     var body: some View {
-        VStack {
-            Text(tick.name)
-            Text(tick.date.formatted())
-            Text(tick.grade)
+        List {
+            Section(header: Text("Info")){
+                HStack {
+                    Text(tick.name + ",")
+                        .font(.headline)
+                    Text(tick.region)
+                }
+                Label(tick.grade, systemImage: "figure.climbing")
+                Label(tick.dateString, systemImage: "calendar")
+                Label(String(tick.rating), systemImage: "star")
+            }
         }
+    }
+}
+
+extension Tick {
+    var dateString: String {
+        DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
     }
 }
 
