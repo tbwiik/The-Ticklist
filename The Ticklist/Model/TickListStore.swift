@@ -11,7 +11,7 @@ import Foundation
 class TickListStore: ObservableObject {
     
     ///Publishing variable containing ticklist
-    @Published var ticklist: [Tick] = []
+    @Published var ticklist: TickList = TickList()
     
     /**
      Provide a file-url for storage file in the documentdirectory
@@ -33,7 +33,7 @@ class TickListStore: ObservableObject {
      
      - Throws error of failing to load
      */
-    static func load() async throws -> [Tick] {
+    static func load() async throws -> TickList {
         try await withCheckedThrowingContinuation{ continuation in
             load { result in
                 switch result {
@@ -53,17 +53,17 @@ class TickListStore: ObservableObject {
      - If unsuccesfull: completion with empty array
      - If failure: completion with error
      */
-    static func load(completion: @escaping (Result<[Tick], Error>) -> Void){
+    static func load(completion: @escaping (Result<TickList, Error>) -> Void){
         DispatchQueue.global(qos: .background).async {
             do {
                 let fileURL = try fileURL()
                 guard let file = try? FileHandle(forReadingFrom: fileURL) else {
                     DispatchQueue.main.async {
-                        completion(.success([]))
+                        completion(.success(TickList()))
                     }
                     return
                 }
-                let ticklist = try JSONDecoder().decode([Tick].self, from: file.availableData)
+                let ticklist = try JSONDecoder().decode(TickList.self, from: file.availableData)
                 DispatchQueue.main.async {
                     completion(.success(ticklist))
                 }
@@ -81,7 +81,7 @@ class TickListStore: ObservableObject {
      - Throws error if failing to save
      */
     @discardableResult
-    static func save(ticklist: [Tick]) async throws -> Int {
+    static func save(ticklist: TickList) async throws -> Int {
         try await withCheckedThrowingContinuation{ continuation in
             save(ticklist: ticklist){ result in
                 switch result {
@@ -101,14 +101,14 @@ class TickListStore: ObservableObject {
      - If unsuccesfull: completion with empty array
      - If failure: completion with error
      */
-    static func save(ticklist: [Tick], completion: @escaping (Result<Int, Error>) -> Void) {
+    static func save(ticklist: TickList, completion: @escaping (Result<Int, Error>) -> Void) {
         DispatchQueue.global(qos: .background).async {
             do {
                 let data = try JSONEncoder().encode(ticklist)
                 let outfile = try fileURL()
                 try data.write(to: outfile)
                 DispatchQueue.main.async {
-                    completion(.success(ticklist.count))
+                    completion(.success(ticklist.ticks.count))
                 }
             } catch {
                 DispatchQueue.main.async {

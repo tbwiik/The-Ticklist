@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TickListView: View {
     
-    @Binding var ticklist: [Tick]
+    @Binding var ticklist: TickList
     @State private var isAdding = false
     @State private var newTickData = Tick.Data()
     let saveAction: () -> Void
@@ -17,13 +17,13 @@ struct TickListView: View {
     var body: some View {
         ZStack {
             List {
-                ForEach($ticklist) { $tick in
+                ForEach($ticklist.ticks) { $tick in
                     NavigationLink(destination: {TickView(tick: $tick)}){
                         CardView(tick: tick)
                         //Swipe to delete, left to right
                             .swipeActions(edge: .leading){
                                 Button("Delete", role: .destructive){
-                                    ticklist.remove(at: ticklist.firstIndex(where: {$0 == tick})!)
+                                    ticklist.remove(tickToRemove: tick)
                                     saveAction() //TODO change on scenechange
                                 }
                             }
@@ -54,7 +54,7 @@ struct TickListView: View {
                         }
                         ToolbarItem(placement: .confirmationAction){
                             Button("Add"){
-                                ticklist.append(Tick(data: newTickData))
+                                ticklist.add(tickToAdd: Tick(data: newTickData))
                                 isAdding = false
                                 newTickData = Tick.Data()
                                 saveAction() //TODO save on scenechange

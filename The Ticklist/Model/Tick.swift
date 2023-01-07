@@ -27,6 +27,18 @@ struct Tick: Identifiable, Codable, Equatable {
         self.ascents = ascents
     }
     
+    /**
+     Compares on name and region
+
+     - Compares values directly
+     - CaseSensitive
+     */
+    func equals(tickToCompare:Tick) -> Bool {
+        let equalNames = name == tickToCompare.name
+        let equalRegions = region == tickToCompare.region
+        return equalNames && equalRegions
+    }
+    
 }
 
 extension Tick {
@@ -90,10 +102,10 @@ extension Tick {
         Ascent(date: Date(), numberOfTries: 2)
     ]
     
-    static let sampleData: [Tick] =
+    static let sampleData: TickList = TickList(ticks:
     [
         Tick(name: "Silence", region: "Hanshelleren", dicipline: .sport, grade: "9c", rating: 5, ascents: sampleAscents),
         Tick(name: "Burden of Dreams", region: "Finland", dicipline: .boulder, grade: "9A", rating: 4, ascents: sampleAscents),
         Tick(name: "Agnesbuen", region: "Østlandet", dicipline: .sport, grade: "9a", rating: 4, ascents: sampleAscents)
-    ]
+    ])
 }

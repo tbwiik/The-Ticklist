@@ -38,6 +38,6 @@ struct TickView: View {
 struct TickView_Previews: PreviewProvider {
     
     static var previews: some View {
-        TickView(tick: .constant(Tick.sampleData[0]))
+        TickView(tick: .constant(Tick.sampleData.getTick(index: 0)!))
     }
 }
