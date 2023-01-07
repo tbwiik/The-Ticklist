@@ -17,7 +17,7 @@ struct TickEditView: View {
                 TextField("Name", text: $data.name)
                 DatePicker(
                     "Climbed",
-                    selection: $data.date,
+                    selection: $data.ascents[0].date, //Potential error here due to choice of first index
                     displayedComponents: .date
                 )
                 TextField("Grade", text: $data.grade)

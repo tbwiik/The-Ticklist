@@ -20,16 +20,15 @@ struct TickView: View {
                     Text(tick.region)
                 }
                 Label(tick.grade, systemImage: tick.dicipline.imageString)
-                Label(tick.dateString, systemImage: "calendar")
+                Label(tick.ascents[0].date.formatDate(), systemImage: "calendar.badge.exclamationmark")
                 Label(String(tick.rating), systemImage: "star")
             }
+            Section(header: Text("Ascents")){
+                ForEach(tick.ascents){ ascent in
+                    Label(ascent.date.formatDate(), systemImage: "bolt")
+                }
+            }
         }
-    }
-}
-
-extension Tick {
-    var dateString: String {
-        DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
     }
 }
 

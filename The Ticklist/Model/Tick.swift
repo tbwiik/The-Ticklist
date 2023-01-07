@@ -12,19 +12,19 @@ struct Tick: Identifiable, Codable, Equatable {
     let id: UUID
     let name: String
     let region: String
-    let date: Date
     let dicipline: Dicipline
     var grade: String //Consider changing to own struct later
     var rating: Int
+    var ascents: [Ascent]
     
-    init(id: UUID = UUID(), name: String, region: String, date: Date, dicipline: Dicipline, grade: String, rating: Int) {
+    init(id: UUID = UUID(), name: String, region: String, dicipline: Dicipline, grade: String, rating: Int, ascents: [Ascent]) {
         self.id = id
         self.name = name
         self.region = region
-        self.date = date
         self.dicipline = dicipline
         self.grade = grade
         self.rating = rating
+        self.ascents = ascents
     }
     
 }
@@ -37,15 +37,15 @@ extension Tick {
     struct Data {
         var name: String = ""
         var region: String = ""
-        var date: Date = Date()
         var dicipline: Dicipline = Dicipline.boulder
         var grade: String = ""
         var rating: Int = 0
+        var ascents: [Ascent] = [Ascent(date: Date(), numberOfTries: 1)]
     }
     
     ///Create data object
     var data: Data {
-        Data(name: name, region: region, date: date, dicipline: dicipline, grade: grade, rating: rating)
+        Data(name: name, region: region, dicipline: dicipline, grade: grade, rating: rating, ascents: ascents)
     }
     
     ///Initialize new Tick with data information
@@ -53,18 +53,47 @@ extension Tick {
         id = UUID()
         name = data.name
         region = data.region
-        date = data.date
         dicipline = data.dicipline
         grade = data.grade
         rating = Int(data.rating)
+        ascents = data.ascents
     }
 }
 
 extension Tick {
+    
+    ///Ascent of climb
+    struct Ascent: Identifiable, Codable, Equatable {
+        let id: UUID
+        var date: Date
+        var numberOfTries: Int
+        
+        init(id: UUID = UUID(), date: Date, numberOfTries: Int) {
+            self.id = id
+            self.date = date
+            self.numberOfTries = numberOfTries
+        }
+    }
+}
+
+extension Date{
+    func formatDate() -> String {
+        return DateFormatter.localizedString(from: self, dateStyle: .medium, timeStyle: .none)
+    }
+}
+
+extension Tick {
+    
+    static let sampleAscents: [Ascent] = [
+        Ascent(date: Date(), numberOfTries: 3),
+        Ascent(date: Date(), numberOfTries: 7),
+        Ascent(date: Date(), numberOfTries: 2)
+    ]
+    
     static let sampleData: [Tick] =
     [
-        Tick(name: "Silence", region: "Hanshelleren", date: Date(), dicipline: .sport, grade: "9c", rating: 5),
-        Tick(name: "Burden of Dreams", region: "Finland", date: Date(), dicipline: .boulder, grade: "9A", rating: 4),
-        Tick(name: "Agnesbuen", region: "Østlandet", date: Date(), dicipline: .sport, grade: "9a", rating: 4)
+        Tick(name: "Silence", region: "Hanshelleren", dicipline: .sport, grade: "9c", rating: 5, ascents: sampleAscents),
+        Tick(name: "Burden of Dreams", region: "Finland", dicipline: .boulder, grade: "9A", rating: 4, ascents: sampleAscents),
+        Tick(name: "Agnesbuen", region: "Østlandet", dicipline: .sport, grade: "9a", rating: 4, ascents: sampleAscents)
     ]
 }
