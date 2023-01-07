@@ -24,7 +24,7 @@ enum Dicipline: String, CaseIterable, Identifiable, Codable {
         case .sport:
             return "figure.climbing"
         case .trad:
-            return "mountain"
+            return "mountain.2"
         case .ice:
             return "ice"
         }
@@ -35,8 +35,10 @@ enum Dicipline: String, CaseIterable, Identifiable, Codable {
         rawValue.capitalized
     }
     
-    ///Define id for conforming to Identifiable
-    var id: String {
-        name
-    }
+    /**
+     Define id for conforming to identifiable
+     
+     NB! Changing to another type will result in pickers breaking (need explicit tags)
+     */
+    var id: Self { self }
 }

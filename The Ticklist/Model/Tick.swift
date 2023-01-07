@@ -12,7 +12,7 @@ struct Tick: Identifiable, Codable, Equatable {
     let id: UUID
     let name: String
     let region: String
-    let dicipline: Dicipline
+    var dicipline: Dicipline
     var grade: String //Consider changing to own struct later
     var rating: Int
     var ascents: [Ascent]
@@ -67,7 +67,7 @@ extension Tick {
         region = data.region
         dicipline = data.dicipline
         grade = data.grade
-        rating = Int(data.rating)
+        rating = data.rating
         ascents = data.ascents
     }
 }
