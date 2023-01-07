@@ -20,6 +20,7 @@ struct TickListView: View {
                 ForEach($ticklist) { $tick in
                     NavigationLink(destination: {TickView(tick: $tick)}){
                         CardView(tick: tick)
+                        //Swipe to delete, left to right
                             .swipeActions(edge: .leading){
                                 Button("Delete", role: .destructive){
                                     ticklist.remove(at: ticklist.firstIndex(where: {$0 == tick})!)
@@ -57,7 +58,6 @@ struct TickListView: View {
                                 isAdding = false
                                 newTickData = Tick.Data()
                                 saveAction() //TODO save on scenechange
-                                
                             }
                         }
                     }
