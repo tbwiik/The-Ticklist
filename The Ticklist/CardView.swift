@@ -13,7 +13,7 @@ struct CardView: View {
     
     var body: some View {
         HStack {
-            Label(tick.grade, systemImage: "figure.climbing")
+            Label(tick.grade, systemImage: tick.dicipline.imageString)
             .font(.title2)
             VStack (alignment: .leading){
                 Text(tick.name)

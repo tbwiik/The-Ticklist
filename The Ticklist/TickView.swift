@@ -19,7 +19,7 @@ struct TickView: View {
                         .font(.headline)
                     Text(tick.region)
                 }
-                Label(tick.grade, systemImage: "figure.climbing")
+                Label(tick.grade, systemImage: tick.dicipline.imageString)
                 Label(tick.dateString, systemImage: "calendar")
                 Label(String(tick.rating), systemImage: "star")
             }
