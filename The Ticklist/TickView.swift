@@ -27,6 +27,9 @@ struct TickView: View {
                 ForEach(tick.ascents){ ascent in
                     Label(ascent.date.formatDate(), systemImage: "bolt")
                 }
+                .onDelete{ indexSet in
+                    tick.ascents.remove(atOffsets: indexSet)
+                }
             }
         }
     }
