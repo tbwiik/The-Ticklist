@@ -9,22 +9,24 @@ import SwiftUI
 
 struct TickListView: View {
     
+    @Environment(\.scenePhase) private var scenePhase
+    
     @Binding var ticklist: TickList
     @State private var isAdding = false
     @State private var newTickData = Tick.Data()
+    
     let saveAction: () -> Void
     
     var body: some View {
         ZStack {
             List {
                 ForEach($ticklist.ticks) { $tick in
-                    NavigationLink(destination: {TickView(tick: $tick)}){
+                    NavigationLink(destination: {TickView(tick: $tick, saveAction: saveAction)}){
                         CardView(tick: tick)
                         //Swipe to delete, left to right
                             .swipeActions(edge: .leading){
                                 Button("Delete", role: .destructive){
                                     ticklist.remove(tickToRemove: tick)
-                                    saveAction() //TODO change on scenechange
                                 }
                             }
                     }
@@ -57,11 +59,13 @@ struct TickListView: View {
                                 ticklist.add(tickToAdd: Tick(data: newTickData))
                                 isAdding = false
                                 newTickData = Tick.Data()
-                                saveAction() //TODO save on scenechange
                             }
                         }
                     }
             }
+        }
+        .onChange(of: scenePhase) { phase in
+            if phase == .inactive {saveAction()}
         }
     }
 }

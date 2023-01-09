@@ -9,7 +9,10 @@ import SwiftUI
 
 struct TickView: View {
     
+    @Environment(\.scenePhase) private var scenePhase
     @Binding var tick: Tick
+    
+    let saveAction: ()->Void
     
     var body: some View {
         List {
@@ -32,12 +35,15 @@ struct TickView: View {
                 }
             }
         }
+        .onChange(of: scenePhase) { phase in
+            if phase == .inactive {saveAction()}
+        }
     }
 }
 
 struct TickView_Previews: PreviewProvider {
     
     static var previews: some View {
-        TickView(tick: .constant(Tick.sampleData.getTick(index: 0)!))
+        TickView(tick: .constant(Tick.sampleData.getTick(index: 0)!), saveAction: {})
     }
 }
