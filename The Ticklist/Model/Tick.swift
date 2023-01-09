@@ -28,7 +28,7 @@ struct Tick: Identifiable, Codable, Equatable {
     }
     
     /**
-     Compares on name and region
+     Compares on name, region and dicipline
 
      - Compares values directly
      - CaseSensitive
@@ -36,7 +36,8 @@ struct Tick: Identifiable, Codable, Equatable {
     func equals(tickToCompare:Tick) -> Bool {
         let equalNames = name == tickToCompare.name
         let equalRegions = region == tickToCompare.region
-        return equalNames && equalRegions
+        let equalDicipline = dicipline == tickToCompare.dicipline
+        return equalNames && equalRegions && equalDicipline
     }
     
 }
