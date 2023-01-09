@@ -53,6 +53,15 @@ extension Tick {
         var grade: String = ""
         var rating: Int = 0
         var ascents: [Ascent] = [Ascent(date: Date(), numberOfTries: 1)]
+        
+        /**
+         Is considered complete if there is a name and region
+         
+         Date is always assigned a value and can therefore be ignored
+        */
+        var isComplete: Bool {
+            !name.isEmpty && !region.isEmpty
+        }
     }
     
     ///Create data object

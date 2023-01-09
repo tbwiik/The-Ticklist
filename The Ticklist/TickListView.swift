@@ -60,6 +60,7 @@ struct TickListView: View {
                                 isAdding = false
                                 newTickData = Tick.Data()
                             }
+                            .disabled(!newTickData.isComplete)
                         }
                     }
             }
