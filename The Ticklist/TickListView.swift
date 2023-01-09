@@ -41,6 +41,7 @@ struct TickListView: View {
                         .font(.system(size: 40))
                         .foregroundColor(.green)
                 }
+                .accessibilityLabel("Add new tick")
             }
         }
         .navigationTitle("Ticklist")

@@ -18,10 +18,11 @@ struct TickView: View {
         List {
             Section(header: Text("Info")){
                 HStack {
-                    Text(tick.name + ",")
+                    Text(tick.name)
                         .font(.headline)
                     Text(tick.region)
                 }
+                .accessibilityElement(children: .combine)
                 Label(tick.grade, systemImage: tick.dicipline.imageString)
                 Label(tick.ascents[0].date.formatDate(), systemImage: "calendar.badge.exclamationmark")
                 Label(String(tick.rating), systemImage: "star")
