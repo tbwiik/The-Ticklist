@@ -14,16 +14,21 @@ struct TickEditView: View {
     var body: some View {
         Form {
             Section(header: Text("Info")) {
+                Picker("Dicipline", selection: $data.dicipline){
+                    ForEach(Dicipline.allCases){ dicipline in
+                        Text(dicipline.rawValue.capitalized)
+                    }
+                }
+                .pickerStyle(.segmented)
                 TextField("Name", text: $data.name)
+                TextField("Region", text: $data.region)
                 DatePicker(
                     "Climbed",
-                    selection: $data.date,
+                    selection: $data.ascents[0].date, //Potential error here due to choice of first index
                     displayedComponents: .date
                 )
                 TextField("Grade", text: $data.grade)
-                Slider(value: $data.rating, in: 1...5, step: 1){
-                    Text("Rating")
-                }
+                StarRating(rating: $data.rating)
             }
         }
     }

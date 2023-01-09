@@ -9,13 +9,36 @@ import SwiftUI
 
 struct TickView: View {
     
+    @Environment(\.scenePhase) private var scenePhase
     @Binding var tick: Tick
     
+    let saveAction: ()->Void
+    
     var body: some View {
-        VStack {
-            Text(tick.name)
-            Text(tick.date.formatted())
-            Text(tick.grade)
+        List {
+            Section(header: Text("Info")){
+                HStack {
+                    Text(tick.name)
+                        .font(.headline)
+                    Text(tick.region)
+                }
+                .accessibilityElement(children: .combine)
+                Label(tick.grade, systemImage: tick.dicipline.imageString)
+                Label(tick.ascents[0].date.formatDate(), systemImage: "calendar.badge.exclamationmark")
+                Label(String(tick.rating), systemImage: "star")
+            }
+            Section(header: Text("Ascents")){
+                ForEach(tick.ascents){ ascent in
+                    Label(ascent.date.formatDate(), systemImage: "bolt")
+                        .deleteDisabled(ascent == tick.ascents[0])
+                }
+                .onDelete{ indexSet in
+                    tick.ascents.remove(atOffsets: indexSet)
+                }
+            }
+        }
+        .onChange(of: scenePhase) { phase in
+            if phase == .inactive {saveAction()}
         }
     }
 }
@@ -23,6 +46,6 @@ struct TickView: View {
 struct TickView_Previews: PreviewProvider {
     
     static var previews: some View {
-        TickView(tick: .constant(Tick.sampleData[0]))
+        TickView(tick: .constant(Tick.sampleData.getTick(index: 0)!), saveAction: {})
     }
 }

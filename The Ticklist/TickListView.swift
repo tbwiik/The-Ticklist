@@ -9,27 +9,42 @@ import SwiftUI
 
 struct TickListView: View {
     
-    @Binding var ticklist: [Tick]
+    @Environment(\.scenePhase) private var scenePhase
+    
+    @Binding var ticklist: TickList
     @State private var isAdding = false
     @State private var newTickData = Tick.Data()
+    
     let saveAction: () -> Void
     
     var body: some View {
-        List {
-            ForEach($ticklist) { $tick in
-                NavigationLink(destination: {TickView(tick: $tick)}){
-                    Text(tick.name)
+        ZStack {
+            List {
+                ForEach($ticklist.ticks) { $tick in
+                    NavigationLink(destination: {TickView(tick: $tick, saveAction: saveAction)}){
+                        CardView(tick: tick)
+                        //Swipe to delete, left to right
+                            .swipeActions(edge: .leading){
+                                Button("Delete", role: .destructive){
+                                    ticklist.remove(tickToRemove: tick)
+                                }
+                            }
+                    }
                 }
+            }
+            VStack {
+                Spacer()
+                Button(action: {
+                    isAdding = true
+                }){
+                    Image(systemName: "plus.circle.fill")
+                        .font(.system(size: 40))
+                        .foregroundColor(.green)
+                }
+                .accessibilityLabel("Add new tick")
             }
         }
         .navigationTitle("Ticklist")
-        .toolbar{
-            Button(action: {
-                isAdding = true
-            }){
-                Image(systemName: "plus.circle")
-            }
-        }
         .sheet(isPresented: $isAdding){
             NavigationView {
                 TickEditView(data: $newTickData)
@@ -42,15 +57,17 @@ struct TickListView: View {
                         }
                         ToolbarItem(placement: .confirmationAction){
                             Button("Add"){
-                                ticklist.append(Tick(data: newTickData))
+                                ticklist.add(tickToAdd: Tick(data: newTickData))
                                 isAdding = false
                                 newTickData = Tick.Data()
-                                saveAction() //TODO save on scenechange
-                                
                             }
+                            .disabled(!newTickData.isComplete)
                         }
                     }
             }
+        }
+        .onChange(of: scenePhase) { phase in
+            if phase == .inactive {saveAction()}
         }
     }
 }
