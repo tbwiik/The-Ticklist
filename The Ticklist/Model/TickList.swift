@@ -21,7 +21,6 @@ struct TickList: Identifiable, Codable {
     
     func getIndex(tick: Tick) -> Int? {
         ticks.firstIndex(where: {$0 == tick})
-        //HERE
     }
     
     func getTick(index: Int) -> Tick? {
