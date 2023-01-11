@@ -17,7 +17,8 @@ extension Tick {
         var comment: String
         var isTop: Bool
         
-        init(id: UUID = UUID(), date: Date, numberOfTries: Int, comment: String, isTop: Bool) {
+        //TODO solve differently? E.g. Tick.Data
+        init(id: UUID = UUID(), date: Date = Date(), numberOfTries: Int = 1, comment: String = "", isTop: Bool = false) {
             self.id = id
             self.date = date
             self.numberOfTries = numberOfTries
