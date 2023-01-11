@@ -25,7 +25,7 @@ struct TickView: View {
                 .accessibilityElement(children: .combine)
                 Label(tick.grade, systemImage: tick.dicipline.imageString)
                 Label(tick.ascents[0].date.formatDate(), systemImage: "calendar.badge.exclamationmark")
-                Label(String(tick.rating), systemImage: "star")
+                StarRating(rating: $tick.rating)
             }
             Section(header: Text("Ascents")){
                 ForEach(tick.ascents){ ascent in
