@@ -34,14 +34,9 @@ struct TickListView: View {
             }
             VStack {
                 Spacer()
-                Button(action: {
-                    isAdding = true
-                }){
-                    Image(systemName: "plus.circle.fill")
-                        .font(.system(size: 40))
-                        .foregroundColor(.green)
-                }
-                .accessibilityLabel("Add new tick")
+                AddButtonView(action: {isAdding = true})
+                    .font(.system(size: 40))
+                    .accessibilityLabel("Add climb")
             }
         }
         .navigationTitle("Ticklist")

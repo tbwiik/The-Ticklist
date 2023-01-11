@@ -19,9 +19,7 @@ struct NumTriesView: View {
         HStack {
             Label(numberOfTriesStr, systemImage: "number")
             Spacer()
-            Button(action: {ascent.incrementTries()}){
-                Image(systemName: "plus.circle.fill")
-            }
+            AddButtonView(action: {ascent.incrementTries()})
         }
     }
 }
