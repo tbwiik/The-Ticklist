@@ -44,6 +44,9 @@ struct TickView: View {
                     ForEach(tick.logItems) { logItem in
                         Label(logItem.date.formatDate(), systemImage: "paperplane")
                     }
+                    .onDelete{ indexSet in
+                        tick.logItems.remove(atOffsets: indexSet)
+                    }
                 }
             }
             VStack{
