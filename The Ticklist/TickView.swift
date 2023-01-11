@@ -37,6 +37,11 @@ struct TickView: View {
                     tick.ascents.remove(atOffsets: indexSet)
                 }
             }
+            Section(header: Text("Log")){
+                ForEach(tick.logItems) { logItem in
+                    Label(logItem.date.formatDate(), systemImage: "paperplane")
+                }
+            }
         }
         .onChange(of: scenePhase) { phase in
             if phase == .inactive {saveAction()}

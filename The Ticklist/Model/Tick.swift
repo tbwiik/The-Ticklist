@@ -16,8 +16,9 @@ struct Tick: Identifiable, Codable, Equatable {
     var grade: String //Consider changing to own struct later
     var rating: Int
     var ascents: [Ascent]
+    var logItems: [LogItem]
     
-    init(id: UUID = UUID(), name: String, region: String, dicipline: Dicipline, grade: String, rating: Int, ascents: [Ascent]) {
+    init(id: UUID = UUID(), name: String, region: String, dicipline: Dicipline, grade: String, rating: Int, ascents: [Ascent], logItems: [LogItem]) {
         self.id = id
         self.name = name
         self.region = region
@@ -25,6 +26,7 @@ struct Tick: Identifiable, Codable, Equatable {
         self.grade = grade
         self.rating = rating
         self.ascents = ascents
+        self.logItems = logItems
     }
     
     /**
@@ -42,6 +44,7 @@ struct Tick: Identifiable, Codable, Equatable {
     
 }
 
+///Data extension
 extension Tick {
     
     /**
@@ -54,6 +57,7 @@ extension Tick {
         var grade: String = ""
         var rating: Int = 0
         var ascents: [Ascent] = [Ascent(date: Date(), numberOfTries: 1)]
+        var logItems: [LogItem] = [LogItem(date: Date(), numberOfTries: 1, comment: "", isTop: false)]
         
         /**
          Is considered complete if there is a name and region
@@ -67,7 +71,7 @@ extension Tick {
     
     ///Create data object
     var data: Data {
-        Data(name: name, region: region, dicipline: dicipline, grade: grade, rating: rating, ascents: ascents)
+        Data(name: name, region: region, dicipline: dicipline, grade: grade, rating: rating, ascents: ascents, logItems: logItems)
     }
     
     ///Initialize new Tick with data information
@@ -79,9 +83,11 @@ extension Tick {
         grade = data.grade
         rating = data.rating
         ascents = data.ascents
+        logItems = data.logItems
     }
 }
 
+///Ascent extension
 extension Tick {
     
     ///Ascent of climb
@@ -102,6 +108,27 @@ extension Tick {
     }
 }
 
+///Log extension
+extension Tick {
+    
+    struct LogItem: Identifiable, Codable, Equatable{
+        let id: UUID
+        let date: Date
+        var numberOfTries: Int
+        var comment: String
+        var isTop: Bool
+        
+        init(id: UUID = UUID(), date: Date, numberOfTries: Int, comment: String, isTop: Bool) {
+            self.id = id
+            self.date = date
+            self.numberOfTries = numberOfTries
+            self.comment = comment
+            self.isTop = isTop
+        }
+    }
+}
+
+///Date formatting
 extension Date{
     func formatDate() -> String {
         return DateFormatter.localizedString(from: self, dateStyle: .medium, timeStyle: .none)
@@ -116,10 +143,16 @@ extension Tick {
         Ascent(date: Date(), numberOfTries: 2)
     ]
     
+    static let sampleLogItems: [LogItem] = [
+        LogItem(date: Date(), numberOfTries: 2, comment: "Got halfway up", isTop: false),
+        LogItem(date: Date(), numberOfTries: 4, comment: "2 Links left", isTop: false),
+        LogItem(date: Date(), numberOfTries: 6, comment: "Lessgoo", isTop: true)
+    ]
+    
     static let sampleData: TickList = TickList(ticks:
     [
-        Tick(name: "Silence", region: "Hanshelleren", dicipline: .sport, grade: "9c", rating: 5, ascents: sampleAscents),
-        Tick(name: "Burden of Dreams", region: "Finland", dicipline: .boulder, grade: "9A", rating: 4, ascents: sampleAscents),
-        Tick(name: "Agnesbuen", region: "Østlandet", dicipline: .sport, grade: "9a", rating: 4, ascents: sampleAscents)
+        Tick(name: "Silence", region: "Hanshelleren", dicipline: .sport, grade: "9c", rating: 5, ascents: sampleAscents, logItems: sampleLogItems),
+        Tick(name: "Burden of Dreams", region: "Finland", dicipline: .boulder, grade: "9A", rating: 4, ascents: sampleAscents, logItems: sampleLogItems),
+        Tick(name: "Agnesbuen", region: "Østlandet", dicipline: .sport, grade: "9a", rating: 4, ascents: sampleAscents, logItems: sampleLogItems)
     ])
 }
