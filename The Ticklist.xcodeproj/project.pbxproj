@@ -24,6 +24,7 @@
 		8473506F2969769700685150 /* Dicipline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473506E2969769700685150 /* Dicipline.swift */; };
 		8473507129697DB000685150 /* StarRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473507029697DB000685150 /* StarRating.swift */; };
 		8473507729699EB100685150 /* TickList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473507629699EB100685150 /* TickList.swift */; };
+		84C6BC50296EE3EC00C20C4D /* NumTriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6BC4F296EE3EC00C20C4D /* NumTriesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		8473506E2969769700685150 /* Dicipline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dicipline.swift; sourceTree = "<group>"; };
 		8473507029697DB000685150 /* StarRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRating.swift; sourceTree = "<group>"; };
 		8473507629699EB100685150 /* TickList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickList.swift; sourceTree = "<group>"; };
+		84C6BC4F296EE3EC00C20C4D /* NumTriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumTriesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				847350662968577C00685150 /* CardView.swift */,
 				847350622967555800685150 /* TickEditView.swift */,
 				847350602967522100685150 /* TickView.swift */,
+				84C6BC4F296EE3EC00C20C4D /* NumTriesView.swift */,
 				8473503229674A6900685150 /* Assets.xcassets */,
 				8473503429674A6900685150 /* Preview Content */,
 			);
@@ -295,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C6BC50296EE3EC00C20C4D /* NumTriesView.swift in Sources */,
 				847350672968577C00685150 /* CardView.swift in Sources */,
 				847350632967555800685150 /* TickEditView.swift in Sources */,
 				8473505D29674B3F00685150 /* Tick.swift in Sources */,

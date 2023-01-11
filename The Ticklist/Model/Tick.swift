@@ -95,6 +95,10 @@ extension Tick {
             self.date = date
             self.numberOfTries = numberOfTries
         }
+        
+        mutating func incrementTries() -> Void {
+            numberOfTries += 1
+        }
     }
 }
 
