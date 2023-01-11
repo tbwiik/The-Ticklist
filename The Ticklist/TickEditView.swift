@@ -22,13 +22,7 @@ struct TickEditView: View {
                 .pickerStyle(.segmented)
                 TextField("Name", text: $data.name)
                 TextField("Region", text: $data.region)
-                DatePicker(
-                    "Climbed",
-                    selection: $data.ascents[0].date, //Potential error here due to choice of first index
-                    displayedComponents: .date
-                )
                 TextField("Grade", text: $data.grade)
-                StarRating(rating: $data.rating)
             }
         }
     }
