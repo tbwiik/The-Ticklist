@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddLogItemView: View {
     
+    @Binding var rating: Int
     @Binding var logItem: Tick.LogItem
     
     var body: some View {
@@ -20,12 +21,15 @@ struct AddLogItemView: View {
                     displayedComponents: .date
                 )
                 Picker("Number of tries", selection: $logItem.numberOfTries){
-                    ForEach(1..<10){num in
+                    ForEach(0..<10){num in
                         Text("\(num)")
                     }
                 }
                 Toggle("Topout", isOn: $logItem.isTop)
                 TextField("Comment", text: $logItem.comment)
+                if(logItem.isTop){
+                    StarRating(rating: $rating)
+                }
             }
         }
     }
@@ -33,6 +37,7 @@ struct AddLogItemView: View {
 
 struct AddLogItemView_Previews: PreviewProvider {
     static var previews: some View {
-        AddLogItemView(logItem: .constant(Tick.sampleLogItems[0]))
+        AddLogItemView(rating: .constant(2),
+                       logItem: .constant(Tick.sampleLogItems[0]))
     }
 }

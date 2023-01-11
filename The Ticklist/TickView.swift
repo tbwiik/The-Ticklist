@@ -45,6 +45,9 @@ struct TickView: View {
                         }
                         .onDelete{ indexSet in
                             tick.ascents.remove(atOffsets: indexSet)
+                            if tick.ascents.isEmpty{
+                                tick.rating = 0
+                            }
                         }
                     }
                 }
@@ -69,7 +72,7 @@ struct TickView: View {
         }
         .sheet(isPresented: $isLogging){
             NavigationView {
-                AddLogItemView(logItem: $newLogItem)
+                AddLogItemView(rating: $tick.rating, logItem: $newLogItem)
                     .toolbar{
                         ToolbarItem(placement: .cancellationAction){
                             Button("Cancel"){
