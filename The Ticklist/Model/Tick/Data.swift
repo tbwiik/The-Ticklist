@@ -19,7 +19,7 @@ extension Tick {
         var dicipline: Dicipline = Dicipline.boulder
         var grade: String = ""
         var rating: Int = 0
-        var ascents: [Ascent] = [Ascent(date: Date(), numberOfTries: 1)]
+        var ascents: [LogItem] = []
         var logItems: [LogItem] = [LogItem(date: Date(), numberOfTries: 1, comment: "", isTop: false)]
         
         /**

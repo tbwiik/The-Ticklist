@@ -9,16 +9,14 @@ import Foundation
 
 extension Tick {
     
-    static let sampleAscents: [Ascent] = [
-        Ascent(date: Date(), numberOfTries: 3),
-        Ascent(date: Date(), numberOfTries: 7),
-        Ascent(date: Date(), numberOfTries: 2)
-    ]
+    static let sampleLogItem = LogItem(date: Date(), numberOfTries: 6, comment: "Lessgoo", isTop: true)
+    
+    static let sampleAscents: [LogItem] = [sampleLogItem]
     
     static let sampleLogItems: [LogItem] = [
         LogItem(date: Date(), numberOfTries: 2, comment: "Got halfway up", isTop: false),
         LogItem(date: Date(), numberOfTries: 4, comment: "2 Links left", isTop: false),
-        LogItem(date: Date(), numberOfTries: 6, comment: "Lessgoo", isTop: true)
+        sampleLogItem
     ]
     
     static let sampleData: TickList = TickList(ticks:

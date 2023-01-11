@@ -15,10 +15,10 @@ struct Tick: Identifiable, Codable, Equatable {
     var dicipline: Dicipline
     var grade: String //Consider changing to own struct later
     var rating: Int
-    var ascents: [Ascent]
+    var ascents: [LogItem]
     var logItems: [LogItem]
     
-    init(id: UUID = UUID(), name: String, region: String, dicipline: Dicipline, grade: String, rating: Int, ascents: [Ascent], logItems: [LogItem]) {
+    init(id: UUID = UUID(), name: String, region: String, dicipline: Dicipline, grade: String, rating: Int, ascents: [LogItem], logItems: [LogItem]) {
         self.id = id
         self.name = name
         self.region = region
