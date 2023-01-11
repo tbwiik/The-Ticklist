@@ -28,7 +28,7 @@ struct TickView: View {
                     .accessibilityElement(children: .combine)
                     Label(tick.grade, systemImage: tick.dicipline.imageString)
                     Label(tick.ascents[0].date.formatDate(), systemImage: "calendar.badge.exclamationmark")
-                    NumTriesView(ascent: $tick.ascents[0])
+                    Label("\(tick.ascents[0].numberOfTries) Tries", systemImage: "number")
                     StarRating(rating: $tick.rating)
                 }
                 Section(header: Text("Ascents")){
