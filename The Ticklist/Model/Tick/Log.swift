@@ -12,7 +12,7 @@ extension Tick {
     
     struct LogItem: Identifiable, Codable, Equatable{
         let id: UUID
-        let date: Date
+        var date: Date
         var numberOfTries: Int
         var comment: String
         var isTop: Bool
