@@ -14,6 +14,10 @@ struct TickView: View {
     @State var newLogItem = Tick.LogItem()
     @State var isLogging = false
     
+    private var isAscents: Bool {
+        !tick.ascents.isEmpty
+    }
+    
     let saveAction: ()->Void
     
     var body: some View {
@@ -27,17 +31,21 @@ struct TickView: View {
                     }
                     .accessibilityElement(children: .combine)
                     Label(tick.grade, systemImage: tick.dicipline.imageString)
-                    Label(tick.ascents[0].date.formatDate(), systemImage: "calendar.badge.exclamationmark")
-                    Label("\(tick.ascents[0].numberOfTries) Tries", systemImage: "number")
-                    StarRating(rating: $tick.rating)
-                }
-                Section(header: Text("Ascents")){
-                    ForEach(tick.ascents){ ascent in
-                        Label(ascent.date.formatDate(), systemImage: "bolt")
-                            .deleteDisabled(ascent == tick.ascents[0])
+                    if isAscents{
+                        Label(tick.ascents[0].date.formatDate(), systemImage: "calendar.badge.exclamationmark")
+                        Label("\(tick.ascents[0].numberOfTries) Tries", systemImage: "number")
+                        StarRating(rating: $tick.rating)
                     }
-                    .onDelete{ indexSet in
-                        tick.ascents.remove(atOffsets: indexSet)
+                }
+                //TODO: Bad animation
+                if isAscents{
+                    Section(header: Text("Ascents")){
+                        ForEach(tick.ascents){ ascent in
+                            Label(ascent.date.formatDate(), systemImage: "bolt")
+                        }
+                        .onDelete{ indexSet in
+                            tick.ascents.remove(atOffsets: indexSet)
+                        }
                     }
                 }
                 Section(header: Text("Log")){
@@ -72,6 +80,9 @@ struct TickView: View {
                         ToolbarItem(placement: .confirmationAction){
                             Button("Add"){
                                 tick.logItems.append(newLogItem)
+                                if (newLogItem.isTop){
+                                    tick.ascents.append(newLogItem)
+                                }
                                 isLogging = false
                                 newLogItem = Tick.LogItem()
                             }
