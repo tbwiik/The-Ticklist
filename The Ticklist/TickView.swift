@@ -14,10 +14,6 @@ struct TickView: View {
     @State var newLogItem = Tick.LogItem()
     @State var isLogging = false
     
-    private var isAscents: Bool {
-        !tick.ascents.isEmpty
-    }
-    
     let saveAction: ()->Void
     
     var body: some View {
@@ -31,21 +27,21 @@ struct TickView: View {
                     }
                     .accessibilityElement(children: .combine)
                     Label(tick.grade, systemImage: tick.dicipline.imageString)
-                    if isAscents{
+                    if tick.isAscents{
                         Label(tick.ascents[0].date.formatDate(), systemImage: "calendar.badge.exclamationmark")
                         Label("\(tick.ascents[0].numberOfTries) Tries", systemImage: "number")
                         StarRating(rating: $tick.rating)
                     }
                 }
                 //TODO: Bad animation
-                if isAscents{
+                if tick.isAscents{
                     Section(header: Text("Ascents")){
-                        ForEach(tick.ascents){ ascent in
+                        ForEach(tick.logItems.filter {$0.isTop}){ ascent in
                             Label(ascent.date.formatDate(), systemImage: "bolt")
                         }
                         .onDelete{ indexSet in
-                            tick.ascents.remove(atOffsets: indexSet)
-                            if tick.ascents.isEmpty{
+                            tick.logItems.remove(atOffsets: indexSet)
+                            if !tick.isAscents{
                                 tick.rating = 0
                             }
                         }
