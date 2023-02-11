@@ -19,7 +19,7 @@ extension Tick {
         var dicipline: Dicipline = Dicipline.boulder
         var grade: String = ""
         var rating: Int = 0
-        var logItems: [LogItem] = [LogItem(date: Date(), numberOfTries: 1, comment: "", isTop: true)]
+        var logItems: [LogItem] = [LogItem(date: Date(), numberOfTries: 1, comment: "", isTop: false)]
         
         /**
          Is considered complete if there is a name and region
