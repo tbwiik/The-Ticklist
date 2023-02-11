@@ -19,6 +19,7 @@ extension Tick {
         sampleLogItem
     ]
     
+    /// Ticklist sample containing 3 different Ticks
     static let sampleData: TickList = TickList(ticks:
     [
         Tick(name: "Silence", region: "Hanshelleren", dicipline: .sport, grade: "9c", rating: 5, ascents: sampleAscents, logItems: sampleLogItems),
