@@ -19,8 +19,7 @@ extension Tick {
         var dicipline: Dicipline = Dicipline.boulder
         var grade: String = ""
         var rating: Int = 0
-        var ascents: [LogItem] = []
-        var logItems: [LogItem] = [LogItem(date: Date(), numberOfTries: 1, comment: "", isTop: false)]
+        var logItems: [LogItem] = [LogItem(date: Date(), numberOfTries: 1, comment: "", isTop: true)]
         
         /**
          Is considered complete if there is a name and region
@@ -34,7 +33,7 @@ extension Tick {
     
     ///Create data object
     var data: Data {
-        Data(name: name, region: region, dicipline: dicipline, grade: grade, rating: rating, ascents: ascents, logItems: logItems)
+        Data(name: name, region: region, dicipline: dicipline, grade: grade, rating: rating, logItems: logItems)
     }
     
     ///Initialize new Tick with data information
@@ -45,7 +44,6 @@ extension Tick {
         dicipline = data.dicipline
         grade = data.grade
         rating = data.rating
-        ascents = data.ascents
         logItems = data.logItems
     }
 }
