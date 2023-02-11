@@ -19,12 +19,18 @@ struct TickList: Identifiable, Codable {
         self.ticks = ticks
     }
     
+    
     func getIndex(tick: Tick) -> Int? {
         ticks.firstIndex(where: {$0 == tick})
     }
     
+    /**
+     Get tick on index.
+     
+     - Returns: optional tick based on index existing
+     */
     func getTick(index: Int) -> Tick? {
-        ticks[index]
+        return (ticks.indices.contains(index)) ? ticks[index] : nil
     }
     
     /**
