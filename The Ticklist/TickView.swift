@@ -28,8 +28,8 @@ struct TickView: View {
                     .accessibilityElement(children: .combine)
                     Label(tick.grade, systemImage: tick.dicipline.imageString)
                     if tick.isAscents{
-                        Label(tick.ascents[0].date.formatDate(), systemImage: "calendar.badge.exclamationmark")
-                        Label("\(tick.ascents[0].numberOfTries) Tries", systemImage: "number")
+                        Label(tick.firstAscent!.date.formatDate(), systemImage: "calendar.badge.exclamationmark")
+                        Label("\(tick.firstAscent!.numberOfTries) Tries", systemImage: "number")
                         StarRating(rating: $tick.rating)
                     }
                 }
@@ -79,9 +79,6 @@ struct TickView: View {
                         ToolbarItem(placement: .confirmationAction){
                             Button("Add"){
                                 tick.logItems.append(newLogItem)
-                                if (newLogItem.isTop){
-                                    tick.ascents.append(newLogItem)
-                                }
                                 isLogging = false
                                 newLogItem = Tick.LogItem()
                             }

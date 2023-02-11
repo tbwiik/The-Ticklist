@@ -21,6 +21,10 @@ struct Tick: Identifiable, Codable, Equatable {
         !logItems.filter{ $0.isTop}.isEmpty
     }
     
+    var firstAscent: LogItem?{
+        logItems.first(where: {$0.isTop})
+    }
+    
     init(id: UUID = UUID(), name: String, region: String, dicipline: Dicipline, grade: String, rating: Int, logItems: [LogItem]) {
         self.id = id
         self.name = name
