@@ -34,15 +34,15 @@ struct TickList: Identifiable, Codable {
     }
     
     /**
-     Add tick or ascent based on whether tick is considered equal
+     Add tick or logItem based on whether tick is considered equal
      
-     - Add ascents to already created tick of same name and region
+     - Add logItem to already created tick of same name and region
      - Add new tick if not already registered
      */
     mutating func add(tickToAdd: Tick) -> Void {
         for tick in ticks {
             if tick.equals(tickToCompare: tickToAdd){
-                ticks[getIndex(tick: tick)!].ascents.append(contentsOf: tickToAdd.ascents)
+                ticks[getIndex(tick: tick)!].logItems.append(contentsOf: tickToAdd.logItems)
                 return
             }
         }
