@@ -37,19 +37,13 @@ struct TickView: View {
                 if tick.isAscents{
                     Section(header: Text("Ascents")){
                         ForEach(tick.logItems.filter {$0.isTop}){ ascent in
-                            Label(ascent.date.formatDate(), systemImage: "bolt")
-                        }
-                        .onDelete{ indexSet in
-                            tick.logItems.remove(atOffsets: indexSet)
-                            if !tick.isAscents{
-                                tick.rating = 0
-                            }
+                            Label(ascent.numberOfTries.formatted(), systemImage: "bolt")
                         }
                     }
                 }
                 Section(header: Text("Log")){
                     ForEach(tick.logItems) { logItem in
-                        Label(logItem.date.formatDate(), systemImage: "paperplane")
+                        Label(logItem.numberOfTries.formatted(), systemImage: "paperplane")
                     }
                     .onDelete{ indexSet in
                         tick.logItems.remove(atOffsets: indexSet)
