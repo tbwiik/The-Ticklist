@@ -41,7 +41,7 @@ struct TickList: Identifiable, Codable {
      */
     mutating func add(tickToAdd: Tick) -> Void {
         for tick in ticks {
-            if tick.equals(tickToCompare: tickToAdd){
+            if tick == tickToAdd{
                 ticks[getIndex(tick: tick)!].logItems.append(contentsOf: tickToAdd.logItems)
                 return
             }
