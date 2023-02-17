@@ -42,7 +42,7 @@ struct TickListView: View {
         .navigationTitle("Ticklist")
         .sheet(isPresented: $isAdding){
             NavigationView {
-                TickEditView(data: $newTickData)
+                AddClimbView(data: $newTickData)
                     .toolbar{
                         ToolbarItem(placement: .cancellationAction){
                             Button("Cancel"){

@@ -1,5 +1,5 @@
 //
-//  TickEditView.swift
+//  AddClimbView.swift
 //  The Ticklist
 //
 //  Created by Torbjørn Wiik on 05/01/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TickEditView: View {
+struct AddClimbView: View {
     
     @Binding var data: Tick.Data
     
@@ -28,8 +28,8 @@ struct TickEditView: View {
     }
 }
 
-struct TickEditView_Previews: PreviewProvider {
+struct AddClimbView_Previews: PreviewProvider {
     static var previews: some View {
-        TickEditView(data: .constant(Tick.Data()))
+        AddClimbView(data: .constant(Tick.Data()))
     }
 }
