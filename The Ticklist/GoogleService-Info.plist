@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>702494114775-9k84ppvtr3pm6sog3b37l7ms312i2rmq.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.702494114775-9k84ppvtr3pm6sog3b37l7ms312i2rmq</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCCRCv7EEP2MdoBr0HbHmZI3Fnakfa28BA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>702494114775</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>tbwiik.com.The-Ticklist</string>
+	<key>PROJECT_ID</key>
+	<string>the-ticklist</string>
+	<key>STORAGE_BUCKET</key>
+	<string>the-ticklist.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:702494114775:ios:af144e69cea521aa098192</string>
+</dict>
+</plist>
