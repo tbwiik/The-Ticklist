@@ -40,4 +40,12 @@ class databaseManager: ObservableObject {
             return
         }
     }
+    
+    static func removeTick(tick: Tick) -> Void {
+        
+        let coll = Firestore.firestore().collection("newTestList")
+        
+        coll.document(tick.id.uuidString).delete()
+
+    }
 }

@@ -52,6 +52,11 @@ struct TickList: Identifiable, Codable {
     
     ///Remove tick from ticklist
     mutating func remove(tickToRemove: Tick) -> Void {
-        ticks.remove(at: getIndex(tick: tickToRemove)!)
+//        ticks.remove(at: getIndex(tick: tickToRemove)!)
+        
+        //TODO: sensitive for optional tick (ref. getindex). Program it more safe
+        //TODO: move out of model!
+        let removedTick = ticks.remove(at: getIndex(tick: tickToRemove)!)
+        databaseManager.removeTick(tick: removedTick)
     }
 }
