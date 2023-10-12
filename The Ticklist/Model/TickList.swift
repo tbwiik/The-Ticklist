@@ -47,6 +47,7 @@ struct TickList: Identifiable, Codable {
             }
         }
         ticks.append(tickToAdd)
+        databaseManager.saveTick(tick: tickToAdd) //TODO: remove out of model
     }
     
     ///Remove tick from ticklist
