@@ -47,7 +47,6 @@ struct TickList: Identifiable, Codable {
             }
         }
         ticks.append(tickToAdd)
-        databaseManager.saveTick(tick: tickToAdd) //TODO: remove out of model
     }
     
     ///Remove tick from ticklist
@@ -57,6 +56,6 @@ struct TickList: Identifiable, Codable {
         //TODO: sensitive for optional tick (ref. getindex). Program it more safe
         //TODO: move out of model!
         let removedTick = ticks.remove(at: getIndex(tick: tickToRemove)!)
-        databaseManager.removeTick(tick: removedTick)
+        DatabaseManager.removeTick(tick: removedTick)
     }
 }

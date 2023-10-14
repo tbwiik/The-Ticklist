@@ -21,16 +21,17 @@ struct The_TicklistApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
-    @StateObject private var ticklistStore = TickListStore()
+    //    @StateObject private var ticklistStore = TickListStore()
+    @StateObject private var databaseManager = DatabaseManager()
     @State private var errorWrapper: ErrorWrapper?
     
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                TickListView(ticklist: $ticklistStore.ticklist) {
+            NavigationView{
+                TickListView(ticklist: $databaseManager.ticklist) {
                     Task {
                         do {
-                            try await TickListStore.save(ticklist: ticklistStore.ticklist)
+                            try DatabaseManager.saveTickList(ticklist: databaseManager.ticklist)
                         } catch {
                             errorWrapper = ErrorWrapper(error: error, solution: "Try again")
                         }
@@ -39,16 +40,48 @@ struct The_TicklistApp: App {
             }
             .task {
                 do {
-                    ticklistStore.ticklist = try await TickListStore.load()
+                    databaseManager.ticklist = DatabaseManager.loadTickList()
                 } catch {
                     errorWrapper = ErrorWrapper(error: error, solution: "Loads sample data and continues")
                 }
             }
             .sheet(item: $errorWrapper, onDismiss: {
-                ticklistStore.ticklist = Tick.sampleData
+                //                ticklistStore.ticklist = Tick.sampleData
+                databaseManager.ticklist = Tick.sampleData
             }) { wrapped in
                 ErrorView(errorWrapper: wrapped)
             }
         }
     }
 }
+    
+//    var body: some Scene {
+//        WindowGroup {
+//            NavigationView {
+//                TickListView(ticklist: $databaseManager.ticklist) {
+//                    Task {
+//                        do {
+////                            try await TickListStore.save(ticklist: ticklistStore.ticklist)
+////                            try await continue
+//                        } catch {
+//                            errorWrapper = ErrorWrapper(error: error, solution: "Try again")
+//                        }
+//                    }
+//                }
+//            }
+//            .task {
+//                do {
+////                    ticklistStore.ticklist = try await TickListStore.load()
+//                } catch {
+//                    errorWrapper = ErrorWrapper(error: error, solution: "Loads sample data and continues")
+//                }
+//            }
+//            .sheet(item: $errorWrapper, onDismiss: {
+////                ticklistStore.ticklist = Tick.sampleData
+//                databaseManager.ticklist = Tick.sampleData
+//            }) { wrapped in
+//                ErrorView(errorWrapper: wrapped)
+//            }
+//        }
+//    }
+//}
