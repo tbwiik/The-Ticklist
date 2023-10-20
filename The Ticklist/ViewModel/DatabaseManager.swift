@@ -4,12 +4,15 @@
 //
 //  Created by Torbjørn Wiik on 14/10/2023.
 //
+//  Code is written with great inspiration from an official Swift course.
 
 import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-/// Observable storage of ticklist
+/*
+ Manager for saving and loading to remote FireStore database.
+ */
 class DatabaseManager: ObservableObject {
     
     ///Publishing variable containing ticklist
@@ -18,7 +21,7 @@ class DatabaseManager: ObservableObject {
     /**
      Asynchronously load data from db
      
-     - Throws error of failing to load
+     - Throws error if failing to load
      */
     static func load() async throws -> TickList {
         try await withCheckedThrowingContinuation{ continuation in
@@ -37,13 +40,13 @@ class DatabaseManager: ObservableObject {
      Load ticklist from db
      
      - If successfull: completion with data
-     - If unsuccesfull: completion with empty array
      - If failure: completion with error
      */
     static func load(completion: @escaping (Result<TickList, Error>) -> Void){
         
         // Is it bad running this whole piece on main thread? Probably
         // Does it work? Fuck yes
+        
         DispatchQueue.main.async{
             
             let coll = Firestore.firestore().collection("TestListV1")
@@ -51,18 +54,20 @@ class DatabaseManager: ObservableObject {
             
             coll.getDocuments { snapshot, error in
                 
+                // Check no error
                 guard error == nil else {
                     completion(.failure(error!))
                     return
                 }
                 
+                // Check that snapshot exists
                 guard snapshot != nil else {
                     let error = NoSnapShotError.noSnapShotError("Failed to retrieve collection-snapshot from Firestore.")
                     completion(.failure(error))
                     return
                 }
                 
-                // get docs
+                // Go through all documents and add to ticklist
                 for doc in snapshot!.documents{
 
                     do{
@@ -74,6 +79,7 @@ class DatabaseManager: ObservableObject {
 
                 }
                 
+                // Return successfull result
                 completion(.success(ticklist))
                 
             }
@@ -104,8 +110,7 @@ class DatabaseManager: ObservableObject {
     /**
      Save ticklist to db
      
-     - If successfull: completion with data
-     - If unsuccesfull: completion with empty array
+     - If successfull: completion with count of ticks added
      - If failure: completion with error
      */
     static func save(ticklist: TickList, completion: @escaping (Result<Int, Error>) -> Void) {
@@ -114,15 +119,18 @@ class DatabaseManager: ObservableObject {
             do {
                 let coll = Firestore.firestore().collection("TestListV1")
                 
+                // Save ticklist to database
                 for tick in ticklist.ticks {
                     try coll.document(tick.id.uuidString).setData(from: tick)
                 }
                 
+                // Return successfull completion with number of ticks added
                 DispatchQueue.main.async {
                     // TODO: change/remove line under?
                     completion(.success(ticklist.ticks.count))
                 }
                 
+            // Handle error if occurs
             } catch {
                 DispatchQueue.main.async {
                     completion(.failure(error))
