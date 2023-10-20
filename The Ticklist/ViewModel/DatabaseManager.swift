@@ -46,32 +46,35 @@ class DatabaseManager: ObservableObject {
         // Does it work? Fuck yes
         DispatchQueue.main.async{
             
-            let coll = Firestore.firestore().collection("test2")
-            var res: TickList?
+            let coll = Firestore.firestore().collection("TestListV1")
+            var ticklist = TickList()
             
             coll.getDocuments { snapshot, error in
                 
-                guard error == nil && snapshot != nil else {
-                    // Handle error
+                guard error == nil else {
+                    completion(.failure(error!))
                     return
                 }
                 
-                res = TickList()
+                guard snapshot != nil else {
+                    let error = NoSnapShotError.noSnapShotError("Failed to retrieve collection-snapshot from Firestore.")
+                    completion(.failure(error))
+                    return
+                }
                 
                 // get docs
                 for doc in snapshot!.documents{
 
                     do{
                         let tick = try doc.data(as: Tick.self)
-                        res!.add(tickToAdd: tick)
+                        ticklist.add(tickToAdd: tick)
                     } catch {
-                        // TODO: Handle error
                         completion(.failure(error))
                     }
 
                 }
                 
-                completion(.success(res!))
+                completion(.success(ticklist))
                 
             }
             
@@ -109,7 +112,7 @@ class DatabaseManager: ObservableObject {
         DispatchQueue.global(qos: .background).async {
             
             do {
-                let coll = Firestore.firestore().collection("test2")
+                let coll = Firestore.firestore().collection("TestListV1")
                 
                 for tick in ticklist.ticks {
                     try coll.document(tick.id.uuidString).setData(from: tick)
@@ -131,7 +134,7 @@ class DatabaseManager: ObservableObject {
 }
 
 
-enum noSnapShot: Error {
+enum NoSnapShotError: Error {
     case noSnapShotError(String)
 }
 
