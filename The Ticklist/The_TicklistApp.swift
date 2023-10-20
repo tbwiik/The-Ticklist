@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseCore
 
+// Configure database
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -19,8 +20,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct The_TicklistApp: App {
     
+    // Initialize database
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
+    // Define vars
     @StateObject private var databaseManager = DatabaseManager()
     @State private var errorWrapper: ErrorWrapper?
     
