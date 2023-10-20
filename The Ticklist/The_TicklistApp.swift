@@ -21,8 +21,6 @@ struct The_TicklistApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
-    //    @StateObject private var ticklistStore = TickListStore()
-//    @StateObject private var databaseManager = DatabaseManager()
     @StateObject private var databaseManager = DatabaseManager()
     @State private var errorWrapper: ErrorWrapper?
     
@@ -30,27 +28,29 @@ struct The_TicklistApp: App {
         WindowGroup {
             NavigationView{
                 TickListView(ticklist: $databaseManager.ticklist) {
+                    
                     Task {
                         do {
                             try await DatabaseManager.save(ticklist: databaseManager.ticklist)
-//                            try DatabaseManager.saveTickList(ticklist: databaseManager.ticklist)
                         } catch {
                             errorWrapper = ErrorWrapper(error: error, solution: "Try again")
                         }
                     }
                 }
+                
             }
+            
+            // Load from database on setup
             .task {
                 do {
                     databaseManager.ticklist = try await DatabaseManager.load()
-                    print(databaseManager.ticklist)
-//                    databaseManager.ticklist = DatabaseManager.loadTickList()
                 } catch {
                     errorWrapper = ErrorWrapper(error: error, solution: "Loads sample data and continues")
                 }
             }
+            
+            // Display errormessage
             .sheet(item: $errorWrapper, onDismiss: {
-                //                ticklistStore.ticklist = Tick.sampleData
                 databaseManager.ticklist = Tick.sampleData
             }) { wrapped in
                 ErrorView(errorWrapper: wrapped)
