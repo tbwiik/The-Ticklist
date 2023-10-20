@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840D30322AD7C4DE007B964B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 840D30312AD7C4DE007B964B /* FirebaseAuth */; };
+		840D30342AD7C4DE007B964B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 840D30332AD7C4DE007B964B /* FirebaseFirestore */; };
+		840D30362AD7C4DE007B964B /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 840D30352AD7C4DE007B964B /* FirebaseFirestoreSwift */; };
+		840D303B2ADAAF3E007B964B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 840D303A2ADAAF3E007B964B /* GoogleService-Info.plist */; };
+		840D303D2ADAB9D6007B964B /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840D303C2ADAB9D6007B964B /* DatabaseManager.swift */; };
+		84585CC62AE057E000B47617 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84585CC52AE057E000B47617 /* DatabaseManager.swift */; };
 		8473502F29674A6900685150 /* The_TicklistApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473502E29674A6900685150 /* The_TicklistApp.swift */; };
 		8473503329674A6900685150 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8473503229674A6900685150 /* Assets.xcassets */; };
 		8473503629674A6900685150 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8473503529674A6900685150 /* Preview Assets.xcassets */; };
@@ -51,6 +57,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		840D303A2ADAAF3E007B964B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		840D303C2ADAB9D6007B964B /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		84585CC52AE057E000B47617 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		8473502B29674A6800685150 /* The Ticklist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Ticklist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8473502E29674A6900685150 /* The_TicklistApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_TicklistApp.swift; sourceTree = "<group>"; };
 		8473503229674A6900685150 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -85,6 +94,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				840D30322AD7C4DE007B964B /* FirebaseAuth in Frameworks */,
+				840D30342AD7C4DE007B964B /* FirebaseFirestore in Frameworks */,
+				840D30362AD7C4DE007B964B /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +117,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		840D30372AD7C55A007B964B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				840D303C2ADAB9D6007B964B /* DatabaseManager.swift */,
+				847350642968169200685150 /* TickListStore.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		8473502229674A6800685150 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +149,8 @@
 		8473502D29674A6900685150 /* The Ticklist */ = {
 			isa = PBXGroup;
 			children = (
+				840D30372AD7C55A007B964B /* ViewModel */,
+				840D303A2ADAAF3E007B964B /* GoogleService-Info.plist */,
 				8473505B29674B3600685150 /* Model */,
 				8473502E29674A6900685150 /* The_TicklistApp.swift */,
 				84C6BC5A296EEE0B00C20C4D /* Global */,
@@ -157,6 +180,7 @@
 				8473503F29674A6900685150 /* The_TicklistTests.swift */,
 				84CFED722996BFD9004388F5 /* TickListTests.swift */,
 				84CFED7429982383004388F5 /* TickTests.swift */,
+				84585CC52AE057E000B47617 /* DatabaseManager.swift */,
 			);
 			path = "The TicklistTests";
 			sourceTree = "<group>";
@@ -176,7 +200,6 @@
 				84C6BC51296EEC5A00C20C4D /* Tick */,
 				8473507629699EB100685150 /* TickList.swift */,
 				8473506E2969769700685150 /* Dicipline.swift */,
-				847350642968169200685150 /* TickListStore.swift */,
 				8473506C29688C6D00685150 /* ErrorWrapper.swift */,
 			);
 			path = Model;
@@ -218,6 +241,11 @@
 			dependencies = (
 			);
 			name = "The Ticklist";
+			packageProductDependencies = (
+				840D30312AD7C4DE007B964B /* FirebaseAuth */,
+				840D30332AD7C4DE007B964B /* FirebaseFirestore */,
+				840D30352AD7C4DE007B964B /* FirebaseFirestoreSwift */,
+			);
 			productName = "The Ticklist";
 			productReference = 8473502B29674A6800685150 /* The Ticklist.app */;
 			productType = "com.apple.product-type.application";
@@ -290,6 +318,9 @@
 				Base,
 			);
 			mainGroup = 8473502229674A6800685150;
+			packageReferences = (
+				840D30302AD7C4DE007B964B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 8473502C29674A6800685150 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -307,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8473503629674A6900685150 /* Preview Assets.xcassets in Resources */,
+				840D303B2ADAAF3E007B964B /* GoogleService-Info.plist in Resources */,
 				8473503329674A6900685150 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,6 +367,7 @@
 				847350672968577C00685150 /* CardView.swift in Sources */,
 				84C6BC55296EEC7B00C20C4D /* Log.swift in Sources */,
 				847350632967555800685150 /* AddClimbView.swift in Sources */,
+				840D303D2ADAB9D6007B964B /* DatabaseManager.swift in Sources */,
 				8473505D29674B3F00685150 /* Tick.swift in Sources */,
 				8473506D29688C6D00685150 /* ErrorWrapper.swift in Sources */,
 				847350652968169200685150 /* TickListStore.swift in Sources */,
@@ -357,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84CFED7529982383004388F5 /* TickTests.swift in Sources */,
+				84585CC62AE057E000B47617 /* DatabaseManager.swift in Sources */,
 				84CFED732996BFD9004388F5 /* TickListTests.swift in Sources */,
 				8473504029674A6900685150 /* The_TicklistTests.swift in Sources */,
 			);
@@ -669,6 +703,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		840D30302AD7C4DE007B964B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.16.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		840D30312AD7C4DE007B964B /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 840D30302AD7C4DE007B964B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		840D30332AD7C4DE007B964B /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 840D30302AD7C4DE007B964B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		840D30352AD7C4DE007B964B /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 840D30302AD7C4DE007B964B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8473502329674A6800685150 /* Project object */;
 }

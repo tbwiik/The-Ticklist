@@ -7,7 +7,11 @@
 
 import Foundation
 
-/// Observable storage of ticklist
+/*
+ Manager for saving and loading physically on device
+ 
+ NB: Not in use
+ */
 class TickListStore: ObservableObject {
     
     ///Publishing variable containing ticklist

@@ -6,35 +6,55 @@
 //
 
 import SwiftUI
+import FirebaseCore
+
+// Configure database
+class AppDelegate: NSObject, UIApplicationDelegate {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    FirebaseApp.configure()
+    return true
+  }
+}
 
 @main
 struct The_TicklistApp: App {
     
-    @StateObject private var ticklistStore = TickListStore()
+    // Initialize database
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
+    // Define vars
+    @StateObject private var databaseManager = DatabaseManager()
     @State private var errorWrapper: ErrorWrapper?
     
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                TickListView(ticklist: $ticklistStore.ticklist) {
+            NavigationView{
+                TickListView(ticklist: $databaseManager.ticklist) {
+                    
                     Task {
                         do {
-                            try await TickListStore.save(ticklist: ticklistStore.ticklist)
+                            try await DatabaseManager.save(ticklist: databaseManager.ticklist)
                         } catch {
                             errorWrapper = ErrorWrapper(error: error, solution: "Try again")
                         }
                     }
                 }
+                
             }
+            
+            // Load from database on setup
             .task {
                 do {
-                    ticklistStore.ticklist = try await TickListStore.load()
+                    databaseManager.ticklist = try await DatabaseManager.load()
                 } catch {
                     errorWrapper = ErrorWrapper(error: error, solution: "Loads sample data and continues")
                 }
             }
+            
+            // Display errormessage
             .sheet(item: $errorWrapper, onDismiss: {
-                ticklistStore.ticklist = Tick.sampleData
+                databaseManager.ticklist = Tick.sampleData
             }) { wrapped in
                 ErrorView(errorWrapper: wrapped)
             }

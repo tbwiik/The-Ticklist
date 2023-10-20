@@ -52,7 +52,8 @@ struct TickListView: View {
                         }
                         ToolbarItem(placement: .confirmationAction){
                             Button("Add"){
-                                ticklist.add(tickToAdd: Tick(data: newTickData))
+                                let tick = Tick(data: newTickData)
+                                ticklist.add(tickToAdd: tick)
                                 isAdding = false
                                 newTickData = Tick.Data()
                             }
