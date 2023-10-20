@@ -121,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				840D303C2ADAB9D6007B964B /* DatabaseManager.swift */,
+				847350642968169200685150 /* TickListStore.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -199,7 +200,6 @@
 				84C6BC51296EEC5A00C20C4D /* Tick */,
 				8473507629699EB100685150 /* TickList.swift */,
 				8473506E2969769700685150 /* Dicipline.swift */,
-				847350642968169200685150 /* TickListStore.swift */,
 				8473506C29688C6D00685150 /* ErrorWrapper.swift */,
 			);
 			path = Model;
