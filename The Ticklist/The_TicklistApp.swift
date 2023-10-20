@@ -22,6 +22,7 @@ struct The_TicklistApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     //    @StateObject private var ticklistStore = TickListStore()
+//    @StateObject private var databaseManager = DatabaseManager()
     @StateObject private var databaseManager = DatabaseManager()
     @State private var errorWrapper: ErrorWrapper?
     
@@ -31,7 +32,8 @@ struct The_TicklistApp: App {
                 TickListView(ticklist: $databaseManager.ticklist) {
                     Task {
                         do {
-                            try DatabaseManager.saveTickList(ticklist: databaseManager.ticklist)
+                            try await DatabaseManager.save(ticklist: databaseManager.ticklist)
+//                            try DatabaseManager.saveTickList(ticklist: databaseManager.ticklist)
                         } catch {
                             errorWrapper = ErrorWrapper(error: error, solution: "Try again")
                         }
@@ -40,7 +42,9 @@ struct The_TicklistApp: App {
             }
             .task {
                 do {
-                    databaseManager.ticklist = DatabaseManager.loadTickList()
+                    databaseManager.ticklist = try await DatabaseManager.load()
+                    print(databaseManager.ticklist)
+//                    databaseManager.ticklist = DatabaseManager.loadTickList()
                 } catch {
                     errorWrapper = ErrorWrapper(error: error, solution: "Loads sample data and continues")
                 }

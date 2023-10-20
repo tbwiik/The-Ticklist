@@ -54,7 +54,6 @@ struct TickListView: View {
                             Button("Add"){
                                 let tick = Tick(data: newTickData)
                                 ticklist.add(tickToAdd: tick)
-                                DatabaseManager.saveTick(tick: tick)
                                 isAdding = false
                                 newTickData = Tick.Data()
                             }
