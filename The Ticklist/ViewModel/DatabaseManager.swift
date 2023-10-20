@@ -134,3 +134,4 @@ class DatabaseManager: ObservableObject {
 enum noSnapShot: Error {
     case noSnapShotError(String)
 }
+
