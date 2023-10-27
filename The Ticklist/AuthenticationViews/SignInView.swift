@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// TODO: To a big extent duplicate of SignUpView
 struct SignInView: View {
     
     @EnvironmentObject var authViewModel: AuthenticationViewModel

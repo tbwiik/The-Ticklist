@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// TODO: To a big extent duplicate of SignInView
 struct SignUpView: View {
     
     // Get ViewModel responsible for authentication
