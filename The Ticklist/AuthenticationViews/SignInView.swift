@@ -27,8 +27,10 @@ struct SignInView: View {
         
         VStack {
             TextField("Email", text: $authViewModel.email)
-            TextField("Password", text: $authViewModel.passwd)
+            SecureField("Password", text: $authViewModel.passwd)
         }
+        .padding()
+        
         Button (action: signInEmailPasswd){
             
             if !authViewModel.isAuthenticating(){
