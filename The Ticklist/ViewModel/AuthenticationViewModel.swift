@@ -8,12 +8,16 @@
 import Foundation
 import FirebaseAuth
 
+
+/// What state the authentication is in
 enum AuthState {
     case authenticated
     case authenticating
     case unAuthenticated
 }
 
+
+/// Costum Authentication-error
 enum AuthError: LocalizedError{
     case emptyConfirmPassword
     case noMatchConfirmPassword
@@ -29,6 +33,7 @@ enum AuthError: LocalizedError{
 }
 
 @MainActor
+/// Handle authentication of user
 class AuthenticationViewModel: ObservableObject {
     
     @Published var email = ""
@@ -38,15 +43,20 @@ class AuthenticationViewModel: ObservableObject {
     @Published var user: User?
     @Published var authState: AuthState = .unAuthenticated
     
-    // Define error Wrapper
+    
+    /// Init errorWrapper
     @Published var errorWrapper: ErrorWrapper?
     
+    
+    /// Define handler for authentication state
     private var authHandler: AuthStateDidChangeListenerHandle?
     
     init() {
         addAuthHandler()
     }
     
+    
+    /// Add handler for user and authentication state
     func addAuthHandler() {
         
         if authHandler == nil { // If not already defined
@@ -58,6 +68,8 @@ class AuthenticationViewModel: ObservableObject {
         
     }
     
+    
+    /// Clear all user fields and set non-authenticated
     func reset() {
         self.authState = .unAuthenticated
         self.email = ""
@@ -65,6 +77,9 @@ class AuthenticationViewModel: ObservableObject {
         self.confirmPasswd = ""
     }
     
+    
+    /// Sign In using Email and Password
+    /// - Returns: Whether the Sign In was successfull
     func signInEmailPasswd() async -> Bool {
         
         authState = .authenticating
@@ -79,6 +94,12 @@ class AuthenticationViewModel: ObservableObject {
         }
     }
     
+    
+    /// Sign Up a User using Email and Password
+    ///
+    /// Will return false if confirm password doesn't match
+    ///
+    /// - Returns: Whether the signup was succesfull
     func signUpEmailPasswd() async -> Bool {
         
         authState = .authenticating
@@ -103,6 +124,9 @@ class AuthenticationViewModel: ObservableObject {
         
     }
     
+    
+    /// Sign out current user
+    /// - Returns: true if successfull signout
     func signOut() async -> Bool {
         
         do {
@@ -115,8 +139,10 @@ class AuthenticationViewModel: ObservableObject {
         
     }
     
+    
+    /// Delete current user from Database
+    /// - Returns: true if succesfull deletion
     func deleteUser() async -> Bool {
-        
         do {
             try await user?.delete()
             return true
