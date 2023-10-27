@@ -101,7 +101,7 @@ class AuthenticationViewModel: ObservableObject {
             try await user?.delete()
             return true
         } catch {
-            // TODO: better handle of error
+            errorWrapper = ErrorWrapper(error: error, solution: "Try to Delete User again")
             return false
         }
     }
