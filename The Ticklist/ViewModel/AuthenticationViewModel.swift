@@ -10,6 +10,7 @@ import FirebaseAuth
 
 enum AuthState {
     case authenticated
+    case authenticating
     case unAuthenticated
 }
 
@@ -45,22 +46,28 @@ class AuthenticationViewModel: ObservableObject {
     
     func signInEmailPasswd() async -> Bool {
         
+        authState = .authenticating
+        
         do {
             try await Auth.auth().signIn(withEmail: email, password: passwd)
             return true
         } catch {
             // TODO: better handle of error
+            authState = .unAuthenticated
             return false
         }
     }
     
     func signUpEmailPasswd() async -> Bool {
         
+        authState = .authenticating
+        
         do {
             try await Auth.auth().createUser(withEmail: email, password: passwd)
             return true
         } catch {
             // TODO: better handle of error
+            authState = .unAuthenticated
             return false
         }
         
