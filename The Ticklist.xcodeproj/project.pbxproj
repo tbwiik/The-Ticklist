@@ -32,6 +32,7 @@
 		8473507729699EB100685150 /* TickList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473507629699EB100685150 /* TickList.swift */; };
 		847D24702AEC0AEA005363B2 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D246F2AEC0AEA005363B2 /* AuthenticationViewModel.swift */; };
 		847D24752AEC13BD005363B2 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D24742AEC13BD005363B2 /* SignUpView.swift */; };
+		847D24772AEC3B7B005363B2 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D24762AEC3B7B005363B2 /* SignInView.swift */; };
 		84C6BC55296EEC7B00C20C4D /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6BC54296EEC7B00C20C4D /* Log.swift */; };
 		84C6BC57296EEC8F00C20C4D /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6BC56296EEC8F00C20C4D /* Data.swift */; };
 		84C6BC59296EED2700C20C4D /* sampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6BC58296EED2700C20C4D /* sampleData.swift */; };
@@ -84,6 +85,7 @@
 		8473507629699EB100685150 /* TickList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickList.swift; sourceTree = "<group>"; };
 		847D246F2AEC0AEA005363B2 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		847D24742AEC13BD005363B2 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		847D24762AEC3B7B005363B2 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		84C6BC54296EEC7B00C20C4D /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		84C6BC56296EEC8F00C20C4D /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		84C6BC58296EED2700C20C4D /* sampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sampleData.swift; sourceTree = "<group>"; };
@@ -154,12 +156,12 @@
 		8473502D29674A6900685150 /* The Ticklist */ = {
 			isa = PBXGroup;
 			children = (
-				847D24712AEC138E005363B2 /* AuthenticationViews */,
-				840D30372AD7C55A007B964B /* ViewModel */,
 				840D303A2ADAAF3E007B964B /* GoogleService-Info.plist */,
-				8473505B29674B3600685150 /* Model */,
 				8473502E29674A6900685150 /* The_TicklistApp.swift */,
+				8473505B29674B3600685150 /* Model */,
+				840D30372AD7C55A007B964B /* ViewModel */,
 				84C6BC5A296EEE0B00C20C4D /* Global */,
+				847D24712AEC138E005363B2 /* AuthenticationViews */,
 				8473506A2968897C00685150 /* ErrorView.swift */,
 				8473505E29674C5E00685150 /* TickListView.swift */,
 				847350662968577C00685150 /* CardView.swift */,
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				847D24742AEC13BD005363B2 /* SignUpView.swift */,
+				847D24762AEC3B7B005363B2 /* SignInView.swift */,
 			);
 			path = AuthenticationViews;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				8473507729699EB100685150 /* TickList.swift in Sources */,
 				8473507129697DB000685150 /* StarRating.swift in Sources */,
 				8473506B2968897C00685150 /* ErrorView.swift in Sources */,
+				847D24772AEC3B7B005363B2 /* SignInView.swift in Sources */,
 				8473506F2969769700685150 /* Dicipline.swift in Sources */,
 				847D24752AEC13BD005363B2 /* SignUpView.swift in Sources */,
 				84C6BC57296EEC8F00C20C4D /* Data.swift in Sources */,
