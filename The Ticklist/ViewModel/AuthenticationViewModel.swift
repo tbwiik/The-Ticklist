@@ -30,9 +30,6 @@ class AuthenticationViewModel: ObservableObject {
     private var authHandler: AuthStateDidChangeListenerHandle?
     
     init() {
-    
-        Auth.auth().useEmulator(withHost:"127.0.0.1", port:9099) // Run on emulator and not on production db
-    
         addAuthHandler()
     }
     
