@@ -44,6 +44,17 @@ class AuthenticationViewModel: ObservableObject {
         
     }
     
+    func signOut() async -> Bool {
+        
+        do {
+            try Auth.auth().signOut()
+            return true
+        } catch {
+            // TODO: better handle of error
+            return false
+        }
+        
+    }
     
     
 }
