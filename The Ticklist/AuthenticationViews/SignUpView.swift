@@ -49,7 +49,11 @@ struct SignUpView: View {
             }
             
         }
-
+        .sheet(item: $authViewModel.errorWrapper, onDismiss: {
+            authViewModel.reset()
+        }) { wrapped in
+            ErrorView(errorWrapper: wrapped)
+        }
     }
 }
 
