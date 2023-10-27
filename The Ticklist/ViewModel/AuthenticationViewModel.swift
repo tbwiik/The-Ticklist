@@ -15,9 +15,26 @@ class AuthenticationViewModel: ObservableObject {
     @Published var passwd = ""
     @Published var confirmPasswd = ""
     
+    @Published var user: User?
+    @Published var authState: AuthState = .unAuthenticated
+    
+    private var authHandler: AuthStateDidChangeListenerHandle?
+    
     init() {
-        
+    
         Auth.auth().useEmulator(withHost:"127.0.0.1", port:9099) // Run on emulator and not on production db
+    
+        addAuthHandler()
+    }
+    
+    func addAuthHandler() {
+        
+        if authHandler == nil { // If not already defined
+            authHandler = Auth.auth().addStateDidChangeListener({ auth, user in
+                self.user = user
+                self.authState = user == nil ? .unAuthenticated : .authenticated // Set authentication-state on whether user exists
+            })
+        }
         
     }
     
