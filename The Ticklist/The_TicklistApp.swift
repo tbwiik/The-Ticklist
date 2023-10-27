@@ -23,8 +23,11 @@ struct The_TicklistApp: App {
     // Initialize database
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
-    // Define vars
+    // Initialize Environment-objects
     @StateObject private var databaseManager = DatabaseManager()
+    @StateObject private var authViewModel = AuthenticationViewModel()
+    
+    // Define errorWrapper
     @State private var errorWrapper: ErrorWrapper?
     
     var body: some Scene {
