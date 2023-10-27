@@ -51,6 +51,13 @@ class AuthenticationViewModel: ObservableObject {
     /// Define handler for authentication state
     private var authHandler: AuthStateDidChangeListenerHandle?
     
+    
+    /// Find whether the Authentication controller currently is handling the request
+    /// - Returns: true if authenticating
+    func isAuthenticating() -> Bool{
+        return authState == .authenticating
+    }
+    
     init() {
         addAuthHandler()
     }
