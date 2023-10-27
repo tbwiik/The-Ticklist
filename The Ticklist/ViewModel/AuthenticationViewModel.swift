@@ -24,6 +24,9 @@ class AuthenticationViewModel: ObservableObject {
     @Published var user: User?
     @Published var authState: AuthState = .unAuthenticated
     
+    // Define error Wrapper
+    @Published var errorWrapper: ErrorWrapper?
+    
     private var authHandler: AuthStateDidChangeListenerHandle?
     
     init() {
@@ -52,7 +55,7 @@ class AuthenticationViewModel: ObservableObject {
             try await Auth.auth().signIn(withEmail: email, password: passwd)
             return true
         } catch {
-            // TODO: better handle of error
+            errorWrapper = ErrorWrapper(error: error, solution: "Try to Sign In again")
             authState = .unAuthenticated
             return false
         }
@@ -66,7 +69,7 @@ class AuthenticationViewModel: ObservableObject {
             try await Auth.auth().createUser(withEmail: email, password: passwd)
             return true
         } catch {
-            // TODO: better handle of error
+            errorWrapper = ErrorWrapper(error: error, solution: "Try to Sign Up again")
             authState = .unAuthenticated
             return false
         }
@@ -79,7 +82,7 @@ class AuthenticationViewModel: ObservableObject {
             try Auth.auth().signOut()
             return true
         } catch {
-            // TODO: better handle of error
+            errorWrapper = ErrorWrapper(error: error, solution: "Try to Sign out again")
             return false
         }
         
