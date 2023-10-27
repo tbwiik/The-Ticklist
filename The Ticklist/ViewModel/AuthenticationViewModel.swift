@@ -47,6 +47,13 @@ class AuthenticationViewModel: ObservableObject {
         
     }
     
+    func reset() {
+        self.authState = .unAuthenticated
+        self.email = ""
+        self.passwd = ""
+        self.confirmPasswd = ""
+    }
+    
     func signInEmailPasswd() async -> Bool {
         
         authState = .authenticating
