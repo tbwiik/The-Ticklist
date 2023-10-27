@@ -21,7 +21,28 @@ class AuthenticationViewModel: ObservableObject {
         
     }
     
+    func signInEmailPasswd() async -> Bool {
+        
+        do {
+            try await Auth.auth().signIn(withEmail: email, password: passwd)
+            return true
+        } catch {
+            // TODO: better handle of error
+            return false
+        }
+    }
     
+    func signUpEmailPasswd() async -> Bool {
+        
+        do {
+            try await Auth.auth().createUser(withEmail: email, password: passwd)
+            return true
+        } catch {
+            // TODO: better handle of error
+            return false
+        }
+        
+    }
     
     
     
