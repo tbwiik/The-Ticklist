@@ -42,7 +42,7 @@ struct SignUpView: View {
         
         Button (action: signUpEmailPasswd){
             
-            if authenticating(){
+            if !authenticating(){
                 Text("Sign Up")
             } else {
                 Text("Authenticating...")
