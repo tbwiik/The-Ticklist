@@ -23,10 +23,6 @@ struct SignUpView: View {
         }
     }
     
-    private func authenticating() -> Bool{
-        return authViewModel.authState == .authenticating
-    }
-    
     var body: some View {
         
         VStack (alignment: .center) {
@@ -42,7 +38,7 @@ struct SignUpView: View {
         
         Button (action: signUpEmailPasswd){
             
-            if !authenticating(){
+            if !authViewModel.isAuthenticating(){
                 Text("Sign Up")
             } else {
                 Text("Authenticating...")
