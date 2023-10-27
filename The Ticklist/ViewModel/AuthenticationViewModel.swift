@@ -14,6 +14,20 @@ enum AuthState {
     case unAuthenticated
 }
 
+enum AuthError: LocalizedError{
+    case emptyConfirmPassword
+    case noMatchConfirmPassword
+    
+    var errorDescription: String? {
+        switch self {
+        case .emptyConfirmPassword:
+            return NSLocalizedString("The field \"Confirm Password\" cannot be emtpy", comment: "Confirm Password is empty")
+        case .noMatchConfirmPassword:
+            return NSLocalizedString("The field \"Confirm password\" doesn't match \"Password\" ", comment: "NonMatching \"Confirm Password\"")
+        }
+    }
+}
+
 @MainActor
 class AuthenticationViewModel: ObservableObject {
     
@@ -70,6 +84,15 @@ class AuthenticationViewModel: ObservableObject {
         authState = .authenticating
         
         do {
+            
+            guard !confirmPasswd.isEmpty else {
+                throw AuthError.emptyConfirmPassword
+            }
+            
+            guard confirmPasswd == passwd else {
+                throw AuthError.noMatchConfirmPassword
+            }
+            
             try await Auth.auth().createUser(withEmail: email, password: passwd)
             return true
         } catch {
