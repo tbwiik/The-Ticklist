@@ -27,7 +27,7 @@ struct The_TicklistApp: App {
     
     // Initialize Environment-objects
     @StateObject private var databaseManager = DatabaseManager()
-    @StateObject private var authViewModel = AuthenticationViewModel()
+    @StateObject var authViewModel = AuthenticationViewModel()
     
     // Define errorWrapper
     @State private var errorWrapper: ErrorWrapper?
