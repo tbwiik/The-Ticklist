@@ -8,6 +8,11 @@
 import Foundation
 import FirebaseAuth
 
+enum AuthState {
+    case authenticated
+    case unAuthenticated
+}
+
 @MainActor
 class AuthenticationViewModel: ObservableObject {
     
@@ -73,6 +78,16 @@ class AuthenticationViewModel: ObservableObject {
         
     }
     
+    func deleteUser() async -> Bool {
+        
+        do {
+            try await user?.delete()
+            return true
+        } catch {
+            // TODO: better handle of error
+            return false
+        }
+    }
     
 }
 
