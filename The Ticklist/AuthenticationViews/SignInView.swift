@@ -28,6 +28,8 @@ struct SignInView: View {
         
         VStack {
             TextField("Email", text: $authViewModel.email)
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled(true)
             SecureField("Password", text: $authViewModel.passwd)
         }
         .padding()
