@@ -19,7 +19,8 @@ struct SignUpView: View {
     private func signUpEmailPasswd() {
         Task {
             if await authViewModel.signUpEmailPasswd() == true {
-                dismiss()
+//                dismiss()
+                // No modal view to remove
             }
         }
     }

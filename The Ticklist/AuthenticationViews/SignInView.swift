@@ -18,7 +18,8 @@ struct SignInView: View {
     private func signInEmailPasswd() {
         Task {
             if await authViewModel.signInEmailPasswd() == true {
-                dismiss()
+//                dismiss()
+                // No modal view to remove
             }
         }
     }
