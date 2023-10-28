@@ -45,7 +45,9 @@ struct SignInView: View {
             authViewModel.reset()
         }) { wrapped in
             ErrorView(errorWrapper: wrapped)
-        }
+        }.buttonStyle(.bordered)
+        
+        Button("Sign up", action: authViewModel.switchAuthFlow)
     }
 }
 
