@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AuthFlowView: View {
     
-    @EnvironmentObject var authViewModel: AuthenticationViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         VStack {
@@ -24,5 +24,5 @@ struct AuthFlowView: View {
 }
 
 #Preview {
-    AuthFlowView().environmentObject(AuthenticationViewModel())
+    AuthFlowView().environmentObject(AuthViewModel())
 }

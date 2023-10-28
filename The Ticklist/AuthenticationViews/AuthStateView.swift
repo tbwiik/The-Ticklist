@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AuthStateView<Content>: View where Content: View{
     
-    @EnvironmentObject var authViewModel: AuthenticationViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     @ViewBuilder var content: () -> Content
     

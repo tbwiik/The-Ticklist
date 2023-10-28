@@ -1,5 +1,5 @@
 //
-//  AuthenticationViewModel.swift
+//  AuthViewModel.swift
 //  The Ticklist
 //
 //  Created by Torbjørn Wiik on 27/10/2023.
@@ -39,7 +39,7 @@ enum AuthError: LocalizedError{
 
 @MainActor
 /// Handle authentication of user
-class AuthenticationViewModel: ObservableObject {
+class AuthViewModel: ObservableObject {
     
     @Published var email = ""
     @Published var passwd = ""

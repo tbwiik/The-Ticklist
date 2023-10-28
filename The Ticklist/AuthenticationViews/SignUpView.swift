@@ -11,7 +11,7 @@ import SwiftUI
 struct SignUpView: View {
     
     // Get ViewModel responsible for authentication
-    @EnvironmentObject var authViewModel: AuthenticationViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     // Get environment var that can dismiss views
     @Environment(\.dismiss) private var dismiss
@@ -58,5 +58,5 @@ struct SignUpView: View {
 }
 
 #Preview {
-    SignUpView().environmentObject(AuthenticationViewModel())
+    SignUpView().environmentObject(AuthViewModel())
 }

@@ -10,7 +10,7 @@ import SwiftUI
 // TODO: To a big extent duplicate of SignUpView
 struct SignInView: View {
     
-    @EnvironmentObject var authViewModel: AuthenticationViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     // Get environment var that can dismiss views
     @Environment(\.dismiss) private var dismiss
