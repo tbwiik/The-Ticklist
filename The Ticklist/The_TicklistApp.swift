@@ -35,17 +35,19 @@ struct The_TicklistApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView{
-                TickListView(ticklist: $databaseManager.ticklist) {
-                    
-                    Task {
-                        do {
-                            try await DatabaseManager.save(ticklist: databaseManager.ticklist)
-                        } catch {
-                            errorWrapper = ErrorWrapper(error: error, solution: "Try again")
+                AuthStateView {
+                    TickListView(ticklist: $databaseManager.ticklist) {
+                        
+                        Task {
+                            do {
+                                try await DatabaseManager.save(ticklist: databaseManager.ticklist)
+                            } catch {
+                                errorWrapper = ErrorWrapper(error: error, solution: "Try again")
+                            }
                         }
                     }
                 }
-                
+                .environmentObject(authViewModel)
             }
             
             // Load from database on setup
