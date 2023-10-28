@@ -16,6 +16,11 @@ enum AuthState {
     case unAuthenticated
 }
 
+enum AuthFlow {
+    case signIn
+    case signUp
+}
+
 
 /// Costum Authentication-error
 enum AuthError: LocalizedError{
@@ -42,6 +47,7 @@ class AuthenticationViewModel: ObservableObject {
     
     @Published var user: User?
     @Published var authState: AuthState = .unAuthenticated
+    @Published var authFlow: AuthFlow = .signIn
     
     
     /// Init errorWrapper
