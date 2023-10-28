@@ -14,6 +14,7 @@
 		840D303D2ADAB9D6007B964B /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840D303C2ADAB9D6007B964B /* DatabaseManager.swift */; };
 		84585CC62AE057E000B47617 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84585CC52AE057E000B47617 /* DatabaseManager.swift */; };
 		845C88E12AED5E32005284FB /* AuthFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C88E02AED5E32005284FB /* AuthFlowView.swift */; };
+		845FAC5D2AED61DD001166BB /* AuthStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FAC5C2AED61DD001166BB /* AuthStateView.swift */; };
 		8473502F29674A6900685150 /* The_TicklistApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473502E29674A6900685150 /* The_TicklistApp.swift */; };
 		8473503329674A6900685150 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8473503229674A6900685150 /* Assets.xcassets */; };
 		8473503629674A6900685150 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8473503529674A6900685150 /* Preview Assets.xcassets */; };
@@ -65,6 +66,7 @@
 		840D303C2ADAB9D6007B964B /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		84585CC52AE057E000B47617 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		845C88E02AED5E32005284FB /* AuthFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowView.swift; sourceTree = "<group>"; };
+		845FAC5C2AED61DD001166BB /* AuthStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStateView.swift; sourceTree = "<group>"; };
 		8473502B29674A6800685150 /* The Ticklist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Ticklist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8473502E29674A6900685150 /* The_TicklistApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_TicklistApp.swift; sourceTree = "<group>"; };
 		8473503229674A6900685150 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				847D24742AEC13BD005363B2 /* SignUpView.swift */,
 				847D24762AEC3B7B005363B2 /* SignInView.swift */,
 				845C88E02AED5E32005284FB /* AuthFlowView.swift */,
+				845FAC5C2AED61DD001166BB /* AuthStateView.swift */,
 			);
 			path = AuthenticationViews;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				847350612967522100685150 /* TickView.swift in Sources */,
 				84C6BC5E296EEFA700C20C4D /* AddLogItemView.swift in Sources */,
 				8473507729699EB100685150 /* TickList.swift in Sources */,
+				845FAC5D2AED61DD001166BB /* AuthStateView.swift in Sources */,
 				8473507129697DB000685150 /* StarRating.swift in Sources */,
 				8473506B2968897C00685150 /* ErrorView.swift in Sources */,
 				847D24772AEC3B7B005363B2 /* SignInView.swift in Sources */,
