@@ -149,6 +149,7 @@ class AuthViewModel: ObservableObject {
         
         do {
             try Auth.auth().signOut()
+            self.reset()
             return true
         } catch {
             errorWrapper = ErrorWrapper(error: error, solution: "Try to Sign out again")
