@@ -91,6 +91,10 @@ class AuthenticationViewModel: ObservableObject {
     }
     
     
+    func switchAuthFlow() {
+        authFlow = authFlow == .signIn ? .signUp : .signIn
+    }
+    
     /// Sign In using Email and Password
     /// - Returns: Whether the Sign In was successfull
     func signInEmailPasswd() async -> Bool {
