@@ -1,5 +1,5 @@
 //
-//  AuthenticationView.swift
+//  AuthFlowView.swift
 //  The Ticklist
 //
 //  Created by Torbjørn Wiik on 28/10/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AuthenticationView: View {
+struct AuthFlowView: View {
     
     @EnvironmentObject var authViewModel: AuthenticationViewModel
     
@@ -22,5 +22,5 @@ struct AuthenticationView: View {
 }
 
 #Preview {
-    AuthenticationView().environmentObject(AuthenticationViewModel())
+    AuthFlowView().environmentObject(AuthenticationViewModel())
 }
