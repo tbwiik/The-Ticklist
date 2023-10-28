@@ -85,6 +85,7 @@ class AuthenticationViewModel: ObservableObject {
     /// Clear all user fields and set non-authenticated
     func reset() {
         self.authState = .unAuthenticated
+        self.authFlow = .signIn
         self.email = ""
         self.passwd = ""
         self.confirmPasswd = ""
