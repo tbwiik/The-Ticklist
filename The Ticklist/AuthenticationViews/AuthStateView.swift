@@ -19,13 +19,15 @@ struct AuthStateView<Content>: View where Content: View{
     
     var body: some View {
         
-        switch authViewModel.authState {
-        case .authenticated:
-            content()
-        case .authenticating:
-            Text("Waiting for authentication...")
-        case .unAuthenticated:
-            AuthFlowView().environmentObject(authViewModel)
+        VStack{
+            switch authViewModel.authState {
+            case .authenticated:
+                content()
+            case .authenticating:
+                Text("Waiting for authentication...")
+            case .unAuthenticated:
+                AuthFlowView()
+            }
         }
     }
 }

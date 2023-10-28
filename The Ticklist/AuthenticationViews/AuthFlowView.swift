@@ -12,11 +12,13 @@ struct AuthFlowView: View {
     @EnvironmentObject var authViewModel: AuthenticationViewModel
     
     var body: some View {
-        switch authViewModel.authFlow{
-        case .signIn:
-            SignInView().environmentObject(authViewModel)
-        case .signUp:
-            SignUpView().environmentObject(authViewModel)
+        VStack {
+            switch authViewModel.authFlow{
+            case .signIn:
+                SignInView()
+            case .signUp:
+                SignUpView()
+            }
         }
     }
 }
