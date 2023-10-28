@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TickListView: View {
     
+    @EnvironmentObject var authViewModel: AuthViewModel
+    
     @Environment(\.scenePhase) private var scenePhase
     
     @Binding var ticklist: TickList
@@ -16,6 +18,12 @@ struct TickListView: View {
     @State private var newTickData = Tick.Data()
     
     let saveAction: () -> Void
+    
+    private func signout() {
+        Task{
+            await authViewModel.signOut()
+        }
+    }
     
     var body: some View {
         ZStack {
@@ -33,6 +41,14 @@ struct TickListView: View {
                 }
             }
             VStack {
+                HStack{
+                    Spacer()
+                    Button(action: signout){
+                        Image(systemName: "clear")
+                            .foregroundColor(.red)
+                    }
+                    .padding()
+                }
                 Spacer()
                 AddButtonView(action: {isAdding = true})
                     .font(.system(size: 40))
