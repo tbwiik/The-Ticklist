@@ -26,13 +26,15 @@ struct SignInView: View {
     
     var body: some View {
         
+        Spacer()
+        
         VStack {
             TextField("Email", text: $authViewModel.email)
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled(true)
             SecureField("Password", text: $authViewModel.passwd)
         }
-        .padding()
+        .padding(50)
         
         Button (action: signInEmailPasswd){
             
@@ -47,7 +49,9 @@ struct SignInView: View {
             authViewModel.reset()
         }) { wrapped in
             ErrorView(errorWrapper: wrapped)
-        }.buttonStyle(.bordered)
+        }.buttonStyle(.borderedProminent)
+        
+        Spacer()
         
         Button("Sign up", action: authViewModel.switchAuthFlow)
     }
