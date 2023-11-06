@@ -15,6 +15,7 @@ struct TickListView: View {
     
     @Binding var ticklist: TickList
     @State private var isAdding = false
+    @State private var showProfileView = false
     @State private var newTickData = Tick.Data()
     
     let saveAction: () -> Void
@@ -44,9 +45,8 @@ struct TickListView: View {
                 Spacer()
                 HStack{
                     Spacer()
-                    NavigationLink {
-                        ProfileView()
-                            .environmentObject(authViewModel)
+                    Button{
+                        showProfileView = true
                     } label: {
                         Image(systemName: "person.circle")
                             .padding()
@@ -58,6 +58,18 @@ struct TickListView: View {
             
         }
         .navigationTitle("Ticklist")
+        .sheet(isPresented: $showProfileView){
+            NavigationView {
+                ProfileView()
+                    .toolbar{
+                        ToolbarItem(placement: .cancellationAction){
+                            Button("Cancel"){
+                                showProfileView = false
+                            }
+                        }
+                    }
+            }
+        }
         .sheet(isPresented: $isAdding){
             NavigationView {
                 AddClimbView(data: $newTickData)

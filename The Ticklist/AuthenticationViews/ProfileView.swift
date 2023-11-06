@@ -11,9 +11,13 @@ struct ProfileView: View {
     
     @EnvironmentObject var authViewModel: AuthViewModel
     
+    @Environment(\.dismiss) private var dismiss
+    
     private func signOut() {
         Task{
-            await authViewModel.signOut()
+            if await authViewModel.signOut() == true {
+                dismiss()
+            }
         }
     }
     
