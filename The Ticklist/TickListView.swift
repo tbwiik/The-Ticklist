@@ -41,19 +41,24 @@ struct TickListView: View {
                 }
             }
             VStack {
+                Spacer()
+                AddButtonView(action: {isAdding = true})
+                        .font(.system(size: 40))
+                        .accessibilityLabel("Add climb")
+            }
+            VStack{
+                Spacer()
                 HStack{
                     Spacer()
                     Button(action: signout){
-                        Image(systemName: "clear")
-                            .foregroundColor(.red)
+                        Image(systemName: "person.circle")
+                            .foregroundColor(.blue)
                     }
                     .padding()
+                    .font(.system(size: 20))
                 }
-                Spacer()
-                AddButtonView(action: {isAdding = true})
-                    .font(.system(size: 40))
-                    .accessibilityLabel("Add climb")
             }
+            
         }
         .navigationTitle("Ticklist")
         .sheet(isPresented: $isAdding){
