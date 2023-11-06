@@ -27,6 +27,8 @@ struct SignUpView: View {
     
     var body: some View {
         
+        Spacer()
+        
         VStack (alignment: .center) {
             
             TextField("Email", text: $authViewModel.email)
@@ -36,7 +38,7 @@ struct SignUpView: View {
             SecureField("Password", text: $authViewModel.passwd)
             SecureField("Confirm password", text: $authViewModel.confirmPasswd)
         }
-        .padding()
+        .padding(50)
         
         Button (action: signUpEmailPasswd){
             
@@ -51,7 +53,9 @@ struct SignUpView: View {
             authViewModel.reset()
         }) { wrapped in
             ErrorView(errorWrapper: wrapped)
-        }.buttonStyle(.bordered)
+        }.buttonStyle(.borderedProminent)
+        
+        Spacer()
         
         Button("Sign in", action: authViewModel.switchAuthFlow)
     }
