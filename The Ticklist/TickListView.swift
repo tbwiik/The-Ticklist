@@ -15,15 +15,10 @@ struct TickListView: View {
     
     @Binding var ticklist: TickList
     @State private var isAdding = false
+    @State private var showProfileView = false
     @State private var newTickData = Tick.Data()
     
     let saveAction: () -> Void
-    
-    private func signout() {
-        Task{
-            await authViewModel.signOut()
-        }
-    }
     
     var body: some View {
         ZStack {
@@ -41,21 +36,40 @@ struct TickListView: View {
                 }
             }
             VStack {
-                HStack{
-                    Spacer()
-                    Button(action: signout){
-                        Image(systemName: "clear")
-                            .foregroundColor(.red)
-                    }
-                    .padding()
-                }
                 Spacer()
                 AddButtonView(action: {isAdding = true})
-                    .font(.system(size: 40))
-                    .accessibilityLabel("Add climb")
+                        .font(.system(size: 40))
+                        .accessibilityLabel("Add climb")
             }
+            VStack{
+                Spacer()
+                HStack{
+                    Spacer()
+                    Button{
+                        showProfileView = true
+                    } label: {
+                        Image(systemName: "person.circle")
+                            .padding()
+                            .font(.system(size: 20))
+                    }
+
+                }
+            }
+            
         }
         .navigationTitle("Ticklist")
+        .sheet(isPresented: $showProfileView){
+            NavigationView {
+                ProfileView()
+                    .toolbar{
+                        ToolbarItem(placement: .cancellationAction){
+                            Button("Cancel"){
+                                showProfileView = false
+                            }
+                        }
+                    }
+            }
+        }
         .sheet(isPresented: $isAdding){
             NavigationView {
                 AddClimbView(data: $newTickData)

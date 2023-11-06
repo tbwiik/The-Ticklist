@@ -35,6 +35,7 @@
 		847D24702AEC0AEA005363B2 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D246F2AEC0AEA005363B2 /* AuthViewModel.swift */; };
 		847D24752AEC13BD005363B2 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D24742AEC13BD005363B2 /* SignUpView.swift */; };
 		847D24772AEC3B7B005363B2 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D24762AEC3B7B005363B2 /* SignInView.swift */; };
+		84AA3FD52AF96A3100008D2A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA3FD42AF96A3100008D2A /* ProfileView.swift */; };
 		84C6BC55296EEC7B00C20C4D /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6BC54296EEC7B00C20C4D /* Log.swift */; };
 		84C6BC57296EEC8F00C20C4D /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6BC56296EEC8F00C20C4D /* Data.swift */; };
 		84C6BC59296EED2700C20C4D /* sampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6BC58296EED2700C20C4D /* sampleData.swift */; };
@@ -90,6 +91,7 @@
 		847D246F2AEC0AEA005363B2 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		847D24742AEC13BD005363B2 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		847D24762AEC3B7B005363B2 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		84AA3FD42AF96A3100008D2A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		84C6BC54296EEC7B00C20C4D /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		84C6BC56296EEC8F00C20C4D /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		84C6BC58296EED2700C20C4D /* sampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sampleData.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				847D24762AEC3B7B005363B2 /* SignInView.swift */,
 				845C88E02AED5E32005284FB /* AuthFlowView.swift */,
 				845FAC5C2AED61DD001166BB /* AuthStateView.swift */,
+				84AA3FD42AF96A3100008D2A /* ProfileView.swift */,
 			);
 			path = AuthenticationViews;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 			files = (
 				847350672968577C00685150 /* CardView.swift in Sources */,
 				84C6BC55296EEC7B00C20C4D /* Log.swift in Sources */,
+				84AA3FD52AF96A3100008D2A /* ProfileView.swift in Sources */,
 				847D24702AEC0AEA005363B2 /* AuthViewModel.swift in Sources */,
 				847350632967555800685150 /* AddClimbView.swift in Sources */,
 				840D303D2ADAB9D6007B964B /* DatabaseManager.swift in Sources */,
