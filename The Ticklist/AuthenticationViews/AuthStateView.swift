@@ -24,7 +24,8 @@ struct AuthStateView<Content>: View where Content: View{
             case .authenticated:
                 content()
             case .authenticating:
-                Text("Waiting for authentication...")
+                ProgressView()
+                Text("Authenticating...")
             case .unAuthenticated:
                 AuthFlowView()
             }
