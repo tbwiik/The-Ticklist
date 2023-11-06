@@ -19,12 +19,6 @@ struct TickListView: View {
     
     let saveAction: () -> Void
     
-    private func signout() {
-        Task{
-            await authViewModel.signOut()
-        }
-    }
-    
     var body: some View {
         ZStack {
             List {
@@ -50,12 +44,15 @@ struct TickListView: View {
                 Spacer()
                 HStack{
                     Spacer()
-                    Button(action: signout){
+                    NavigationLink {
+                        ProfileView()
+                            .environmentObject(authViewModel)
+                    } label: {
                         Image(systemName: "person.circle")
-                            .foregroundColor(.blue)
+                            .padding()
+                            .font(.system(size: 20))
                     }
-                    .padding()
-                    .font(.system(size: 20))
+
                 }
             }
             
