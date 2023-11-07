@@ -29,6 +29,12 @@ class DatabaseManager: ObservableObject {
      */
     private var storagePath: CollectionReference {
         
+        /* WARNING:
+         Due to addStateDidChangeListener is running asynchronously
+         may it be possible for the next line of code to enter else even with user
+         That is both incorrect, and will also result in lost data...
+         */
+         
         if self.userId != nil{
             return Firestore.firestore().collection("users").document(self.userId!).collection("TicklistV1")
         } else {
