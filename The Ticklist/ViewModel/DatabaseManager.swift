@@ -45,7 +45,7 @@ class DatabaseManager: ObservableObject {
      
      - Throws error if failing to load
      */
-    static func load() async throws -> TickList {
+    func load() async throws -> TickList {
         try await withCheckedThrowingContinuation{ continuation in
             load { result in
                 switch result {
@@ -64,14 +64,14 @@ class DatabaseManager: ObservableObject {
      - If successfull: completion with data
      - If failure: completion with error
      */
-    static func load(completion: @escaping (Result<TickList, Error>) -> Void){
+    func load(completion: @escaping (Result<TickList, Error>) -> Void){
         
         // Is it bad running this whole piece on main thread? Probably
         // Does it work? Fuck yes
         
         DispatchQueue.main.async{
             
-            let coll = Firestore.firestore().collection("TestListV1")
+            let coll = Firestore.firestore().collection(self.userId!)
             var ticklist = TickList()
             
             coll.getDocuments { snapshot, error in
@@ -116,7 +116,7 @@ class DatabaseManager: ObservableObject {
      - Throws error if failing to save
      */
     @discardableResult
-    static func save(ticklist: TickList) async throws -> Int {
+    func save(ticklist: TickList) async throws -> Int {
         try await withCheckedThrowingContinuation{ continuation in
             save(ticklist: ticklist){ result in
                 switch result {
@@ -135,11 +135,11 @@ class DatabaseManager: ObservableObject {
      - If successfull: completion with count of ticks added
      - If failure: completion with error
      */
-    static func save(ticklist: TickList, completion: @escaping (Result<Int, Error>) -> Void) {
+    func save(ticklist: TickList, completion: @escaping (Result<Int, Error>) -> Void) {
         DispatchQueue.global(qos: .background).async {
             
             do {
-                let coll = Firestore.firestore().collection("TestListV1")
+                let coll = Firestore.firestore().collection(self.userId!)
                 
                 // Save ticklist to database
                 for tick in ticklist.ticks {
