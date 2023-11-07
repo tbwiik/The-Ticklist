@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import FirebaseAuth
 
 /*
  Manager for saving and loading to remote FireStore database.
@@ -17,6 +18,26 @@ class DatabaseManager: ObservableObject {
     
     ///Publishing variable containing ticklist
     @Published var ticklist: TickList = TickList()
+    private var userId: String?
+    
+    /// Define handler for authentication state
+    private var authHandler: AuthStateDidChangeListenerHandle?
+    
+    
+    init() {
+        addAuthHandler()
+    }
+    
+    /// Add handler for user and authentication state
+    func addAuthHandler() {
+        
+        if authHandler == nil { // If not already defined
+            authHandler = Auth.auth().addStateDidChangeListener({ auth, user in
+                self.userId = user != nil ? user!.uid : UUID().uuidString
+            })
+        }
+        
+    }
     
     
     /**
