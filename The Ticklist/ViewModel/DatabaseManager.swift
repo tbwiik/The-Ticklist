@@ -71,7 +71,7 @@ class DatabaseManager: ObservableObject {
         
         DispatchQueue.main.async{
             
-            let coll = Firestore.firestore().collection(self.userId!)
+            let coll = Firestore.firestore().collection("users").document(self.userId!).collection("TicklistV1")
             var ticklist = TickList()
             
             coll.getDocuments { snapshot, error in
@@ -139,7 +139,7 @@ class DatabaseManager: ObservableObject {
         DispatchQueue.global(qos: .background).async {
             
             do {
-                let coll = Firestore.firestore().collection(self.userId!)
+                let coll = Firestore.firestore().collection("users").document(self.userId!).collection("TicklistV1")
                 
                 // Save ticklist to database
                 for tick in ticklist.ticks {
