@@ -7,12 +7,25 @@
 
 import SwiftUI
 import FirebaseCore
+import FirebaseAuth
+import FirebaseFirestore
 
 // Configure database
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+      
     FirebaseApp.configure()
+    Auth.auth().useEmulator(withHost:"127.0.0.1", port:9099) // Run on emulator and not on production db
+      
+    // This code connect the simulator to a local Firebase emulator and not production db
+    // Remember to $firebase emulators:start before use
+    let settings = Firestore.firestore().settings;
+    settings.host = "127.0.0.1:8080";
+    //        settings.cacheSettings = false;
+    settings.isSSLEnabled = false;
+    Firestore.firestore().settings = settings;
+      
     return true
   }
 }
@@ -23,24 +36,29 @@ struct The_TicklistApp: App {
     // Initialize database
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
-    // Define vars
+    // Initialize Environment-objects
     @StateObject private var databaseManager = DatabaseManager()
+    @StateObject var authViewModel = AuthViewModel()
+    
+    // Define errorWrapper
     @State private var errorWrapper: ErrorWrapper?
     
     var body: some Scene {
         WindowGroup {
             NavigationView{
-                TickListView(ticklist: $databaseManager.ticklist) {
-                    
-                    Task {
-                        do {
-                            try await DatabaseManager.save(ticklist: databaseManager.ticklist)
-                        } catch {
-                            errorWrapper = ErrorWrapper(error: error, solution: "Try again")
+                AuthStateView {
+                    TickListView(ticklist: $databaseManager.ticklist) {
+                        
+                        Task {
+                            do {
+                                try await DatabaseManager.save(ticklist: databaseManager.ticklist)
+                            } catch {
+                                errorWrapper = ErrorWrapper(error: error, solution: "Try again")
+                            }
                         }
                     }
                 }
-                
+                .environmentObject(authViewModel)
             }
             
             // Load from database on setup

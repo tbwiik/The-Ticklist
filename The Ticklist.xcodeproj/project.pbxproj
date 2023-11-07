@@ -13,6 +13,8 @@
 		840D303B2ADAAF3E007B964B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 840D303A2ADAAF3E007B964B /* GoogleService-Info.plist */; };
 		840D303D2ADAB9D6007B964B /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840D303C2ADAB9D6007B964B /* DatabaseManager.swift */; };
 		84585CC62AE057E000B47617 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84585CC52AE057E000B47617 /* DatabaseManager.swift */; };
+		845C88E12AED5E32005284FB /* AuthFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C88E02AED5E32005284FB /* AuthFlowView.swift */; };
+		845FAC5D2AED61DD001166BB /* AuthStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FAC5C2AED61DD001166BB /* AuthStateView.swift */; };
 		8473502F29674A6900685150 /* The_TicklistApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473502E29674A6900685150 /* The_TicklistApp.swift */; };
 		8473503329674A6900685150 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8473503229674A6900685150 /* Assets.xcassets */; };
 		8473503629674A6900685150 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8473503529674A6900685150 /* Preview Assets.xcassets */; };
@@ -30,6 +32,10 @@
 		8473506F2969769700685150 /* Dicipline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473506E2969769700685150 /* Dicipline.swift */; };
 		8473507129697DB000685150 /* StarRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473507029697DB000685150 /* StarRating.swift */; };
 		8473507729699EB100685150 /* TickList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473507629699EB100685150 /* TickList.swift */; };
+		847D24702AEC0AEA005363B2 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D246F2AEC0AEA005363B2 /* AuthViewModel.swift */; };
+		847D24752AEC13BD005363B2 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D24742AEC13BD005363B2 /* SignUpView.swift */; };
+		847D24772AEC3B7B005363B2 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D24762AEC3B7B005363B2 /* SignInView.swift */; };
+		84AA3FD52AF96A3100008D2A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA3FD42AF96A3100008D2A /* ProfileView.swift */; };
 		84C6BC55296EEC7B00C20C4D /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6BC54296EEC7B00C20C4D /* Log.swift */; };
 		84C6BC57296EEC8F00C20C4D /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6BC56296EEC8F00C20C4D /* Data.swift */; };
 		84C6BC59296EED2700C20C4D /* sampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6BC58296EED2700C20C4D /* sampleData.swift */; };
@@ -60,6 +66,8 @@
 		840D303A2ADAAF3E007B964B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		840D303C2ADAB9D6007B964B /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		84585CC52AE057E000B47617 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		845C88E02AED5E32005284FB /* AuthFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowView.swift; sourceTree = "<group>"; };
+		845FAC5C2AED61DD001166BB /* AuthStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStateView.swift; sourceTree = "<group>"; };
 		8473502B29674A6800685150 /* The Ticklist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Ticklist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8473502E29674A6900685150 /* The_TicklistApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_TicklistApp.swift; sourceTree = "<group>"; };
 		8473503229674A6900685150 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,6 +88,10 @@
 		8473506E2969769700685150 /* Dicipline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dicipline.swift; sourceTree = "<group>"; };
 		8473507029697DB000685150 /* StarRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRating.swift; sourceTree = "<group>"; };
 		8473507629699EB100685150 /* TickList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickList.swift; sourceTree = "<group>"; };
+		847D246F2AEC0AEA005363B2 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		847D24742AEC13BD005363B2 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		847D24762AEC3B7B005363B2 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		84AA3FD42AF96A3100008D2A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		84C6BC54296EEC7B00C20C4D /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		84C6BC56296EEC8F00C20C4D /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		84C6BC58296EED2700C20C4D /* sampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sampleData.swift; sourceTree = "<group>"; };
@@ -122,6 +134,7 @@
 			children = (
 				840D303C2ADAB9D6007B964B /* DatabaseManager.swift */,
 				847350642968169200685150 /* TickListStore.swift */,
+				847D246F2AEC0AEA005363B2 /* AuthViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -149,11 +162,12 @@
 		8473502D29674A6900685150 /* The Ticklist */ = {
 			isa = PBXGroup;
 			children = (
-				840D30372AD7C55A007B964B /* ViewModel */,
 				840D303A2ADAAF3E007B964B /* GoogleService-Info.plist */,
-				8473505B29674B3600685150 /* Model */,
 				8473502E29674A6900685150 /* The_TicklistApp.swift */,
+				8473505B29674B3600685150 /* Model */,
+				840D30372AD7C55A007B964B /* ViewModel */,
 				84C6BC5A296EEE0B00C20C4D /* Global */,
+				847D24712AEC138E005363B2 /* AuthenticationViews */,
 				8473506A2968897C00685150 /* ErrorView.swift */,
 				8473505E29674C5E00685150 /* TickListView.swift */,
 				847350662968577C00685150 /* CardView.swift */,
@@ -203,6 +217,18 @@
 				8473506C29688C6D00685150 /* ErrorWrapper.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		847D24712AEC138E005363B2 /* AuthenticationViews */ = {
+			isa = PBXGroup;
+			children = (
+				847D24742AEC13BD005363B2 /* SignUpView.swift */,
+				847D24762AEC3B7B005363B2 /* SignInView.swift */,
+				845C88E02AED5E32005284FB /* AuthFlowView.swift */,
+				845FAC5C2AED61DD001166BB /* AuthStateView.swift */,
+				84AA3FD42AF96A3100008D2A /* ProfileView.swift */,
+			);
+			path = AuthenticationViews;
 			sourceTree = "<group>";
 		};
 		84C6BC51296EEC5A00C20C4D /* Tick */ = {
@@ -366,6 +392,8 @@
 			files = (
 				847350672968577C00685150 /* CardView.swift in Sources */,
 				84C6BC55296EEC7B00C20C4D /* Log.swift in Sources */,
+				84AA3FD52AF96A3100008D2A /* ProfileView.swift in Sources */,
+				847D24702AEC0AEA005363B2 /* AuthViewModel.swift in Sources */,
 				847350632967555800685150 /* AddClimbView.swift in Sources */,
 				840D303D2ADAB9D6007B964B /* DatabaseManager.swift in Sources */,
 				8473505D29674B3F00685150 /* Tick.swift in Sources */,
@@ -376,9 +404,13 @@
 				847350612967522100685150 /* TickView.swift in Sources */,
 				84C6BC5E296EEFA700C20C4D /* AddLogItemView.swift in Sources */,
 				8473507729699EB100685150 /* TickList.swift in Sources */,
+				845FAC5D2AED61DD001166BB /* AuthStateView.swift in Sources */,
 				8473507129697DB000685150 /* StarRating.swift in Sources */,
 				8473506B2968897C00685150 /* ErrorView.swift in Sources */,
+				847D24772AEC3B7B005363B2 /* SignInView.swift in Sources */,
 				8473506F2969769700685150 /* Dicipline.swift in Sources */,
+				847D24752AEC13BD005363B2 /* SignUpView.swift in Sources */,
+				845C88E12AED5E32005284FB /* AuthFlowView.swift in Sources */,
 				84C6BC57296EEC8F00C20C4D /* Data.swift in Sources */,
 				84C6BC5C296EEE2700C20C4D /* AddButtonView.swift in Sources */,
 				84C6BC59296EED2700C20C4D /* sampleData.swift in Sources */,

@@ -9,10 +9,13 @@ import SwiftUI
 
 struct TickListView: View {
     
+    @EnvironmentObject var authViewModel: AuthViewModel
+    
     @Environment(\.scenePhase) private var scenePhase
     
     @Binding var ticklist: TickList
     @State private var isAdding = false
+    @State private var showProfileView = false
     @State private var newTickData = Tick.Data()
     
     let saveAction: () -> Void
@@ -35,11 +38,38 @@ struct TickListView: View {
             VStack {
                 Spacer()
                 AddButtonView(action: {isAdding = true})
-                    .font(.system(size: 40))
-                    .accessibilityLabel("Add climb")
+                        .font(.system(size: 40))
+                        .accessibilityLabel("Add climb")
             }
+            VStack{
+                Spacer()
+                HStack{
+                    Spacer()
+                    Button{
+                        showProfileView = true
+                    } label: {
+                        Image(systemName: "person.circle")
+                            .padding()
+                            .font(.system(size: 20))
+                    }
+
+                }
+            }
+            
         }
         .navigationTitle("Ticklist")
+        .sheet(isPresented: $showProfileView){
+            NavigationView {
+                ProfileView()
+                    .toolbar{
+                        ToolbarItem(placement: .cancellationAction){
+                            Button("Cancel"){
+                                showProfileView = false
+                            }
+                        }
+                    }
+            }
+        }
         .sheet(isPresented: $isAdding){
             NavigationView {
                 AddClimbView(data: $newTickData)
