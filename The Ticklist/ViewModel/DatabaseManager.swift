@@ -22,42 +22,28 @@ class DatabaseManager: ObservableObject {
     /// Define a userID property
     private var userId: String?
     
-    /**
-     Define default storage path for a ticklist in database.
-     
-     This path will in theory never be used due to overwrite in initializer
-     */
-    private var storagePath: CollectionReference {
-        
-        /* WARNING:
-         Due to addStateDidChangeListener is running asynchronously
-         may it be possible for the next line of code to enter else even with user
-         That is both incorrect, and will also result in lost data...
-         */
-         
-        if self.userId != nil{
-            return Firestore.firestore().collection("users").document(self.userId!).collection("TicklistV1")
-        } else {
-            return Firestore.firestore().collection("tmp-ticklist")
-        }
-        
-    }
+    /// Define a storagePath
+    private var storagePath: CollectionReference?
     
     /// Define handler for authentication state
     private var authHandler: AuthStateDidChangeListenerHandle?
     
     
     init() {
-        addAuthHandler()
+        Task{
+            await addAuthHandler()
+        }
         
     }
     
     /// Add handler for user and authentication state
+    @MainActor
     func addAuthHandler() {
         
         if authHandler == nil { // If not already defined
             authHandler = Auth.auth().addStateDidChangeListener({ auth, user in
                 self.userId = user != nil ? user!.uid : UUID().uuidString
+                self.storagePath = Firestore.firestore().collection("users").document(self.userId!).collection("TicklistV1")
             })
         }
         
@@ -95,7 +81,8 @@ class DatabaseManager: ObservableObject {
         
         DispatchQueue.main.async{
             
-            self.storagePath.getDocuments { snapshot, error in
+            // WARNING: possbily unwrapping nil value
+            self.storagePath!.getDocuments { snapshot, error in
                 
                 // Check no error
                 guard error == nil else {
@@ -163,7 +150,8 @@ class DatabaseManager: ObservableObject {
                 
                 // Save ticklist to database
                 for tick in self.ticklist.ticks {
-                    try self.storagePath.document(tick.id.uuidString).setData(from: tick)
+                    // WARNING: possibly unwrapping nil value
+                    try self.storagePath!.document(tick.id.uuidString).setData(from: tick)
                 }
                 
                 // Return successfull completion with number of ticks added
