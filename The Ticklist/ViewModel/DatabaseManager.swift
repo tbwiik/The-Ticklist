@@ -137,9 +137,9 @@ class DatabaseManager: ObservableObject {
      - Throws error if failing to save
      */
     @discardableResult
-    func save(ticklist: TickList) async throws -> Int {
+    func save() async throws -> Int {
         try await withCheckedThrowingContinuation{ continuation in
-            save(ticklist: ticklist){ result in
+            save(){ result in
                 switch result {
                 case .failure(let error):
                     continuation.resume(throwing: error)
@@ -156,7 +156,7 @@ class DatabaseManager: ObservableObject {
      - If successfull: completion with count of ticks added
      - If failure: completion with error
      */
-    func save(ticklist: TickList, completion: @escaping (Result<Int, Error>) -> Void) {
+    func save(completion: @escaping (Result<Int, Error>) -> Void) {
         DispatchQueue.global(qos: .background).async {
             
             do {
@@ -169,7 +169,7 @@ class DatabaseManager: ObservableObject {
                 // Return successfull completion with number of ticks added
                 DispatchQueue.main.async {
                     // TODO: change/remove line under?
-                    completion(.success(ticklist.ticks.count))
+                    completion(.success(self.ticklist.ticks.count))
                 }
                 
             // Handle error if occurs

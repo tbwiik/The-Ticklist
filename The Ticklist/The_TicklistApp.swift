@@ -51,7 +51,7 @@ struct The_TicklistApp: App {
                         
                         Task {
                             do {
-                                try await databaseManager.save(ticklist: databaseManager.ticklist)
+                                try await databaseManager.save()
                             } catch {
                                 errorWrapper = ErrorWrapper(error: error, solution: "Try again")
                             }
