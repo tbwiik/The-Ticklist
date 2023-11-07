@@ -18,7 +18,24 @@ class DatabaseManager: ObservableObject {
     
     ///Publishing variable containing ticklist
     @Published var ticklist: TickList = TickList()
+    
+    /// Define a userID property
     private var userId: String?
+    
+    /**
+     Define default storage path for a ticklist in database.
+     
+     This path will in theory never be used due to overwrite in initializer
+     */
+    private var storagePath: CollectionReference {
+        
+        if self.userId != nil{
+            return Firestore.firestore().collection("users").document(self.userId!).collection("TicklistV1")
+        } else {
+            return Firestore.firestore().collection("tmp-ticklist")
+        }
+        
+    }
     
     /// Define handler for authentication state
     private var authHandler: AuthStateDidChangeListenerHandle?
@@ -26,6 +43,7 @@ class DatabaseManager: ObservableObject {
     
     init() {
         addAuthHandler()
+        
     }
     
     /// Add handler for user and authentication state
@@ -71,10 +89,7 @@ class DatabaseManager: ObservableObject {
         
         DispatchQueue.main.async{
             
-            let coll = Firestore.firestore().collection("users").document(self.userId!).collection("TicklistV1")
-            var ticklist = TickList()
-            
-            coll.getDocuments { snapshot, error in
+            self.storagePath.getDocuments { snapshot, error in
                 
                 // Check no error
                 guard error == nil else {
@@ -94,7 +109,7 @@ class DatabaseManager: ObservableObject {
 
                     do{
                         let tick = try doc.data(as: Tick.self)
-                        ticklist.add(tickToAdd: tick)
+                        self.ticklist.add(tickToAdd: tick)
                     } catch {
                         completion(.failure(error))
                     }
@@ -102,7 +117,7 @@ class DatabaseManager: ObservableObject {
                 }
                 
                 // Return successfull result
-                completion(.success(ticklist))
+                completion(.success(self.ticklist))
                 
             }
             
@@ -139,11 +154,10 @@ class DatabaseManager: ObservableObject {
         DispatchQueue.global(qos: .background).async {
             
             do {
-                let coll = Firestore.firestore().collection("users").document(self.userId!).collection("TicklistV1")
                 
                 // Save ticklist to database
-                for tick in ticklist.ticks {
-                    try coll.document(tick.id.uuidString).setData(from: tick)
+                for tick in self.ticklist.ticks {
+                    try self.storagePath.document(tick.id.uuidString).setData(from: tick)
                 }
                 
                 // Return successfull completion with number of ticks added
