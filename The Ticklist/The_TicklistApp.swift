@@ -51,7 +51,7 @@ struct The_TicklistApp: App {
                         
                         Task {
                             do {
-                                try await DatabaseManager.save(ticklist: databaseManager.ticklist)
+                                try await databaseManager.save()
                             } catch {
                                 errorWrapper = ErrorWrapper(error: error, solution: "Try again")
                             }
@@ -64,7 +64,7 @@ struct The_TicklistApp: App {
             // Load from database on setup
             .task {
                 do {
-                    databaseManager.ticklist = try await DatabaseManager.load()
+                    databaseManager.ticklist = try await databaseManager.load()
                 } catch {
                     errorWrapper = ErrorWrapper(error: error, solution: "Loads sample data and continues")
                 }

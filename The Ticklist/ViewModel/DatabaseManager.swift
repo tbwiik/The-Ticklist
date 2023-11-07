@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import FirebaseAuth
 
 /*
  Manager for saving and loading to remote FireStore database.
@@ -18,13 +19,43 @@ class DatabaseManager: ObservableObject {
     ///Publishing variable containing ticklist
     @Published var ticklist: TickList = TickList()
     
+    /// Define a userID property
+    private var userId: String?
+    
+    /// Define a storagePath
+    private var storagePath: CollectionReference?
+    
+    /// Define handler for authentication state
+    private var authHandler: AuthStateDidChangeListenerHandle?
+    
+    
+    init() {
+        Task{
+            await addAuthHandler()
+        }
+        
+    }
+    
+    /// Add handler for user and authentication state
+    @MainActor
+    func addAuthHandler() {
+        
+        if authHandler == nil { // If not already defined
+            authHandler = Auth.auth().addStateDidChangeListener({ auth, user in
+                self.userId = user != nil ? user!.uid : UUID().uuidString
+                self.storagePath = Firestore.firestore().collection("users").document(self.userId!).collection("TicklistV1")
+            })
+        }
+        
+    }
+    
     
     /**
      Asynchronously load data from db
      
      - Throws error if failing to load
      */
-    static func load() async throws -> TickList {
+    func load() async throws -> TickList {
         try await withCheckedThrowingContinuation{ continuation in
             load { result in
                 switch result {
@@ -43,17 +74,15 @@ class DatabaseManager: ObservableObject {
      - If successfull: completion with data
      - If failure: completion with error
      */
-    static func load(completion: @escaping (Result<TickList, Error>) -> Void){
+    func load(completion: @escaping (Result<TickList, Error>) -> Void){
         
         // Is it bad running this whole piece on main thread? Probably
         // Does it work? Fuck yes
         
         DispatchQueue.main.async{
             
-            let coll = Firestore.firestore().collection("TestListV1")
-            var ticklist = TickList()
-            
-            coll.getDocuments { snapshot, error in
+            // WARNING: possbily unwrapping nil value
+            self.storagePath!.getDocuments { snapshot, error in
                 
                 // Check no error
                 guard error == nil else {
@@ -73,7 +102,7 @@ class DatabaseManager: ObservableObject {
 
                     do{
                         let tick = try doc.data(as: Tick.self)
-                        ticklist.add(tickToAdd: tick)
+                        self.ticklist.add(tickToAdd: tick)
                     } catch {
                         completion(.failure(error))
                     }
@@ -81,7 +110,7 @@ class DatabaseManager: ObservableObject {
                 }
                 
                 // Return successfull result
-                completion(.success(ticklist))
+                completion(.success(self.ticklist))
                 
             }
             
@@ -95,9 +124,9 @@ class DatabaseManager: ObservableObject {
      - Throws error if failing to save
      */
     @discardableResult
-    static func save(ticklist: TickList) async throws -> Int {
+    func save() async throws -> Int {
         try await withCheckedThrowingContinuation{ continuation in
-            save(ticklist: ticklist){ result in
+            save(){ result in
                 switch result {
                 case .failure(let error):
                     continuation.resume(throwing: error)
@@ -114,21 +143,21 @@ class DatabaseManager: ObservableObject {
      - If successfull: completion with count of ticks added
      - If failure: completion with error
      */
-    static func save(ticklist: TickList, completion: @escaping (Result<Int, Error>) -> Void) {
+    func save(completion: @escaping (Result<Int, Error>) -> Void) {
         DispatchQueue.global(qos: .background).async {
             
             do {
-                let coll = Firestore.firestore().collection("TestListV1")
                 
                 // Save ticklist to database
-                for tick in ticklist.ticks {
-                    try coll.document(tick.id.uuidString).setData(from: tick)
+                for tick in self.ticklist.ticks {
+                    // WARNING: possibly unwrapping nil value
+                    try self.storagePath!.document(tick.id.uuidString).setData(from: tick)
                 }
                 
                 // Return successfull completion with number of ticks added
                 DispatchQueue.main.async {
                     // TODO: change/remove line under?
-                    completion(.success(ticklist.ticks.count))
+                    completion(.success(self.ticklist.ticks.count))
                 }
                 
             // Handle error if occurs
