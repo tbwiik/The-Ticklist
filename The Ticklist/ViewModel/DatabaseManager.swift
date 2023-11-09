@@ -80,8 +80,19 @@ class DatabaseManager: ObservableObject {
         return true
     }
     
-    func deleteTick() async -> Bool {
-        return
+    func deleteTick(_ tick: Tick) async -> Bool {
+        
+        guard storagePath != nil else {
+            // TODO: wait for authentication handler
+        }
+        
+        do {
+            try await self.storagePath!.document(tick.id.uuidString).delete()
+        } catch {
+            // TODO: handle failure
+        }
+        
+        return true
     }
     
     
