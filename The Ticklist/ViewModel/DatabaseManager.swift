@@ -11,9 +11,8 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseAuth
 
-/*
- Manager for saving and loading to remote FireStore database.
- */
+@MainActor
+/// Handle communication with firestore database
 class DatabaseManager: ObservableObject {
     
     ///Publishing variable containing ticklist
@@ -30,149 +29,32 @@ class DatabaseManager: ObservableObject {
     
     
     init() {
-        Task{
-            await addAuthHandler()
-        }
-        
+        addAuthHandler()
     }
     
     /// Add handler for user and authentication state
-    @MainActor
     func addAuthHandler() {
-        
         if authHandler == nil { // If not already defined
             authHandler = Auth.auth().addStateDidChangeListener({ auth, user in
                 self.userId = user != nil ? user!.uid : UUID().uuidString
                 self.storagePath = Firestore.firestore().collection("users").document(self.userId!).collection("TicklistV1")
             })
         }
-        
     }
     
     
-    /**
-     Asynchronously load data from db
-     
-     - Throws error if failing to load
-     */
-    func load() async throws -> TickList {
-        try await withCheckedThrowingContinuation{ continuation in
-            load { result in
-                switch result {
-                case .failure(let error):
-                    continuation.resume(throwing: error)
-                case .success(let ticklist):
-                    continuation.resume(returning: ticklist)
-                }
-            }
-        }
+    func fetchTicklist() async -> TickList {
+        return
     }
     
-    /**
-     Load ticklist from db
-     
-     - If successfull: completion with data
-     - If failure: completion with error
-     */
-    func load(completion: @escaping (Result<TickList, Error>) -> Void){
-        
-        // Is it bad running this whole piece on main thread? Probably
-        // Does it work? Fuck yes
-        
-        DispatchQueue.main.async{
-            
-            // WARNING: possbily unwrapping nil value
-            self.storagePath!.getDocuments { snapshot, error in
-                
-                // Check no error
-                guard error == nil else {
-                    completion(.failure(error!))
-                    return
-                }
-                
-                // Check that snapshot exists
-                guard snapshot != nil else {
-                    let error = NoSnapShotError.noSnapShotError("Failed to retrieve collection-snapshot from Firestore.")
-                    completion(.failure(error))
-                    return
-                }
-                
-                // Go through all documents and add to ticklist
-                for doc in snapshot!.documents{
-
-                    do{
-                        let tick = try doc.data(as: Tick.self)
-                        self.ticklist.add(tickToAdd: tick)
-                    } catch {
-                        completion(.failure(error))
-                    }
-
-                }
-                
-                // Return successfull result
-                completion(.success(self.ticklist))
-                
-            }
-            
-        }
-        
+    func saveTick() async -> Bool {
+        return
     }
     
-    /**
-     Asynchronously save data to db
-     
-     - Throws error if failing to save
-     */
-    @discardableResult
-    func save() async throws -> Int {
-        try await withCheckedThrowingContinuation{ continuation in
-            save(){ result in
-                switch result {
-                case .failure(let error):
-                    continuation.resume(throwing: error)
-                case .success(let ticklistSaved):
-                    continuation.resume(returning: ticklistSaved)
-                }
-            }
-        }
+    func deleteTick() async -> Bool {
+        return
     }
     
-    /**
-     Save ticklist to db
-     
-     - If successfull: completion with count of ticks added
-     - If failure: completion with error
-     */
-    func save(completion: @escaping (Result<Int, Error>) -> Void) {
-        DispatchQueue.global(qos: .background).async {
-            
-            do {
-                
-                // Save ticklist to database
-                for tick in self.ticklist.ticks {
-                    // WARNING: possibly unwrapping nil value
-                    try self.storagePath!.document(tick.id.uuidString).setData(from: tick)
-                }
-                
-                // Return successfull completion with number of ticks added
-                DispatchQueue.main.async {
-                    // TODO: change/remove line under?
-                    completion(.success(self.ticklist.ticks.count))
-                }
-                
-            // Handle error if occurs
-            } catch {
-                DispatchQueue.main.async {
-                    completion(.failure(error))
-                }
-            }
-            
-        }
-    }
+    
+    
 }
-
-
-enum NoSnapShotError: Error {
-    case noSnapShotError(String)
-}
-
