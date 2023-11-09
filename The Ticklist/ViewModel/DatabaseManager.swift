@@ -43,8 +43,26 @@ class DatabaseManager: ObservableObject {
     }
     
     
-    func fetchTicklist() async -> TickList {
-        return
+    func fetchTicklist() async -> Void {
+        
+        
+        guard storagePath != nil else {
+            // TODO: wait on authentication handler
+        }
+        
+        do {
+            
+            let snapshot = try await self.storagePath!.getDocuments()
+            let docs = snapshot.documents
+            
+            for doc in docs {
+                let tick = try doc.data(as: Tick.self)
+                self.ticklist.add(tickToAdd: tick)
+            }
+            
+        } catch {
+            // TODO: handle error
+        }
     }
     
     func saveTick() async -> Bool {
