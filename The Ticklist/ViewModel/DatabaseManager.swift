@@ -65,8 +65,19 @@ class DatabaseManager: ObservableObject {
         }
     }
     
-    func saveTick() async -> Bool {
-        return
+    func saveTick(_ tick: Tick) async -> Bool {
+        
+        guard storagePath != nil else {
+            // TODO: wait for authentication handler
+        }
+        
+        do {
+            try self.storagePath!.document(tick.id.uuidString).setData(from: tick)
+        } catch {
+            // TODO: handle failure
+        }
+        
+        return true
     }
     
     func deleteTick() async -> Bool {
