@@ -48,6 +48,7 @@ class DatabaseManager: ObservableObject {
         
         guard storagePath != nil else {
             // TODO: wait on authentication handler
+            return
         }
         
         do {
@@ -69,6 +70,7 @@ class DatabaseManager: ObservableObject {
         
         guard storagePath != nil else {
             // TODO: wait for authentication handler
+            return false
         }
         
         do {
@@ -84,6 +86,7 @@ class DatabaseManager: ObservableObject {
         
         guard storagePath != nil else {
             // TODO: wait for authentication handler
+            return false
         }
         
         do {
