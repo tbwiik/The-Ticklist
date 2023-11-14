@@ -11,7 +11,10 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseAuth
 
-@MainActor
+enum UserError: Error{
+    case noUser
+}
+
 /// Handle communication with firestore database
 class DatabaseManager: ObservableObject {
     
@@ -19,7 +22,7 @@ class DatabaseManager: ObservableObject {
     @Published var ticklist: TickList = TickList()
     
     /// Define a userID property
-    private var userId: String?
+    private var user: User?
     
     /// Define a storagePath
     private var storagePath: CollectionReference?
@@ -36,66 +39,48 @@ class DatabaseManager: ObservableObject {
     func addAuthHandler() {
         if authHandler == nil { // If not already defined
             authHandler = Auth.auth().addStateDidChangeListener({ auth, user in
-                self.userId = user != nil ? user!.uid : UUID().uuidString
-                self.storagePath = Firestore.firestore().collection("users").document(self.userId!).collection("TicklistV1")
+                self.user = user
+                if let userId = user?.uid {
+                    Firestore.firestore().collection("users").document(userId).collection("TicklistV1")
+                }
             })
         }
     }
     
     
-    func fetchTicklist() async -> Void {
+    func fetchTicklist() async throws -> TickList {
         
+        var ticklist = TickList()
         
-        guard storagePath != nil else {
-            // TODO: wait on authentication handler
-            return
+        guard let collectionRef = storagePath else {
+            throw UserError.noUser
         }
         
-        do {
-            
-            let snapshot = try await self.storagePath!.getDocuments()
-            let docs = snapshot.documents
-            
-            for doc in docs {
-                let tick = try doc.data(as: Tick.self)
-                self.ticklist.add(tickToAdd: tick)
-            }
-            
-        } catch {
-            // TODO: handle error
+        let snapshot = try await collectionRef.getDocuments()
+        for doc in snapshot.documents {
+            let tick = try doc.data(as: Tick.self)
+            ticklist.add(tickToAdd: tick)
         }
+        
+        return ticklist
     }
     
-    func saveTick(_ tick: Tick) async -> Bool {
+    func saveTick(_ tick: Tick) throws -> Void {
         
-        guard storagePath != nil else {
-            // TODO: wait for authentication handler
-            return false
+        guard let collectionRef = storagePath else {
+            throw UserError.noUser
         }
         
-        do {
-            try self.storagePath!.document(tick.id.uuidString).setData(from: tick)
-        } catch {
-            // TODO: handle failure
-        }
-        
-        return true
+        try collectionRef.document(tick.id.uuidString).setData(from: tick)
     }
     
-    func deleteTick(_ tick: Tick) async -> Bool {
+    func deleteTick(_ tick: Tick) async throws -> Void {
         
-        guard storagePath != nil else {
-            // TODO: wait for authentication handler
-            return false
+        guard let collectionRef = storagePath else {
+            throw UserError.noUser
         }
         
-        do {
-            try await self.storagePath!.document(tick.id.uuidString).delete()
-        } catch {
-            // TODO: handle failure
-        }
-        
-        return true
+        try await collectionRef.document(tick.id.uuidString).delete()
     }
     
     
