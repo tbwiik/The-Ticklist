@@ -7,28 +7,40 @@
 
 import Foundation
 
+enum PersistenceError: Error {
+    case storageNotInitialized
+}
+
 @MainActor
 class PersistenceViewModel: ObservableObject {
     
     ///Publishing variable containing ticklist
-    @Published var ticklist: TickList = TickList()
+    @Published var ticklist = TickList()
+    private var storageInitialized = false
     
     private var dbManager = DatabaseManager()
     
-    init() {
-        
-        Task{
-            ticklist = try await dbManager.fetchTicklist()
-            // NOTE: error never handled
-        }
+    
+    func loadTickList() async throws -> Void{
+        ticklist = try await dbManager.fetchTicklist()
     }
     
     func saveTick(_ tick: Tick) throws -> Void {
+        
+        guard storageInitialized else {
+            throw PersistenceError.storageNotInitialized
+        }
+        
         try dbManager.saveTick(tick)
         self.ticklist.add(tickToAdd: tick)
     }
     
     func deleteTick(_ tick: Tick) async throws -> Void {
+        
+        guard storageInitialized else {
+            throw PersistenceError.storageNotInitialized
+        }
+        
         try await dbManager.deleteTick(tick)
         self.ticklist.remove(tickToRemove: tick)
     }
