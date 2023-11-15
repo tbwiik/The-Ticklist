@@ -38,7 +38,7 @@ class DatabaseManager: ObservableObject {
             authHandler = Auth.auth().addStateDidChangeListener({ auth, user in
                 self.user = user
                 if let userId = user?.uid {
-                    Firestore.firestore().collection("users").document(userId).collection("TicklistV1")
+                    self.storagePath = Firestore.firestore().collection("users").document(userId).collection("TicklistV1")
                 }
             })
         }
