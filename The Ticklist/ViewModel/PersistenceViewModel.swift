@@ -46,7 +46,7 @@ class PersistenceViewModel: ObservableObject {
         }
         
         try dbManager.saveTick(tick)
-        self.ticklist.add(tickToAdd: tick)
+        self.ticklist.add(tick)
     }
     
     
@@ -65,7 +65,7 @@ class PersistenceViewModel: ObservableObject {
         }
         
         try await dbManager.deleteTick(tick)
-        self.ticklist.remove(tickToRemove: tick)
+        self.ticklist.remove(tick)
     }
     
     
