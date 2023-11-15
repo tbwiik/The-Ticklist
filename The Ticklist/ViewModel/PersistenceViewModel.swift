@@ -23,6 +23,7 @@ class PersistenceViewModel: ObservableObject {
     
     func loadTickList() async throws -> Void {
         ticklist = try await dbManager.fetchTicklist()
+        storageInitialized = true
     }
     
     func saveTick(_ tick: Tick) throws -> Void {

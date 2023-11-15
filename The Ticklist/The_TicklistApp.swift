@@ -47,7 +47,7 @@ struct The_TicklistApp: App {
         WindowGroup {
             NavigationView{
                 AuthStateView {
-                    TickListView($persistenceViewModel.ticklist)
+                    TickListView()
                     .task {
                         do {
                             try await persistenceViewModel.loadTickList()
@@ -57,6 +57,7 @@ struct The_TicklistApp: App {
                     }
                 }
                 .environmentObject(authViewModel)
+                .environmentObject(persistenceViewModel)
             }
             
             // Display errormessage

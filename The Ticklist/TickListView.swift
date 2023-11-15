@@ -10,30 +10,39 @@ import SwiftUI
 struct TickListView: View {
     
     @EnvironmentObject var authViewModel: AuthViewModel
+    @EnvironmentObject var persistenceViewModel: PersistenceViewModel
     
     @Environment(\.scenePhase) private var scenePhase
     
-    @Binding var ticklist: TickList
     @State private var isAdding = false
     @State private var showProfileView = false
     @State private var newTickData = Tick.Data()
+    @State private var errorWrapper: ErrorWrapper?
     
-    init(_ ticklist: Binding<TickList>) {
-        self._ticklist = ticklist
+    private func storageAction(_ action: @escaping () async throws-> Void){
+        Task {
+            do {
+                try await action()
+            } catch {
+                errorWrapper = ErrorWrapper(error: error, solution: "TBD")
+            }
+        }
     }
+    
+
     
     var body: some View {
         ZStack {
             List {
-                ForEach($ticklist.ticks) { $tick in
+                ForEach($persistenceViewModel.ticklist.ticks) { $tick in
                     NavigationLink(destination: {TickView($tick)}){
                         CardView(tick: tick)
                         //Swipe to delete, left to right
-                            .swipeActions(edge: .leading){
-                                Button("Delete", role: .destructive){
-                                    ticklist.remove(tickToRemove: tick)
-                                }
+                        .swipeActions(edge: .leading){
+                            Button("Delete", role: .destructive){
+                                storageAction { try await persistenceViewModel.deleteTick(tick)}
                             }
+                        } 
                     }
                 }
             }
@@ -85,7 +94,7 @@ struct TickListView: View {
                         ToolbarItem(placement: .confirmationAction){
                             Button("Add"){
                                 let tick = Tick(data: newTickData)
-                                ticklist.add(tickToAdd: tick)
+                                storageAction { try persistenceViewModel.saveTick(tick) }
                                 isAdding = false
                                 newTickData = Tick.Data()
                             }
@@ -94,13 +103,17 @@ struct TickListView: View {
                     }
             }
         }
+        // Display errormessage
+        .sheet(item: $errorWrapper) { wrapped in
+            ErrorView(errorWrapper: wrapped)
+        }
     }
 }
 
 struct TickListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            TickListView(.constant(Tick.sampleData))
+            TickListView()
         }
     }
 }
