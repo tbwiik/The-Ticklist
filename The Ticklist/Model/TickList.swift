@@ -34,7 +34,7 @@ struct TickList: Identifiable, Codable {
     }
     
     
-    func getIndex(tick: Tick) -> Int? {
+    func getIndex(_ tick: Tick) -> Int? {
         ticks.firstIndex(where: {$0 == tick})
     }
     
@@ -43,7 +43,7 @@ struct TickList: Identifiable, Codable {
      
      - Returns: optional tick based on index existing
      */
-    func getTick(index: Int) -> Tick? {
+    func getTick(_ index: Int) -> Tick? {
         return (ticks.indices.contains(index)) ? ticks[index] : nil
     }
     
@@ -53,10 +53,10 @@ struct TickList: Identifiable, Codable {
      - Add logItem to already created tick of same name and region
      - Add new tick if not already registered
      */
-    mutating func add(tickToAdd: Tick) -> Void {
+    mutating func add(_ tickToAdd: Tick) -> Void {
         for tick in ticks {
             if tick == tickToAdd{
-                ticks[getIndex(tick: tick)!].logItems.append(contentsOf: tickToAdd.logItems)
+                ticks[getIndex(tick)!].logItems.append(contentsOf: tickToAdd.logItems)
                 return
             }
         }
@@ -64,7 +64,7 @@ struct TickList: Identifiable, Codable {
     }
     
     ///Remove tick from ticklist
-    mutating func remove(tickToRemove: Tick) -> Void {
-        ticks.remove(at: getIndex(tick: tickToRemove)!)
+    mutating func remove(_ tickToRemove: Tick) -> Void {
+        ticks.remove(at: getIndex(tickToRemove)!)
     }
 }

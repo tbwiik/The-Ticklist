@@ -68,7 +68,7 @@ class DatabaseManager: ObservableObject {
         // Go through all ticks in ticklist
         for doc in snapshot.documents {
             let tick = try doc.data(as: Tick.self) // Decode to tick
-            ticklist.add(tickToAdd: tick) // Add to ticklist
+            ticklist.add(tick) // Add to ticklist
         }
         
         return ticklist
