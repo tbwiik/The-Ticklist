@@ -37,7 +37,7 @@ struct The_TicklistApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     // Initialize Environment-objects
-    @StateObject private var databaseManager = DatabaseManager()
+    @StateObject private var persistenceViewModel = PersistenceViewModel()
     @StateObject var authViewModel = AuthViewModel()
     
     // Define errorWrapper
@@ -47,32 +47,21 @@ struct The_TicklistApp: App {
         WindowGroup {
             NavigationView{
                 AuthStateView {
-                    TickListView(ticklist: $databaseManager.ticklist) {
-                        
-                        Task {
-                            do {
-                                try await databaseManager.save()
-                            } catch {
-                                errorWrapper = ErrorWrapper(error: error, solution: "Try again")
-                            }
+                    TickListView($persistenceViewModel.ticklist)
+                    .task {
+                        do {
+                            try await persistenceViewModel.loadTickList()
+                        } catch {
+                            errorWrapper = ErrorWrapper(error: error, solution: "Intialize empty Ticklist")
                         }
                     }
                 }
                 .environmentObject(authViewModel)
             }
             
-            // Load from database on setup
-            .task {
-                do {
-                    databaseManager.ticklist = try await databaseManager.load()
-                } catch {
-                    errorWrapper = ErrorWrapper(error: error, solution: "Loads sample data and continues")
-                }
-            }
-            
             // Display errormessage
             .sheet(item: $errorWrapper, onDismiss: {
-                databaseManager.ticklist = Tick.sampleData
+                persistenceViewModel.ticklist = TickList()
             }) { wrapped in
                 ErrorView(errorWrapper: wrapped)
             }

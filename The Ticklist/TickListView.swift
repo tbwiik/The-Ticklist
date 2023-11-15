@@ -18,13 +18,15 @@ struct TickListView: View {
     @State private var showProfileView = false
     @State private var newTickData = Tick.Data()
     
-    let saveAction: () -> Void
+    init(_ ticklist: Binding<TickList>) {
+        self._ticklist = ticklist
+    }
     
     var body: some View {
         ZStack {
             List {
                 ForEach($ticklist.ticks) { $tick in
-                    NavigationLink(destination: {TickView(tick: $tick, saveAction: saveAction)}){
+                    NavigationLink(destination: {TickView($tick)}){
                         CardView(tick: tick)
                         //Swipe to delete, left to right
                             .swipeActions(edge: .leading){
@@ -92,16 +94,13 @@ struct TickListView: View {
                     }
             }
         }
-        .onChange(of: scenePhase) { phase in
-            if phase == .inactive {saveAction()}
-        }
     }
 }
 
 struct TickListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            TickListView(ticklist: .constant(Tick.sampleData), saveAction: {})
+            TickListView(.constant(Tick.sampleData))
         }
     }
 }

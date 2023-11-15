@@ -14,7 +14,9 @@ struct TickView: View {
     @State var newLogItem = Tick.LogItem()
     @State var isLogging = false
     
-    let saveAction: ()->Void
+    init(_ tick: Binding<Tick>) {
+        self._tick = tick
+    }
     
     var body: some View {
         ZStack {
@@ -57,9 +59,6 @@ struct TickView: View {
             }
             
         }
-        .onChange(of: scenePhase) { phase in
-            if phase == .inactive {saveAction()}
-        }
         .sheet(isPresented: $isLogging){
             NavigationView {
                 AddLogItemView(rating: $tick.rating, logItem: $newLogItem)
@@ -86,6 +85,6 @@ struct TickView: View {
 struct TickView_Previews: PreviewProvider {
     
     static var previews: some View {
-        TickView(tick: .constant(Tick.sampleData.getTick(index: 0)!), saveAction: {})
+        TickView(.constant(Tick.sampleData.getTick(index: 0)!))
     }
 }
