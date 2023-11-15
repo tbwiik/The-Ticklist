@@ -28,6 +28,6 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(tick: Tick.sampleData.getTick(index: 0)!)
+        CardView(tick: Tick.sampleData.getTick(0)!)
     }
 }
