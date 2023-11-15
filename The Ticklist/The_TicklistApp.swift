@@ -48,7 +48,7 @@ struct The_TicklistApp: App {
             NavigationView{
                 AuthStateView {
                     TickListView()
-                    .task {
+                    .task { // Load remote ticklist into local before view appears
                         do {
                             try await persistenceViewModel.loadTickList()
                         } catch {

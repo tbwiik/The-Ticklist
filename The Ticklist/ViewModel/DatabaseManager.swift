@@ -11,6 +11,8 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseAuth
 
+
+/// User errors
 enum UserError: Error{
     case noUser
 }
@@ -28,6 +30,7 @@ class DatabaseManager: ObservableObject {
     private var authHandler: AuthStateDidChangeListenerHandle?
     
     
+    /// Initializer user handler
     init() {
         addAuthHandler()
     }
@@ -36,8 +39,8 @@ class DatabaseManager: ObservableObject {
     func addAuthHandler() {
         if authHandler == nil { // If not already defined
             authHandler = Auth.auth().addStateDidChangeListener({ auth, user in
-                self.user = user
-                if let userId = user?.uid {
+                self.user = user // Set user
+                if let userId = user?.uid { // If user exist, assign path for storage
                     self.storagePath = Firestore.firestore().collection("users").document(userId).collection("TicklistV1")
                 }
             })
@@ -45,32 +48,50 @@ class DatabaseManager: ObservableObject {
     }
     
     
+    /// Retrieve ticklist from database
+    ///  
+    /// This function retrieves the whole list asynchronously before populating the ticklist.
+    /// An ineffective way to do it, but handling is constrained by the firebase api.
+    ///  
+    /// - Returns: Ticklist from db
     func fetchTicklist() async throws -> TickList {
         
         var ticklist = TickList()
         
+        // Check that user is defined and storagepath is created
         guard let collectionRef = storagePath else {
             throw UserError.noUser
         }
         
         let snapshot = try await collectionRef.getDocuments()
+        
+        // Go through all ticks in ticklist
         for doc in snapshot.documents {
-            let tick = try doc.data(as: Tick.self)
-            ticklist.add(tickToAdd: tick)
+            let tick = try doc.data(as: Tick.self) // Decode to tick
+            ticklist.add(tickToAdd: tick) // Add to ticklist
         }
         
         return ticklist
     }
     
+    
+    /// Saves tick both to db and internal model
+    /// - Parameter tick: tick to add
     func saveTick(_ tick: Tick) throws -> Void {
         
+        // Check that user is defined and storagepath is created
         guard let collectionRef = storagePath else {
             throw UserError.noUser
         }
         
+        // Create tick using internal id
         try collectionRef.document(tick.id.uuidString).setData(from: tick)
     }
     
+    
+    /// Delete tick from database and model
+    ///
+    /// - Parameter tick: tick to be deleted
     func deleteTick(_ tick: Tick) async throws -> Void {
         
         guard let collectionRef = storagePath else {

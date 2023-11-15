@@ -19,6 +19,11 @@ struct TickListView: View {
     @State private var newTickData = Tick.Data()
     @State private var errorWrapper: ErrorWrapper?
     
+    
+    /// Handle storage actions, functions run for persistence
+    ///
+    /// This function clean up code other places in file
+    /// - Parameter action: storage action to be executed
     private func storageAction(_ action: @escaping () async throws-> Void){
         Task {
             do {
@@ -69,6 +74,7 @@ struct TickListView: View {
             
         }
         .navigationTitle("Ticklist")
+        // Display Profile View
         .sheet(isPresented: $showProfileView){
             NavigationView {
                 ProfileView()
@@ -81,6 +87,7 @@ struct TickListView: View {
                     }
             }
         }
+        // Display View for adding ticks
         .sheet(isPresented: $isAdding){
             NavigationView {
                 AddClimbView(data: $newTickData)
