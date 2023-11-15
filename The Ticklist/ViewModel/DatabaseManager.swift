@@ -17,10 +17,7 @@ enum UserError: Error{
 
 /// Handle communication with firestore database
 class DatabaseManager: ObservableObject {
-    
-    ///Publishing variable containing ticklist
-    @Published var ticklist: TickList = TickList()
-    
+
     /// Define a userID property
     private var user: User?
     
