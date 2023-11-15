@@ -21,7 +21,7 @@ class PersistenceViewModel: ObservableObject {
     private var dbManager = DatabaseManager()
     
     
-    func loadTickList() async throws -> Void{
+    func loadTickList() async throws -> Void {
         ticklist = try await dbManager.fetchTicklist()
     }
     
@@ -39,6 +39,10 @@ class PersistenceViewModel: ObservableObject {
         
         guard storageInitialized else {
             throw PersistenceError.storageNotInitialized
+        }
+        
+        guard self.ticklist.containsTick(tick) else {
+            throw TickListError.notContainsTick
         }
         
         try await dbManager.deleteTick(tick)
