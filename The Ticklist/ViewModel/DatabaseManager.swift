@@ -11,16 +11,17 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseAuth
 
-/*
- Manager for saving and loading to remote FireStore database.
- */
+
+/// User errors
+enum UserError: Error{
+    case noUser
+}
+
+/// Handle communication with firestore database
 class DatabaseManager: ObservableObject {
-    
-    ///Publishing variable containing ticklist
-    @Published var ticklist: TickList = TickList()
-    
+
     /// Define a userID property
-    private var userId: String?
+    private var user: User?
     
     /// Define a storagePath
     private var storagePath: CollectionReference?
@@ -29,150 +30,77 @@ class DatabaseManager: ObservableObject {
     private var authHandler: AuthStateDidChangeListenerHandle?
     
     
+    /// Initializer user handler
     init() {
-        Task{
-            await addAuthHandler()
-        }
-        
+        addAuthHandler()
     }
     
     /// Add handler for user and authentication state
-    @MainActor
     func addAuthHandler() {
-        
         if authHandler == nil { // If not already defined
             authHandler = Auth.auth().addStateDidChangeListener({ auth, user in
-                self.userId = user != nil ? user!.uid : UUID().uuidString
-                self.storagePath = Firestore.firestore().collection("users").document(self.userId!).collection("TicklistV1")
+                self.user = user // Set user
+                if let userId = user?.uid { // If user exist, assign path for storage
+                    self.storagePath = Firestore.firestore().collection("users").document(userId).collection("TicklistV1")
+                }
             })
         }
-        
     }
     
     
-    /**
-     Asynchronously load data from db
-     
-     - Throws error if failing to load
-     */
-    func load() async throws -> TickList {
-        try await withCheckedThrowingContinuation{ continuation in
-            load { result in
-                switch result {
-                case .failure(let error):
-                    continuation.resume(throwing: error)
-                case .success(let ticklist):
-                    continuation.resume(returning: ticklist)
-                }
-            }
-        }
-    }
-    
-    /**
-     Load ticklist from db
-     
-     - If successfull: completion with data
-     - If failure: completion with error
-     */
-    func load(completion: @escaping (Result<TickList, Error>) -> Void){
+    /// Retrieve ticklist from database
+    ///  
+    /// This function retrieves the whole list asynchronously before populating the ticklist.
+    /// An ineffective way to do it, but handling is constrained by the firebase api.
+    ///  
+    /// - Returns: Ticklist from db
+    func fetchTicklist() async throws -> TickList {
         
-        // Is it bad running this whole piece on main thread? Probably
-        // Does it work? Fuck yes
+        var ticklist = TickList()
         
-        DispatchQueue.main.async{
-            
-            // WARNING: possbily unwrapping nil value
-            self.storagePath!.getDocuments { snapshot, error in
-                
-                // Check no error
-                guard error == nil else {
-                    completion(.failure(error!))
-                    return
-                }
-                
-                // Check that snapshot exists
-                guard snapshot != nil else {
-                    let error = NoSnapShotError.noSnapShotError("Failed to retrieve collection-snapshot from Firestore.")
-                    completion(.failure(error))
-                    return
-                }
-                
-                // Go through all documents and add to ticklist
-                for doc in snapshot!.documents{
-
-                    do{
-                        let tick = try doc.data(as: Tick.self)
-                        self.ticklist.add(tickToAdd: tick)
-                    } catch {
-                        completion(.failure(error))
-                    }
-
-                }
-                
-                // Return successfull result
-                completion(.success(self.ticklist))
-                
-            }
-            
+        // Check that user is defined and storagepath is created
+        guard let collectionRef = storagePath else {
+            throw UserError.noUser
         }
         
+        let snapshot = try await collectionRef.getDocuments()
+        
+        // Go through all ticks in ticklist
+        for doc in snapshot.documents {
+            let tick = try doc.data(as: Tick.self) // Decode to tick
+            ticklist.add(tickToAdd: tick) // Add to ticklist
+        }
+        
+        return ticklist
     }
     
-    /**
-     Asynchronously save data to db
-     
-     - Throws error if failing to save
-     */
-    @discardableResult
-    func save() async throws -> Int {
-        try await withCheckedThrowingContinuation{ continuation in
-            save(){ result in
-                switch result {
-                case .failure(let error):
-                    continuation.resume(throwing: error)
-                case .success(let ticklistSaved):
-                    continuation.resume(returning: ticklistSaved)
-                }
-            }
+    
+    /// Saves tick both to db and internal model
+    /// - Parameter tick: tick to add
+    func saveTick(_ tick: Tick) throws -> Void {
+        
+        // Check that user is defined and storagepath is created
+        guard let collectionRef = storagePath else {
+            throw UserError.noUser
         }
+        
+        // Create tick using internal id
+        try collectionRef.document(tick.id.uuidString).setData(from: tick)
     }
     
-    /**
-     Save ticklist to db
-     
-     - If successfull: completion with count of ticks added
-     - If failure: completion with error
-     */
-    func save(completion: @escaping (Result<Int, Error>) -> Void) {
-        DispatchQueue.global(qos: .background).async {
-            
-            do {
-                
-                // Save ticklist to database
-                for tick in self.ticklist.ticks {
-                    // WARNING: possibly unwrapping nil value
-                    try self.storagePath!.document(tick.id.uuidString).setData(from: tick)
-                }
-                
-                // Return successfull completion with number of ticks added
-                DispatchQueue.main.async {
-                    // TODO: change/remove line under?
-                    completion(.success(self.ticklist.ticks.count))
-                }
-                
-            // Handle error if occurs
-            } catch {
-                DispatchQueue.main.async {
-                    completion(.failure(error))
-                }
-            }
-            
+    
+    /// Delete tick from database and model
+    ///
+    /// - Parameter tick: tick to be deleted
+    func deleteTick(_ tick: Tick) async throws -> Void {
+        
+        guard let collectionRef = storagePath else {
+            throw UserError.noUser
         }
+        
+        try await collectionRef.document(tick.id.uuidString).delete()
     }
+    
+    
+    
 }
-
-
-enum NoSnapShotError: Error {
-    case noSnapShotError(String)
-}
-

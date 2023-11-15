@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum TickListError: Error {
+    case notContainsTick
+}
+
 struct TickList: Identifiable, Codable {
     
     let id: UUID
@@ -17,6 +21,16 @@ struct TickList: Identifiable, Codable {
         self.id = id
         self.name = name
         self.ticks = ticks
+    }
+    
+    func containsTick(_ checkTick: Tick) -> Bool {
+        
+        for tick in ticks{
+            if checkTick == tick {
+                return true
+            }
+        }
+        return false
     }
     
     
