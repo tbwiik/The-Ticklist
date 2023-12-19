@@ -116,7 +116,9 @@ struct TickListView: View {
         }
         // Display errormessage
         .alert("Error occured", isPresented: $isError){
-            Button("Cancel", role: .cancel, action: {})
+            Button("Cancel", role: .cancel){
+                errorMessage = ""
+            }
         } message: {
             Text(errorMessage)
         }
