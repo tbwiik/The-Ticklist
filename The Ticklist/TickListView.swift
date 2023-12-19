@@ -37,6 +37,13 @@ struct TickListView: View {
         }
     }
     
+    
+    /// Delete ticks at given offsets
+    ///
+    /// Note that the indexSet given must be equal to backend list.
+    /// In other words: if the visual order does not match backend the correct indexSet must be passed in.
+    ///
+    /// - Parameter offsets: indexes of ticks in visual list
     private func deleteTicks(at offsets: IndexSet){
         
         let ticksToDelete = offsets.compactMap { index in
