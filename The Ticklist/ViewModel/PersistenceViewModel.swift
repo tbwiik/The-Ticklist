@@ -9,8 +9,15 @@ import Foundation
 
 
 /// Persistence errors
-enum PersistenceError: Error {
+enum PersistenceError: LocalizedError {
     case storageNotInitialized
+    
+    var errorDescription: String?{
+        switch self {
+        case .storageNotInitialized:
+            return NSLocalizedString("Storage not initialized", comment: "This is probably an authentication error")
+        }
+    }
 }
 
 @MainActor
