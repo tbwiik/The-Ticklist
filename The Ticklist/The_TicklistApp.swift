@@ -57,8 +57,12 @@ struct The_TicklistApp: App {
                             isError = true
                         }
                     }
-                    .alert(isPresented: $isError){
-                        Alert(title: Text("Failed to load data"), message: Text(errorMessage))
+                    .alert("Failed to load data", isPresented: $isError){
+                        Button("OK", role: .cancel){
+                            errorMessage = ""
+                        }
+                    } message: {
+                        Text(errorMessage)
                     }
                 }
                 .environmentObject(authViewModel)
