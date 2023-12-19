@@ -50,8 +50,9 @@ class AuthViewModel: ObservableObject {
     @Published var authFlow: AuthFlow = .signIn
     
     
-    /// Init errorWrapper
-    @Published var errorWrapper: ErrorWrapper?
+    /// Init error state
+    @Published var isError = false
+    @Published var errorMessage = ""
     
     
     /// Define handler for authentication state
@@ -106,8 +107,9 @@ class AuthViewModel: ObservableObject {
             try await Auth.auth().signIn(withEmail: email, password: passwd)
             return true
         } catch {
-            errorWrapper = ErrorWrapper(error: error, solution: "Try to Sign In again")
             authState = .unAuthenticated
+            errorMessage = error.localizedDescription
+            isError = true
             return false
         }
     }
@@ -135,8 +137,9 @@ class AuthViewModel: ObservableObject {
             try await Auth.auth().createUser(withEmail: email, password: passwd)
             return true
         } catch {
-            errorWrapper = ErrorWrapper(error: error, solution: "Try to Sign Up again")
             authState = .unAuthenticated
+            errorMessage = error.localizedDescription
+            isError = true
             return false
         }
         
@@ -152,7 +155,8 @@ class AuthViewModel: ObservableObject {
             self.reset()
             return true
         } catch {
-            errorWrapper = ErrorWrapper(error: error, solution: "Try to Sign out again")
+            errorMessage = error.localizedDescription
+            isError = true
             return false
         }
         
@@ -166,7 +170,8 @@ class AuthViewModel: ObservableObject {
             try await user?.delete()
             return true
         } catch {
-            errorWrapper = ErrorWrapper(error: error, solution: "Try to Delete User again")
+            errorMessage = error.localizedDescription
+            isError = true
             return false
         }
     }

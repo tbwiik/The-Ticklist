@@ -49,11 +49,9 @@ struct SignUpView: View {
             }
             
         }
-        .sheet(item: $authViewModel.errorWrapper, onDismiss: {
-            authViewModel.reset()
-        }) { wrapped in
-            ErrorView(errorWrapper: wrapped)
-        }.buttonStyle(.borderedProminent)
+        .alert(authViewModel.errorMessage, isPresented: $authViewModel.isError){
+            Button("Cancel", role: .cancel, action: {})
+        }
         
         Spacer()
         
