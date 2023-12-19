@@ -30,7 +30,6 @@ struct TickListView: View {
         Task {
             do {
                 try await action()
-                throw AuthError.emptyConfirmPassword
             } catch {
                 isError = true
                 errorMessage = error.localizedDescription
