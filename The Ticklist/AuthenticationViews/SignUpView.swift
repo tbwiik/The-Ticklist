@@ -49,11 +49,14 @@ struct SignUpView: View {
             }
             
         }
-        .sheet(item: $authViewModel.errorWrapper, onDismiss: {
-            authViewModel.reset()
-        }) { wrapped in
-            ErrorView(errorWrapper: wrapped)
-        }.buttonStyle(.borderedProminent)
+        .alert("Sign up failed", isPresented: $authViewModel.isError){
+            Button("OK"){
+                authViewModel.errorMessage = ""
+                authViewModel.reset(.signUp)
+            }
+        } message: {
+            Text(authViewModel.errorMessage)
+        }
         
         Spacer()
         

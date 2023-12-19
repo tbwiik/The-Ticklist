@@ -17,7 +17,9 @@ struct TickListView: View {
     @State private var isAdding = false
     @State private var showProfileView = false
     @State private var newTickData = Tick.Data()
-    @State private var errorWrapper: ErrorWrapper?
+    
+    @State private var isError = false
+    @State private var errorMessage = ""
     
     
     /// Handle storage actions, functions run for persistence
@@ -28,8 +30,10 @@ struct TickListView: View {
         Task {
             do {
                 try await action()
+                throw AuthError.emptyConfirmPassword
             } catch {
-                errorWrapper = ErrorWrapper(error: error, solution: "TBD")
+                isError = true
+                errorMessage = error.localizedDescription
             }
         }
     }
@@ -111,8 +115,12 @@ struct TickListView: View {
             }
         }
         // Display errormessage
-        .sheet(item: $errorWrapper) { wrapped in
-            ErrorView(errorWrapper: wrapped)
+        .alert("Error occured", isPresented: $isError){
+            Button("Cancel", role: .cancel){
+                errorMessage = ""
+            }
+        } message: {
+            Text(errorMessage)
         }
     }
 }

@@ -40,8 +40,9 @@ struct The_TicklistApp: App {
     @StateObject private var persistenceViewModel = PersistenceViewModel()
     @StateObject var authViewModel = AuthViewModel()
     
-    // Define errorWrapper
-    @State private var errorWrapper: ErrorWrapper?
+    // Define error state
+    @State private var isError = false
+    @State private var errorMessage = ""
     
     var body: some Scene {
         WindowGroup {
@@ -52,19 +53,20 @@ struct The_TicklistApp: App {
                         do {
                             try await persistenceViewModel.loadTickList()
                         } catch {
-                            errorWrapper = ErrorWrapper(error: error, solution: "Intialize empty Ticklist")
+                            errorMessage = error.localizedDescription
+                            isError = true
                         }
+                    }
+                    .alert("Failed to load data", isPresented: $isError){
+                        Button("OK", role: .cancel){
+                            errorMessage = ""
+                        }
+                    } message: {
+                        Text(errorMessage)
                     }
                 }
                 .environmentObject(authViewModel)
                 .environmentObject(persistenceViewModel)
-            }
-            
-            // Display errormessage
-            .sheet(item: $errorWrapper, onDismiss: {
-                persistenceViewModel.ticklist = TickList()
-            }) { wrapped in
-                ErrorView(errorWrapper: wrapped)
             }
         }
     }

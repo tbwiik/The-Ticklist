@@ -27,8 +27,6 @@
 		847350632967555800685150 /* AddClimbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847350622967555800685150 /* AddClimbView.swift */; };
 		847350652968169200685150 /* TickListStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847350642968169200685150 /* TickListStore.swift */; };
 		847350672968577C00685150 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847350662968577C00685150 /* CardView.swift */; };
-		8473506B2968897C00685150 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473506A2968897C00685150 /* ErrorView.swift */; };
-		8473506D29688C6D00685150 /* ErrorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473506C29688C6D00685150 /* ErrorWrapper.swift */; };
 		8473506F2969769700685150 /* Dicipline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473506E2969769700685150 /* Dicipline.swift */; };
 		8473507129697DB000685150 /* StarRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473507029697DB000685150 /* StarRating.swift */; };
 		8473507729699EB100685150 /* TickList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473507629699EB100685150 /* TickList.swift */; };
@@ -84,8 +82,6 @@
 		847350622967555800685150 /* AddClimbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClimbView.swift; sourceTree = "<group>"; };
 		847350642968169200685150 /* TickListStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickListStore.swift; sourceTree = "<group>"; };
 		847350662968577C00685150 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		8473506A2968897C00685150 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
-		8473506C29688C6D00685150 /* ErrorWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorWrapper.swift; sourceTree = "<group>"; };
 		8473506E2969769700685150 /* Dicipline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dicipline.swift; sourceTree = "<group>"; };
 		8473507029697DB000685150 /* StarRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRating.swift; sourceTree = "<group>"; };
 		8473507629699EB100685150 /* TickList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickList.swift; sourceTree = "<group>"; };
@@ -171,7 +167,6 @@
 				840D30372AD7C55A007B964B /* ViewModel */,
 				84C6BC5A296EEE0B00C20C4D /* Global */,
 				847D24712AEC138E005363B2 /* AuthenticationViews */,
-				8473506A2968897C00685150 /* ErrorView.swift */,
 				8473505E29674C5E00685150 /* TickListView.swift */,
 				847350662968577C00685150 /* CardView.swift */,
 				847350622967555800685150 /* AddClimbView.swift */,
@@ -217,7 +212,6 @@
 				84C6BC51296EEC5A00C20C4D /* Tick */,
 				8473507629699EB100685150 /* TickList.swift */,
 				8473506E2969769700685150 /* Dicipline.swift */,
-				8473506C29688C6D00685150 /* ErrorWrapper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -401,7 +395,6 @@
 				847350632967555800685150 /* AddClimbView.swift in Sources */,
 				840D303D2ADAB9D6007B964B /* DatabaseManager.swift in Sources */,
 				8473505D29674B3F00685150 /* Tick.swift in Sources */,
-				8473506D29688C6D00685150 /* ErrorWrapper.swift in Sources */,
 				847350652968169200685150 /* TickListStore.swift in Sources */,
 				8473502F29674A6900685150 /* The_TicklistApp.swift in Sources */,
 				8473505F29674C5E00685150 /* TickListView.swift in Sources */,
@@ -410,7 +403,6 @@
 				8473507729699EB100685150 /* TickList.swift in Sources */,
 				845FAC5D2AED61DD001166BB /* AuthStateView.swift in Sources */,
 				8473507129697DB000685150 /* StarRating.swift in Sources */,
-				8473506B2968897C00685150 /* ErrorView.swift in Sources */,
 				847D24772AEC3B7B005363B2 /* SignInView.swift in Sources */,
 				8473506F2969769700685150 /* Dicipline.swift in Sources */,
 				847D24752AEC13BD005363B2 /* SignUpView.swift in Sources */,
