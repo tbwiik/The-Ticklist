@@ -45,8 +45,13 @@ struct SignInView: View {
             }
             
         }
-        .alert(authViewModel.errorMessage, isPresented: $authViewModel.isError){
-            Button("Cancel", role: .cancel, action: {})
+        .alert("Sign in failed", isPresented: $authViewModel.isError){
+            Button("OK"){
+                authViewModel.errorMessage = ""
+                authViewModel.reset()
+            }
+        } message: {
+            Text(authViewModel.errorMessage)
         }
         
         Spacer()
