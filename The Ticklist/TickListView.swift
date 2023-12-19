@@ -38,21 +38,33 @@ struct TickListView: View {
         }
     }
     
+    private func deleteTicks(at offsets: IndexSet){
+        
+        let ticksToDelete = offsets.compactMap { index in
+            persistenceViewModel.ticklist.getTick(index)
+        }
+        
+        for tick in ticksToDelete{
+            storageAction {
+                try await persistenceViewModel.deleteTick(tick)
+            }
+        }
+    }
+    
 
     
     var body: some View {
         ZStack {
-            List {
-                ForEach($persistenceViewModel.ticklist.ticks) { $tick in
-                    NavigationLink(destination: {TickView($tick)}){
-                        CardView(tick: tick)
-                        //Swipe to delete, left to right
-                        .swipeActions(edge: .leading){
-                            Button("Delete", role: .destructive){
-                                storageAction { try await persistenceViewModel.deleteTick(tick)}
-                            }
-                        } 
+            NavigationStack{
+                List{
+                    ForEach($persistenceViewModel.ticklist.ticks) { $tick in
+                        NavigationLink {
+                            TickView($tick)
+                        } label: {
+                            CardView(tick: tick)
+                        }
                     }
+                    .onDelete(perform: deleteTicks)
                 }
             }
             VStack {
