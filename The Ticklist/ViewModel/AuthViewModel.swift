@@ -84,20 +84,13 @@ class AuthViewModel: ObservableObject {
     
     
     /// Clear all user fields and set non-authenticated
-    func resetAll() {
+    func reset(_ setAuthFlow: AuthFlow = .signIn) {
         self.authState = .unAuthenticated
-        self.authFlow = .signIn
+        self.authFlow = authFlow
         self.email = ""
         self.passwd = ""
         self.confirmPasswd = ""
     }
-    
-    func resetFields() {
-        self.email = ""
-        self.passwd = ""
-        self.confirmPasswd = ""
-    }
-    
     
     func switchAuthFlow() {
         authFlow = authFlow == .signIn ? .signUp : .signIn
@@ -158,7 +151,7 @@ class AuthViewModel: ObservableObject {
         
         do {
             try Auth.auth().signOut()
-            self.resetAll()
+            self.reset()
             return true
         } catch {
             errorMessage = error.localizedDescription
