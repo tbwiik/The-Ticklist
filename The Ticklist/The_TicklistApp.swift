@@ -51,7 +51,6 @@ struct The_TicklistApp: App {
         WindowGroup {
             NavigationView{
                 AuthStateView {
-//                    TickListView()
                     TabView(selection: $selectedTab){
                         TickListView()
                             .tabItem{
