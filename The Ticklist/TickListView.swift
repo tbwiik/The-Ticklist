@@ -60,8 +60,8 @@ struct TickListView: View {
 
     
     var body: some View {
-        ZStack {
-            NavigationStack{
+        NavigationStack{
+            ZStack {
                 List{
                     ForEach($persistenceViewModel.ticklist.ticks) { $tick in
                         NavigationLink {
@@ -72,40 +72,15 @@ struct TickListView: View {
                     }
                     .onDelete(perform: deleteTicks)
                 }
-            }
-            VStack {
-                Spacer()
-                AddButtonView(action: {isAdding = true})
+                VStack {
+                    Spacer()
+                    AddButtonView(action: {isAdding = true})
                         .font(.system(size: 40))
                         .accessibilityLabel("Add climb")
+                }
             }
         }
         .navigationTitle("Ticklist")
-        // Display View for adding ticks
-        .sheet(isPresented: $isAdding){
-            // TODO: update to non deprecated navigation
-            NavigationView {
-                AddClimbView(data: $newTickData)
-                    .toolbar{
-                        ToolbarItem(placement: .cancellationAction){
-                            Button("Cancel"){
-                                isAdding = false
-                                newTickData = Tick.Data()
-                            }
-                        }
-                        ToolbarItem(placement: .confirmationAction){
-                            Button("Add"){
-                                let tick = Tick(data: newTickData)
-                                storageAction { try persistenceViewModel.saveTick(tick) }
-                                isAdding = false
-                                newTickData = Tick.Data()
-                            }
-                            .disabled(!newTickData.isComplete)
-                        }
-                    }
-            }
-        }
-        // Display errormessage
         .alert("Error occured", isPresented: $isError){
             Button("Cancel", role: .cancel){
                 errorMessage = ""
@@ -113,13 +88,32 @@ struct TickListView: View {
         } message: {
             Text(errorMessage)
         }
+        .sheet(isPresented: $isAdding){
+            VStack{
+                HStack(alignment: .top){
+                    Button("Cancel"){
+                        isAdding = false
+                        newTickData = Tick.Data()
+                    }
+                    Spacer()
+                    Button("Add"){
+                        let tick = Tick(data: newTickData)
+                        storageAction { try persistenceViewModel.saveTick(tick) }
+                        isAdding = false
+                        newTickData = Tick.Data()
+                    }
+                    .disabled(!newTickData.isComplete)
+                }
+                .padding()
+                .background()
+                AddClimbView(data: $newTickData)
+            }
+        }
     }
 }
 
 struct TickListView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            TickListView()
-        }
+        TickListView()
     }
 }
