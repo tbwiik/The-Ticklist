@@ -93,24 +93,11 @@ struct TickListView: View {
 
                 }
             }
-            
         }
         .navigationTitle("Ticklist")
-        // Display Profile View
-        .sheet(isPresented: $showProfileView){
-            NavigationView {
-                ProfileView()
-                    .toolbar{
-                        ToolbarItem(placement: .cancellationAction){
-                            Button("Cancel"){
-                                showProfileView = false
-                            }
-                        }
-                    }
-            }
-        }
         // Display View for adding ticks
         .sheet(isPresented: $isAdding){
+            // TODO: update to non deprecated navigation
             NavigationView {
                 AddClimbView(data: $newTickData)
                     .toolbar{
