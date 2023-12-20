@@ -79,20 +79,6 @@ struct TickListView: View {
                         .font(.system(size: 40))
                         .accessibilityLabel("Add climb")
             }
-            VStack{
-                Spacer()
-                HStack{
-                    Spacer()
-                    Button{
-                        showProfileView = true
-                    } label: {
-                        Image(systemName: "person.circle")
-                            .padding()
-                            .font(.system(size: 20))
-                    }
-
-                }
-            }
         }
         .navigationTitle("Ticklist")
         // Display View for adding ticks
