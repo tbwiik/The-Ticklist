@@ -18,6 +18,12 @@ struct TickView: View {
         self._tick = tick
     }
     
+    private func addLogAction(){
+        tick.logItems.append(newLogItem)
+        isLogging = false
+        newLogItem = Tick.LogItem()
+    }
+    
     var body: some View {
         ZStack {
             List {
@@ -55,29 +61,11 @@ struct TickView: View {
             VStack{
                 Spacer()
                 AddButtonView(action: {isLogging = true})
-                    .font(.system(size: 40)) //Hardcoded copy of ticklist, fix!
             }
             
         }
         .sheet(isPresented: $isLogging){
-            NavigationView {
-                AddLogItemView(rating: $tick.rating, logItem: $newLogItem)
-                    .toolbar{
-                        ToolbarItem(placement: .cancellationAction){
-                            Button("Cancel"){
-                                isLogging = false
-                                newLogItem = Tick.LogItem()
-                            }
-                        }
-                        ToolbarItem(placement: .confirmationAction){
-                            Button("Add"){
-                                tick.logItems.append(newLogItem)
-                                isLogging = false
-                                newLogItem = Tick.LogItem()
-                            }
-                        }
-                    }
-            }
+            AddLogItemView(rating: $tick.rating, logItem: $newLogItem, action: {addLogAction()})
         }
     }
 }
