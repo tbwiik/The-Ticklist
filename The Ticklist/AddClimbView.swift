@@ -14,6 +14,8 @@ struct AddClimbView: View {
     /// Action when pressing button
     let confirmAction: () -> Void
     
+    var isAddEnabled: Bool
+    
     var body: some View {
         ZStack {
             Form {
@@ -30,12 +32,13 @@ struct AddClimbView: View {
                 }
             }
             AddButtonView(action: {confirmAction()}, iconSystemName: "checkmark")
+                .disabled(!isAddEnabled)
         }
     }
 }
 
 struct AddClimbView_Previews: PreviewProvider {
     static var previews: some View {
-        AddClimbView(data: .constant(Tick.Data()), confirmAction: {})
+        AddClimbView(data: .constant(Tick.Data()), confirmAction: {}, isAddEnabled: true)
     }
 }

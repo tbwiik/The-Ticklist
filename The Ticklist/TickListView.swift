@@ -99,7 +99,7 @@ struct TickListView: View {
             Text(errorMessage)
         }
         .sheet(isPresented: $isAdding, onDismiss: {newTickData = Tick.Data()}){
-            AddClimbView(data: $newTickData, confirmAction: {addTickAction()})
+            AddClimbView(data: $newTickData, confirmAction: {addTickAction()}, isAddEnabled: newTickData.isComplete)
         }
     }
 }
