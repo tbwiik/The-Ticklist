@@ -37,6 +37,13 @@ struct TickListView: View {
         }
     }
     
+    private func addTickAction() -> Void {
+        let tick = Tick(data: newTickData)
+        storageAction { try persistenceViewModel.saveTick(tick) }
+        isAdding = false
+        newTickData = Tick.Data()
+    }
+    
     
     /// Delete ticks at given offsets
     ///
@@ -88,25 +95,7 @@ struct TickListView: View {
             Text(errorMessage)
         }
         .sheet(isPresented: $isAdding){
-            VStack{
-                HStack(alignment: .top){
-                    Button("Cancel"){
-                        isAdding = false
-                        newTickData = Tick.Data()
-                    }
-                    Spacer()
-                    Button("Add"){
-                        let tick = Tick(data: newTickData)
-                        storageAction { try persistenceViewModel.saveTick(tick) }
-                        isAdding = false
-                        newTickData = Tick.Data()
-                    }
-                    .disabled(!newTickData.isComplete)
-                }
-                .padding()
-                .background()
-                AddClimbView(data: $newTickData)
-            }
+            AddClimbView(data: $newTickData, confirmAction: {addTickAction()})
         }
     }
 }

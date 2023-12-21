@@ -10,6 +10,7 @@ import SwiftUI
 struct AddClimbView: View {
     
     @Binding var data: Tick.Data
+    let confirmAction: () -> Void
     
     var body: some View {
         ZStack {
@@ -26,13 +27,17 @@ struct AddClimbView: View {
                     TextField("Grade", text: $data.grade)
                 }
             }
-            
+            VStack{
+                Spacer()
+                AddButtonView(action: confirmAction, iconSystemName: "checkmark")
+                    .disabled(!data.isComplete)
+            }
         }
     }
 }
 
 struct AddClimbView_Previews: PreviewProvider {
     static var previews: some View {
-        AddClimbView(data: .constant(Tick.Data()))
+        AddClimbView(data: .constant(Tick.Data()), confirmAction: {})
     }
 }

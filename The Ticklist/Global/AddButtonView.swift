@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AddButtonView: View {
     
+    @Environment(\.isEnabled) var isEnabled
+    
     /// Action triggered by button tap
     let action: () -> Void
     
@@ -19,7 +21,7 @@ struct AddButtonView: View {
         Button(action: {action()}){
             ZStack {
                 Image(systemName: "circle.fill")
-                    .foregroundColor(.green)
+                    .foregroundColor(isEnabled ? .green : .gray)
                     .font(.system(size: 40))
                 Image(systemName: iconSystemName)
                     .foregroundStyle(.white)
