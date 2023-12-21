@@ -75,7 +75,6 @@ struct TickListView: View {
                 VStack {
                     Spacer()
                     AddButtonView(action: {isAdding = true})
-                        .font(.system(size: 40))
                         .accessibilityLabel("Add climb")
                 }
             }

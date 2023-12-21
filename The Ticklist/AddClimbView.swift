@@ -12,18 +12,21 @@ struct AddClimbView: View {
     @Binding var data: Tick.Data
     
     var body: some View {
-        Form {
-            Section(header: Text("Info")) {
-                Picker("Dicipline", selection: $data.dicipline){
-                    ForEach(Dicipline.allCases){ dicipline in
-                        Text(dicipline.rawValue.capitalized)
+        ZStack {
+            Form {
+                Section(header: Text("Info")) {
+                    Picker("Dicipline", selection: $data.dicipline){
+                        ForEach(Dicipline.allCases){ dicipline in
+                            Text(dicipline.rawValue.capitalized)
+                        }
                     }
+                    .pickerStyle(.segmented)
+                    TextField("Name", text: $data.name)
+                    TextField("Region", text: $data.region)
+                    TextField("Grade", text: $data.grade)
                 }
-                .pickerStyle(.segmented)
-                TextField("Name", text: $data.name)
-                TextField("Region", text: $data.region)
-                TextField("Grade", text: $data.grade)
             }
+            
         }
     }
 }

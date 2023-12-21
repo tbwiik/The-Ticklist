@@ -9,12 +9,23 @@ import SwiftUI
 
 struct AddButtonView: View {
     
+    /// Action triggered by button tap
     let action: () -> Void
+    
+    /// SF symbol systemname for icon on button
+    var iconSystemName = "plus"
     
     var body: some View {
         Button(action: {action()}){
-            Image(systemName: "plus.circle.fill")
-                .foregroundColor(.green)
+            ZStack {
+                Image(systemName: "circle.fill")
+                    .foregroundColor(.green)
+                    .font(.system(size: 40))
+                Image(systemName: iconSystemName)
+                    .foregroundStyle(.white)
+                    .font(.system(size: 22))
+                    .bold()
+            }
         }
     }
 }
