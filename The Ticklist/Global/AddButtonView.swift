@@ -20,15 +20,18 @@ struct AddButtonView: View {
     var iconSystemName = "plus"
     
     var body: some View {
-        Button(action: {action()}){
-            ZStack {
-                Image(systemName: "circle.fill")
-                    .foregroundColor(isEnabled ? .green : .gray)
-                    .font(.system(size: 40))
-                Image(systemName: iconSystemName)
-                    .foregroundStyle(.white)
-                    .font(.system(size: 22))
-                    .bold()
+        VStack {
+            Spacer()
+            Button(action: {action()}){
+                ZStack {
+                    Image(systemName: "circle.fill")
+                        .foregroundColor(isEnabled ? .green : .gray)
+                        .font(.system(size: 40))
+                    Image(systemName: iconSystemName)
+                        .foregroundStyle(.white)
+                        .font(.system(size: 22))
+                        .bold()
+                }
             }
         }
     }
