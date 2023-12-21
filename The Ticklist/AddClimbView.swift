@@ -29,11 +29,6 @@ struct AddClimbView: View {
                     TextField("Grade", text: $data.grade)
                 }
             }
-            VStack{
-                Spacer()
-                AddButtonView(action: confirmAction, iconSystemName: "checkmark")
-                    .disabled(!data.isComplete)
-            }
         }
     }
 }

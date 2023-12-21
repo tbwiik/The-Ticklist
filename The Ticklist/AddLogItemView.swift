@@ -35,10 +35,6 @@ struct AddLogItemView: View {
                     }
                 }
             }
-            VStack{
-                Spacer()
-                AddButtonView(action: action)
-            }
         }
     }
 }
