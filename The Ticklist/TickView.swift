@@ -64,7 +64,7 @@ struct TickView: View {
             }
             
         }
-        .sheet(isPresented: $isLogging){
+        .sheet(isPresented: $isLogging, onDismiss: {newLogItem = Tick.LogItem()}){
             AddLogItemView(rating: $tick.rating, logItem: $newLogItem, action: {addLogAction()})
         }
     }

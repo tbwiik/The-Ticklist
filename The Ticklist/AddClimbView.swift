@@ -29,7 +29,7 @@ struct AddClimbView: View {
                     TextField("Grade", text: $data.grade)
                 }
             }
-            AddButtonView(action: {confirmAction()})
+            AddButtonView(action: {confirmAction()}, iconSystemName: "checkmark")
         }
     }
 }

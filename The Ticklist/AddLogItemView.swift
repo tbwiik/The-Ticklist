@@ -35,6 +35,7 @@ struct AddLogItemView: View {
                     }
                 }
             }
+            AddButtonView(action: {action()}, iconSystemName: "checkmark")
         }
     }
 }
