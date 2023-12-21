@@ -12,10 +12,7 @@ struct TickListView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     @EnvironmentObject var persistenceViewModel: PersistenceViewModel
     
-    @Environment(\.scenePhase) private var scenePhase
-    
     @State private var isAdding = false
-    @State private var showProfileView = false
     @State private var newTickData = Tick.Data()
     
     @State private var isError = false
