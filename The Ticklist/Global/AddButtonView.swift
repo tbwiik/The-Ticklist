@@ -7,8 +7,10 @@
 
 import SwiftUI
 
+/// Generic button for confirming actions
 struct AddButtonView: View {
     
+    /// Detect whether ciew is disabled
     @Environment(\.isEnabled) var isEnabled
     
     /// Action triggered by button tap

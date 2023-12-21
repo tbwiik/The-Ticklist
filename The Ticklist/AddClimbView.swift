@@ -10,6 +10,8 @@ import SwiftUI
 struct AddClimbView: View {
     
     @Binding var data: Tick.Data
+    
+    /// Action when pressing button
     let confirmAction: () -> Void
     
     var body: some View {
