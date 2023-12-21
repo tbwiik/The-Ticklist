@@ -29,6 +29,7 @@ struct AddClimbView: View {
                     TextField("Grade", text: $data.grade)
                 }
             }
+            AddButtonView(action: {confirmAction()})
         }
     }
 }
