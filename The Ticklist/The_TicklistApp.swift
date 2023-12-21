@@ -44,11 +44,25 @@ struct The_TicklistApp: App {
     @State private var isError = false
     @State private var errorMessage = ""
     
+    // Define Tab state
+    @State private var selectedTab = 1
+    
     var body: some Scene {
         WindowGroup {
             NavigationView{
                 AuthStateView {
-                    TickListView()
+                    TabView(selection: $selectedTab){
+                        TickListView()
+                            .tabItem{
+                                Label("Home", systemImage: "house")
+                            }
+                            .tag(1)
+                        ProfileView()
+                            .tabItem{
+                                Label("Account", systemImage: "person.crop.circle.fill")
+                            }
+                            .tag(2)
+                    }
                     .task { // Load remote ticklist into local before view appears
                         do {
                             try await persistenceViewModel.loadTickList()

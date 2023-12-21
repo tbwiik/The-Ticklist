@@ -7,14 +7,32 @@
 
 import SwiftUI
 
+/// Generic button for confirming actions
 struct AddButtonView: View {
     
+    /// Detect whether ciew is disabled
+    @Environment(\.isEnabled) var isEnabled
+    
+    /// Action triggered by button tap
     let action: () -> Void
     
+    /// SF symbol systemname for icon on button
+    var iconSystemName = "plus"
+    
     var body: some View {
-        Button(action: {action()}){
-            Image(systemName: "plus.circle.fill")
-                .foregroundColor(.green)
+        VStack {
+            Spacer()
+            Button(action: {action()}){
+                ZStack {
+                    Image(systemName: "circle.fill")
+                        .foregroundColor(isEnabled ? .green : .gray)
+                        .font(.system(size: 40))
+                    Image(systemName: iconSystemName)
+                        .foregroundStyle(.white)
+                        .font(.system(size: 22))
+                        .bold()
+                }
+            }
         }
     }
 }

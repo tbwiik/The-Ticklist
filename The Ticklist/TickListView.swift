@@ -9,13 +9,11 @@ import SwiftUI
 
 struct TickListView: View {
     
+    
     @EnvironmentObject var authViewModel: AuthViewModel
     @EnvironmentObject var persistenceViewModel: PersistenceViewModel
     
-    @Environment(\.scenePhase) private var scenePhase
-    
     @State private var isAdding = false
-    @State private var showProfileView = false
     @State private var newTickData = Tick.Data()
     
     @State private var isError = false
@@ -30,7 +28,6 @@ struct TickListView: View {
         Task {
             do {
                 try await action()
-                throw AuthError.emptyConfirmPassword
             } catch {
                 isError = true
                 errorMessage = error.localizedDescription
@@ -38,83 +35,62 @@ struct TickListView: View {
         }
     }
     
+    
+    /// Add tick to ticklist
+    private func addTickAction(){
+        let tick = Tick(data: newTickData)
+        storageAction { try persistenceViewModel.saveTick(tick) }
+        isAdding = false
+        newTickData = Tick.Data()
+    }
+    
+    
+    /// Delete ticks at given offsets
+    ///
+    /// Note that the indexSet given must be equal to backend list.
+    /// In other words: if the visual order does not match backend the correct indexSet must be passed in.
+    ///  
+    /// - Parameter offsets: indexes of ticks in visual list
+    private func deleteTicks(at offsets: IndexSet){
+        
+        // map indexes to ticks
+        let ticksToDelete = offsets.compactMap { index in
+            persistenceViewModel.ticklist.getTick(index)
+        }
+        
+        // Loop through ticks and add to persistent storage
+        // MARK: Ineffecient way to add, should be done in bulk
+        for tick in ticksToDelete{
+            storageAction {
+                try await persistenceViewModel.deleteTick(tick)
+            }
+        }
+    }
+    
 
     
     var body: some View {
-        ZStack {
-            List {
-                ForEach($persistenceViewModel.ticklist.ticks) { $tick in
-                    NavigationLink(destination: {TickView($tick)}){
-                        CardView(tick: tick)
-                        //Swipe to delete, left to right
-                        .swipeActions(edge: .leading){
-                            Button("Delete", role: .destructive){
-                                storageAction { try await persistenceViewModel.deleteTick(tick)}
-                            }
-                        } 
+        NavigationStack{
+            ZStack {
+                List{
+                    // MARK: Generates all subviews, which is inefficient
+                    ForEach($persistenceViewModel.ticklist.ticks) { $tick in
+                        NavigationLink {
+                            TickView($tick)
+                        } label: {
+                            CardView(tick: tick)
+                        }
                     }
+                    .onDelete(perform: deleteTicks)
                 }
-            }
-            VStack {
-                Spacer()
-                AddButtonView(action: {isAdding = true})
-                        .font(.system(size: 40))
-                        .accessibilityLabel("Add climb")
-            }
-            VStack{
-                Spacer()
-                HStack{
+                VStack {
                     Spacer()
-                    Button{
-                        showProfileView = true
-                    } label: {
-                        Image(systemName: "person.circle")
-                            .padding()
-                            .font(.system(size: 20))
-                    }
-
+                    AddButtonView(action: {isAdding = true})
+                        .accessibilityLabel("Add climb")
                 }
             }
-            
         }
         .navigationTitle("Ticklist")
-        // Display Profile View
-        .sheet(isPresented: $showProfileView){
-            NavigationView {
-                ProfileView()
-                    .toolbar{
-                        ToolbarItem(placement: .cancellationAction){
-                            Button("Cancel"){
-                                showProfileView = false
-                            }
-                        }
-                    }
-            }
-        }
-        // Display View for adding ticks
-        .sheet(isPresented: $isAdding){
-            NavigationView {
-                AddClimbView(data: $newTickData)
-                    .toolbar{
-                        ToolbarItem(placement: .cancellationAction){
-                            Button("Cancel"){
-                                isAdding = false
-                                newTickData = Tick.Data()
-                            }
-                        }
-                        ToolbarItem(placement: .confirmationAction){
-                            Button("Add"){
-                                let tick = Tick(data: newTickData)
-                                storageAction { try persistenceViewModel.saveTick(tick) }
-                                isAdding = false
-                                newTickData = Tick.Data()
-                            }
-                            .disabled(!newTickData.isComplete)
-                        }
-                    }
-            }
-        }
-        // Display errormessage
         .alert("Error occured", isPresented: $isError){
             Button("Cancel", role: .cancel){
                 errorMessage = ""
@@ -122,13 +98,8 @@ struct TickListView: View {
         } message: {
             Text(errorMessage)
         }
-    }
-}
-
-struct TickListView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            TickListView()
+        .sheet(isPresented: $isAdding, onDismiss: {newTickData = Tick.Data()}){
+            AddClimbView(data: $newTickData, confirmAction: {addTickAction()}, isAddEnabled: newTickData.isComplete)
         }
     }
 }
