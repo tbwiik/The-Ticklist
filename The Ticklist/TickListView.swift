@@ -99,9 +99,3 @@ struct TickListView: View {
         }
     }
 }
-
-struct TickListView_Previews: PreviewProvider {
-    static var previews: some View {
-        TickListView()
-    }
-}
