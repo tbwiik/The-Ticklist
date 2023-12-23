@@ -12,13 +12,11 @@
 		840D30362AD7C4DE007B964B /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 840D30352AD7C4DE007B964B /* FirebaseFirestoreSwift */; };
 		840D303B2ADAAF3E007B964B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 840D303A2ADAAF3E007B964B /* GoogleService-Info.plist */; };
 		840D303D2ADAB9D6007B964B /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840D303C2ADAB9D6007B964B /* DatabaseManager.swift */; };
-		84585CC62AE057E000B47617 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84585CC52AE057E000B47617 /* DatabaseManager.swift */; };
 		845C88E12AED5E32005284FB /* AuthFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C88E02AED5E32005284FB /* AuthFlowView.swift */; };
 		845FAC5D2AED61DD001166BB /* AuthStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FAC5C2AED61DD001166BB /* AuthStateView.swift */; };
 		8473502F29674A6900685150 /* The_TicklistApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473502E29674A6900685150 /* The_TicklistApp.swift */; };
 		8473503329674A6900685150 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8473503229674A6900685150 /* Assets.xcassets */; };
 		8473503629674A6900685150 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8473503529674A6900685150 /* Preview Assets.xcassets */; };
-		8473504029674A6900685150 /* The_TicklistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473503F29674A6900685150 /* The_TicklistTests.swift */; };
 		8473504A29674A6900685150 /* The_TicklistUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473504929674A6900685150 /* The_TicklistUITests.swift */; };
 		8473504C29674A6900685150 /* The_TicklistUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473504B29674A6900685150 /* The_TicklistUITestsLaunchTests.swift */; };
 		8473505D29674B3F00685150 /* Tick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473505C29674B3F00685150 /* Tick.swift */; };
@@ -40,8 +38,6 @@
 		84C6BC5C296EEE2700C20C4D /* AddButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6BC5B296EEE2700C20C4D /* AddButtonView.swift */; };
 		84C6BC5E296EEFA700C20C4D /* AddLogItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6BC5D296EEFA700C20C4D /* AddLogItemView.swift */; };
 		84C763002B04A2F400B92C87 /* PersistenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C762FF2B04A2F400B92C87 /* PersistenceViewModel.swift */; };
-		84CFED732996BFD9004388F5 /* TickListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CFED722996BFD9004388F5 /* TickListTests.swift */; };
-		84CFED7529982383004388F5 /* TickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CFED7429982383004388F5 /* TickTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +60,6 @@
 /* Begin PBXFileReference section */
 		840D303A2ADAAF3E007B964B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		840D303C2ADAB9D6007B964B /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
-		84585CC52AE057E000B47617 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		845C88E02AED5E32005284FB /* AuthFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowView.swift; sourceTree = "<group>"; };
 		845FAC5C2AED61DD001166BB /* AuthStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStateView.swift; sourceTree = "<group>"; };
 		8473502B29674A6800685150 /* The Ticklist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Ticklist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,7 +67,6 @@
 		8473503229674A6900685150 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8473503529674A6900685150 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8473503B29674A6900685150 /* The TicklistTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The TicklistTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8473503F29674A6900685150 /* The_TicklistTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_TicklistTests.swift; sourceTree = "<group>"; };
 		8473504529674A6900685150 /* The TicklistUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The TicklistUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8473504929674A6900685150 /* The_TicklistUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_TicklistUITests.swift; sourceTree = "<group>"; };
 		8473504B29674A6900685150 /* The_TicklistUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_TicklistUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -95,8 +89,6 @@
 		84C6BC5B296EEE2700C20C4D /* AddButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButtonView.swift; sourceTree = "<group>"; };
 		84C6BC5D296EEFA700C20C4D /* AddLogItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLogItemView.swift; sourceTree = "<group>"; };
 		84C762FF2B04A2F400B92C87 /* PersistenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceViewModel.swift; sourceTree = "<group>"; };
-		84CFED722996BFD9004388F5 /* TickListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickListTests.swift; sourceTree = "<group>"; };
-		84CFED7429982383004388F5 /* TickTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,10 +181,6 @@
 		8473503E29674A6900685150 /* The TicklistTests */ = {
 			isa = PBXGroup;
 			children = (
-				8473503F29674A6900685150 /* The_TicklistTests.swift */,
-				84CFED722996BFD9004388F5 /* TickListTests.swift */,
-				84CFED7429982383004388F5 /* TickTests.swift */,
-				84585CC52AE057E000B47617 /* DatabaseManager.swift */,
 			);
 			path = "The TicklistTests";
 			sourceTree = "<group>";
@@ -417,10 +405,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84CFED7529982383004388F5 /* TickTests.swift in Sources */,
-				84585CC62AE057E000B47617 /* DatabaseManager.swift in Sources */,
-				84CFED732996BFD9004388F5 /* TickListTests.swift in Sources */,
-				8473504029674A6900685150 /* The_TicklistTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
