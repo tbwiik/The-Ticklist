@@ -31,6 +31,7 @@
 		847D24702AEC0AEA005363B2 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D246F2AEC0AEA005363B2 /* AuthViewModel.swift */; };
 		847D24752AEC13BD005363B2 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D24742AEC13BD005363B2 /* SignUpView.swift */; };
 		847D24772AEC3B7B005363B2 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D24762AEC3B7B005363B2 /* SignInView.swift */; };
+		849C3B682B36DA2500DAFFFB /* TickFunctionalityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C3B672B36DA2500DAFFFB /* TickFunctionalityTests.swift */; };
 		84AA3FD52AF96A3100008D2A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA3FD42AF96A3100008D2A /* ProfileView.swift */; };
 		84C6BC55296EEC7B00C20C4D /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6BC54296EEC7B00C20C4D /* Log.swift */; };
 		84C6BC57296EEC8F00C20C4D /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6BC56296EEC8F00C20C4D /* Data.swift */; };
@@ -82,6 +83,8 @@
 		847D246F2AEC0AEA005363B2 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		847D24742AEC13BD005363B2 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		847D24762AEC3B7B005363B2 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		849C3B662B36DA2400DAFFFB /* The TicklistTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "The TicklistTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		849C3B672B36DA2500DAFFFB /* TickFunctionalityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickFunctionalityTests.swift; sourceTree = "<group>"; };
 		84AA3FD42AF96A3100008D2A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		84C6BC54296EEC7B00C20C4D /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		84C6BC56296EEC8F00C20C4D /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
@@ -181,6 +184,8 @@
 		8473503E29674A6900685150 /* The TicklistTests */ = {
 			isa = PBXGroup;
 			children = (
+				849C3B672B36DA2500DAFFFB /* TickFunctionalityTests.swift */,
+				849C3B662B36DA2400DAFFFB /* The TicklistTests-Bridging-Header.h */,
 			);
 			path = "The TicklistTests";
 			sourceTree = "<group>";
@@ -312,6 +317,7 @@
 					};
 					8473503A29674A6900685150 = {
 						CreatedOnToolsVersion = 14.0.1;
+						LastSwiftMigration = 1500;
 						TestTargetID = 8473502A29674A6800685150;
 					};
 					8473504429674A6900685150 = {
@@ -405,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849C3B682B36DA2500DAFFFB /* TickFunctionalityTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,6 +615,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -616,6 +624,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "tbwiik.com.The-TicklistTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "The TicklistTests/The TicklistTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/The Ticklist.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/The Ticklist";
@@ -627,6 +637,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -635,6 +646,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "tbwiik.com.The-TicklistTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "The TicklistTests/The TicklistTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/The Ticklist.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/The Ticklist";
