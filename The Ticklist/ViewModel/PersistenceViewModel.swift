@@ -27,6 +27,7 @@ class PersistenceViewModel: ObservableObject {
     
     ///Publishing variable containing ticklist
     @Published var ticklist = TickList()
+    //TODO: ? ticklist: TickList! = nil????
     
     private var storageInitialized = false
     
