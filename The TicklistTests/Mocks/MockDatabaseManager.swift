@@ -17,21 +17,21 @@ class MockDatabaseManager: DatabaseProtocol{
 
     func fetchTicklist() async throws -> TickList {
         if shouldThrowError {
-            throw PersistenceError.storageNotInitialized
+            throw UserError.noUser
         }
         return ticklistToReturn
     }
 
     func saveTick(_ tick: Tick) throws {
         if shouldThrowError {
-            throw PersistenceError.storageNotInitialized
+            throw UserError.noUser
         }
         saveTickCalled = true
     }
 
     func deleteTick(_ tick: Tick) async throws {
         if shouldThrowError {
-            throw PersistenceError.storageNotInitialized
+            throw UserError.noUser
         }
         deleteTickCalled = true
     }

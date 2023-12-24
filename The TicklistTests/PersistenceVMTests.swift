@@ -43,8 +43,8 @@ final class PersistenceVMTests: XCTestCase {
         do{
             try await viewModel.loadTickList()
             XCTFail("Loading Ticklist should have thrown error.")
-        } catch let error as PersistenceError {
-            XCTAssertEqual(error, .storageNotInitialized)
+        } catch let error as UserError {
+            XCTAssertEqual(error, .noUser)
         } catch {
             XCTFail("Loading Ticklist threw unexpected error.")
         }
