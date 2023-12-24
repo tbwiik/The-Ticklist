@@ -19,10 +19,6 @@ final class PersistenceVMTests: XCTestCase {
     override func setUpWithError() throws {
         viewModel = PersistenceViewModel(dbManager: mockDBManager)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
     
     func testInitTickList() {
         XCTAssertTrue(viewModel.ticklist.ticks.isEmpty)
