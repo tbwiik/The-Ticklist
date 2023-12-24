@@ -34,6 +34,8 @@
 		849C3B682B36DA2500DAFFFB /* TickFunctionalityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C3B672B36DA2500DAFFFB /* TickFunctionalityTests.swift */; };
 		849C3B6A2B373C5400DAFFFB /* TickListFunctionalityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C3B692B373C5400DAFFFB /* TickListFunctionalityTests.swift */; };
 		849C3B6E2B38375E00DAFFFB /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C3B6D2B38375D00DAFFFB /* DatabaseProtocol.swift */; };
+		849C3B702B38392700DAFFFB /* PersistenceVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C3B6F2B38392700DAFFFB /* PersistenceVMTests.swift */; };
+		849C3B732B38535B00DAFFFB /* MockDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C3B722B38535B00DAFFFB /* MockDatabaseManager.swift */; };
 		84AA3FD52AF96A3100008D2A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA3FD42AF96A3100008D2A /* ProfileView.swift */; };
 		84C6BC55296EEC7B00C20C4D /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6BC54296EEC7B00C20C4D /* Log.swift */; };
 		84C6BC57296EEC8F00C20C4D /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6BC56296EEC8F00C20C4D /* Data.swift */; };
@@ -89,6 +91,8 @@
 		849C3B672B36DA2500DAFFFB /* TickFunctionalityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickFunctionalityTests.swift; sourceTree = "<group>"; };
 		849C3B692B373C5400DAFFFB /* TickListFunctionalityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickListFunctionalityTests.swift; sourceTree = "<group>"; };
 		849C3B6D2B38375D00DAFFFB /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
+		849C3B6F2B38392700DAFFFB /* PersistenceVMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceVMTests.swift; sourceTree = "<group>"; };
+		849C3B722B38535B00DAFFFB /* MockDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDatabaseManager.swift; sourceTree = "<group>"; };
 		84AA3FD42AF96A3100008D2A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		84C6BC54296EEC7B00C20C4D /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		84C6BC56296EEC8F00C20C4D /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
@@ -189,8 +193,10 @@
 		8473503E29674A6900685150 /* The TicklistTests */ = {
 			isa = PBXGroup;
 			children = (
+				849C3B712B38533C00DAFFFB /* Mocks */,
 				849C3B672B36DA2500DAFFFB /* TickFunctionalityTests.swift */,
 				849C3B692B373C5400DAFFFB /* TickListFunctionalityTests.swift */,
+				849C3B6F2B38392700DAFFFB /* PersistenceVMTests.swift */,
 				849C3B662B36DA2400DAFFFB /* The TicklistTests-Bridging-Header.h */,
 			);
 			path = "The TicklistTests";
@@ -233,6 +239,14 @@
 				849C3B6D2B38375D00DAFFFB /* DatabaseProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		849C3B712B38533C00DAFFFB /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				849C3B722B38535B00DAFFFB /* MockDatabaseManager.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		84C6BC51296EEC5A00C20C4D /* Tick */ = {
@@ -428,6 +442,8 @@
 			files = (
 				849C3B6A2B373C5400DAFFFB /* TickListFunctionalityTests.swift in Sources */,
 				849C3B682B36DA2500DAFFFB /* TickFunctionalityTests.swift in Sources */,
+				849C3B732B38535B00DAFFFB /* MockDatabaseManager.swift in Sources */,
+				849C3B702B38392700DAFFFB /* PersistenceVMTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
