@@ -32,7 +32,11 @@ class PersistenceViewModel: ObservableObject {
     
     
     /// Manager for handling db actions
-    private var dbManager = DatabaseManager()
+    private var dbManager: DatabaseProtocol
+    
+    init(dbManager: DatabaseProtocol = DatabaseManager()){
+        self.dbManager = dbManager
+    }
     
     
     /// Load ticklist from database into internal ticklist
