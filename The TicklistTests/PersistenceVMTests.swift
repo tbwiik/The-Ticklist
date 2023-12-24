@@ -38,7 +38,7 @@ final class PersistenceVMTests: XCTestCase {
     
     func testLoadTickListError() async throws {
         
-        mockDBManager.shouldThrowError = true
+        mockDBManager.noUser = true
         
         do{
             try await viewModel.loadTickList()

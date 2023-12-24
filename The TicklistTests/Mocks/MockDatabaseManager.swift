@@ -10,28 +10,42 @@ import Foundation
 
 class MockDatabaseManager: DatabaseProtocol{
     
-    var shouldThrowError = false
+    // Error triggers
+    var noUser = false
+    var storageNotInit = false
+    var noContain = false
+    
+    // Returns
     var ticklistToReturn = TickList()
     var saveTickCalled = false
     var deleteTickCalled = false
 
     func fetchTicklist() async throws -> TickList {
-        if shouldThrowError {
+        if noUser {
             throw UserError.noUser
         }
         return ticklistToReturn
     }
 
     func saveTick(_ tick: Tick) throws {
-        if shouldThrowError {
+        if noUser {
             throw UserError.noUser
+        }
+        if storageNotInit {
+            throw PersistenceError.storageNotInitialized
         }
         saveTickCalled = true
     }
 
     func deleteTick(_ tick: Tick) async throws {
-        if shouldThrowError {
+        if noUser {
             throw UserError.noUser
+        }
+        if storageNotInit {
+            throw PersistenceError.storageNotInitialized
+        }
+        if noContain {
+            throw TickListError.notContainsTick
         }
         deleteTickCalled = true
     }
