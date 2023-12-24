@@ -31,21 +31,12 @@ class MockDatabaseManager: DatabaseProtocol{
         if noUser {
             throw UserError.noUser
         }
-        if storageNotInit {
-            throw PersistenceError.storageNotInitialized
-        }
         saveTickCalled = true
     }
 
     func deleteTick(_ tick: Tick) async throws {
         if noUser {
             throw UserError.noUser
-        }
-        if storageNotInit {
-            throw PersistenceError.storageNotInitialized
-        }
-        if noContain {
-            throw TickListError.notContainsTick
         }
         deleteTickCalled = true
     }
