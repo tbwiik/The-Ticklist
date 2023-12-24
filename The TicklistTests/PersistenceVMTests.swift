@@ -38,7 +38,7 @@ final class PersistenceVMTests: XCTestCase {
         XCTAssertEqual(viewModel.ticklist, expectedTicklist)
     }
     
-    func testLoadTickListError() async throws {
+    func testLoadTickListThrows() async throws {
         
         mockDBManager.noUser = true
         
@@ -63,7 +63,7 @@ final class PersistenceVMTests: XCTestCase {
         
     }
     
-    func testSaveTickError() async throws {
+    func testSaveTickTrows() async throws {
         
         do {
             try viewModel.saveTick(tick)
@@ -87,8 +87,9 @@ final class PersistenceVMTests: XCTestCase {
         XCTAssertFalse(viewModel.ticklist.containsTick(tick))
     }
     
-    func testDeleteTickError() async throws {
+    func testDeleteTickThrows() async throws {
         
+        // Test failure when storage is not initialized
         do{
             try await viewModel.deleteTick(tick)
             XCTFail("Deletion should fail when storage is not init.")
@@ -100,8 +101,10 @@ final class PersistenceVMTests: XCTestCase {
         
         XCTAssertFalse(mockDBManager.deleteTickCalled)
         
+        // Initialize storage
         try await viewModel.loadTickList()
         
+        // Test failure when Ticklist doesn't contain given tick
         do{
             try await viewModel.deleteTick(tick)
             XCTFail("Deletion should fail when Tick is not in list.")
