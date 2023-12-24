@@ -21,9 +21,19 @@ final class PersistenceVMTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+    
+    func testInitTickList() {
+        XCTAssertTrue(viewModel.ticklist.ticks.isEmpty)
+    }
 
     func testLoadTickListSuccess() async throws {
         
+        let expectedTicklist = Tick.sampleData
+        
+        mockDBManager.ticklistToReturn = expectedTicklist
+        try await viewModel.loadTickList()
+        
+        XCTAssertEqual(viewModel.ticklist, expectedTicklist)
     }
     
     func testLoadTickListError() async throws {
@@ -32,14 +42,12 @@ final class PersistenceVMTests: XCTestCase {
         
         do{
             try await viewModel.loadTickList()
-            XCTFail("Loading Ticklist should have thrown error")
+            XCTFail("Loading Ticklist should have thrown error.")
         } catch let error as PersistenceError {
             XCTAssertEqual(error, .storageNotInitialized)
         } catch {
-            XCTFail("Loading Ticklist threw unexpected error")
+            XCTFail("Loading Ticklist threw unexpected error.")
         }
     }
     
-    
-
 }
