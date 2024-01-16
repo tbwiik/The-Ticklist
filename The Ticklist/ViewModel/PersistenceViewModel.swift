@@ -27,12 +27,17 @@ class PersistenceViewModel: ObservableObject {
     
     ///Publishing variable containing ticklist
     @Published var ticklist = TickList()
+    //TODO: ? ticklist: TickList! = nil????
     
     private var storageInitialized = false
     
     
     /// Manager for handling db actions
-    private var dbManager = DatabaseManager()
+    private var dbManager: DatabaseProtocol
+    
+    init(dbManager: DatabaseProtocol = DatabaseManager()){
+        self.dbManager = dbManager
+    }
     
     
     /// Load ticklist from database into internal ticklist

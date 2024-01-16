@@ -11,7 +11,7 @@ enum TickListError: Error {
     case notContainsTick
 }
 
-struct TickList: Identifiable, Codable {
+struct TickList: Identifiable, Codable, Equatable {
     
     let id: UUID
     var name: String

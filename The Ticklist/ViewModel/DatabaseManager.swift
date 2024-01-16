@@ -18,7 +18,7 @@ enum UserError: Error{
 }
 
 /// Handle communication with firestore database
-class DatabaseManager: ObservableObject {
+class DatabaseManager: ObservableObject, DatabaseProtocol {
 
     /// Define a userID property
     private var user: User?
